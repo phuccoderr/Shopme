@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{ fragments :: page_head('Shopme Admin','none')}" />
+<body id="page-top">
+
+
+<div id="wrapper">
+    <ul th:replace="~{fragments :: navbar}" ></ul>
+    <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+            <nav th:replace="~{fragments :: header}"></nav>
+
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="text-center h3 bold">
+                        <span class="icon-black">máy chủ của website bạn đang truy cập bị lỗi, gặp sự cố, không thể hiển thị nội dung hay thông tin gì.</span>
+
+                    </div>
+                    <div class="text-center">
+                        <a th:href="@{/}" class="btn btn-primary">Trang chủ</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="~{fragments :: footer}"></footer>
+
+<script th:src="@{/js/common.js}" ></script>
+</body>
+</html>

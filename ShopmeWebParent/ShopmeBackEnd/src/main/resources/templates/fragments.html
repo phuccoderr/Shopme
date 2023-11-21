@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head th:fragment="page_head(title,remove)" th:remove="${remove}">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minium-scale=1.0">
+    <title>[[${title}]]</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/sb-admin-2.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"/></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/5.3.2/js/bootstrap.min.js}"/></script>
+</head>
+<body>
+<footer th:fragment="footer" class="sticky-footer bg-white">
+    <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Your Website 2023</span>
+        </div>
+    </div>
+</footer>
+
+
+<ul th:fragment="navbar" class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" th:href="@{/}">
+        <div class="sidebar-brand-icon ">
+            <img th:src="@{/images/artemis-logo-transparent.png}" class="img-fluid" />
+        </div>
+        <div class="sidebar-brand-text mx-3">Shopme Admin</div>
+    </a>
+
+    <hr class="sidebar-divider my-0">
+    <hr class="sidebar-divider">
+
+    <div class="sidebar-heading">
+        Addons
+    </div>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" data-target="#collapseTable" data-toggle="collapse" href="#"
+           aria-expanded="false">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Tables</span></a>
+
+        <div id="collapseTable" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Data Shopme:</h6>
+                <th:block sec:authorize="hasAnyAuthority('Admin')">
+                    <a class="collapse-item" th:href="@{/users}">Users</a>
+                    <a class="collapse-item" th:href="@{/brands}">Brands</a>
+                    <a class="collapse-item" th:href="@{/categories}">Categories</a>
+                </th:block>
+
+            </div>
+        </div>
+
+    </li>
+
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+</ul>
+
+<nav th:fragment="header" class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+
+    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+        <i class="fa fa-bars"></i>
+    </button>
+
+
+    <form
+            class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+        <div class="input-group">
+            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+            >
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="button">
+                    <i class="fas fa-search fa-sm"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+
+
+    <ul class="navbar-nav ml-auto">
+
+        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+        <li class="nav-item dropdown no-arrow d-sm-none">
+            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-search fa-fw"></i>
+            </a>
+            <!-- Dropdown - Messages -->
+            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                 aria-labelledby="searchDropdown">
+                <form class="form-inline mr-auto w-100 navbar-search">
+                    <div class="input-group">
+                        <input type="text" class="form-control bg-light border-0 small"
+                               placeholder="Search for..." aria-label="Search"
+                               aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="button">
+                                <i class="fas fa-search fa-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </li>
+
+
+        <div class="topbar-divider d-none d-sm-block"></div>
+
+        <!-- Nav Item - User Information -->
+        <li class="nav-item dropdown no-arrow show">
+
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+               data-toggle="dropdown" sec:authentication="principal.fullName">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee1</span>
+
+            </a>
+            <!-- Dropdown - User Information -->
+            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                 aria-labelledby="userDropdown">
+                <a class="dropdown-item link-Account" th:href="@{/account}">
+                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Profile
+                </a>
+                <a class="dropdown-item" href="#">
+                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Settings
+                </a>
+                <div class="dropdown-divider"></div>
+                <form th:action="@{/logout}" method="post" name="logoutForm" th:hidden="true">
+                    <input type="submit" />
+                </form>
+                <a class="dropdown-item" href="#" id="logoutLink" data-toggle="modal" data-target="#logoutModal">
+                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Logout
+                </a>
+            </div>
+        </li>
+
+    </ul>
+
+</nav>
+
+<a th:fragment="page_link(moduleURL,pageNum,label)"
+   class="page-link"
+   th:href="@{${moduleURL} + '/page/' + ${pageNum} + '?sortField=' + ${sortField}
+        + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword=' + keyword :''}}">[[${label}]]</a>
+
+<div th:fragment="search(url)" th:remove="tag">
+    <form class="form-inline justify-content-end" th:action="@{${url}}" >
+        <div>
+            <input type="hidden" name="sortField" th:value="${sortField}"/>
+            <input type="hidden" name="sortDir" th:value="${sortDir}"/>
+            <input type="search" name="keyword" class="form-control" th:value="${keyword}" placeholder="search" />
+            <button type="submit" class="btn btn-primary">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+
+            <button type="button" class="btn btn-secondary" onclick="clearFilter()">
+                <i class="fa-solid fa-eraser"></i>
+            </button>
+        </div>
+    </form>
+</div>
+
+<div th:fragment="pagination(url,entityName)" th:remove="tag">
+    <div class="col-sm-12 col-md-5">
+        <div class="text-left m-1" th:if="${totalItems > 0}">
+            <span>Showing [[${entityName}]] # [[${startCount}]] to [[${endCount}]] of [[${totalItems}]]</span>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-7">
+        <ul class="pagination justify-content-end">
+            <li class="page-item">
+                <a th:replace="~{fragments :: page_link(${url},1,'First')}"></a>
+            </li>
+            <li th:class="${currentPage > 1 ? 'page-item' : 'page-item disabled'}">
+                <a th:replace="~{fragments :: page_link(${url},${currentPage - 1},'Previous')}"></a>
+            </li>
+            <li th:class="${currentPage != i ? 'page-item' : 'page-item active'}"
+                th:each="i : ${#numbers.sequence(1,totalPages)}">
+                <a th:replace="~{fragments :: page_link(${url},${i},${i})}"></a>
+            </li>
+            <li th:class="${currentPage < totalPages ? 'page-item' : 'page-item disabled'}">
+                <a th:replace="~{fragments :: page_link(${url},${currentPage + 1},'Next')}"></a>
+            </li>
+            <li class="page-item">
+                <a th:replace="~{fragments :: page_link(${url},${totalPages},'First')}"></a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div th:fragment="enabled(url,enabled)" th:remove="tag">
+    <a th:if="${enabled == true}" class="fa-sharp fa-solid fa-circle-check icon-green"
+       th:href="@{${url} + '/enabled/false'  }"></a>
+    <a th:if="${enabled != true}" class="fa-sharp fa-solid fa-circle-check icon-dark"
+       th:href="@{${url} + '/enabled/true'  }"></a>
+</div>
+
+<a th:fragment="edit(url,entityId)" class="fa-solid fa-pen fa-pen-to-square fa-1x text-primary mr-2 link-detail"
+   data-toggle="modal" data-target="#exampleModalScrollable"
+   th:href="@{${url} + ${entityId}}"></a>
+
+<div th:fragment="delete(url,entityId,visible)" th:remove="tag">
+    <th:block th:if="${visible}">
+    <a class="fa-solid fa-trash fa-1x link-delete"
+       th:entityId="${entityId}"
+       th:href="@{${url} + ${entityId}}"></a>
+    </th:block>
+</div>
+
+
+
+
+</body>
+</html>

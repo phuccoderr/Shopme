@@ -1,0 +1,78 @@
+<div class="modal-header">
+    <h5 class="modal-title" >Edit User Detail</h5>
+    <button type="button" class="close" data-bs-dismiss="modal"  aria-label="Close">
+        &times;
+    </button>
+</div>
+<div class="modal-body">
+    <form th:action="@{/categories/save}" method="post" enctype="multipart/form-data"
+          th:object="${category}" onsubmit="return checkNameUnique(this)">
+        <input type="hidden" th:field="*{id}">
+        <div class="mb-3 mt-3">
+            <label class="form-label">Category Name:</label>
+            <input type="text" class="form-control" th:field="*{name}" placeholder="Enter name" required>
+        </div>
+        <div class="mb-3 mt-3">
+            <label class="form-label">Alias:</label>
+            <input type="text" class="form-control" th:field="*{alias}" placeholder="Enter alias" required>
+        </div>
+        <div class="mb-3 mt-3">
+            <label class="form-label">Enabled:</label>
+            <input type="checkbox" th:field="*{enabled}" required>
+        </div>
+        <div class="mb-3 mt-3 row">
+            <label class="col-sm-4 col-form-label">Parent Category:</label>
+            <div class="col-sm-8">
+                <select class="form-control" th:field="*{parent}">
+                    <option value="0">[No parent]</option>
+                    <th:block th:each="cat : ${listCategoriesUsed}">
+                        <option th:unless="${cat.id == category.id}" th:value="${cat.id}">[[${cat.name}]]</option>
+                    </th:block>
+                </select>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" >Default Image Logo</label>
+            <input type="file" id="fileImage" name="fileImage"  accept="image/png, image/jpeg" class="form-control" />
+
+            <img id="thumbnail" alt="Photos preview" th:src="@{${category.imagePath}}"
+                 class="rounded-circle" style="max-width: 25%" />
+        </div>
+
+        <div>
+            <button th:if="${category.getId() == null}" type="submit" class="btn btn-primary">Create</button>
+            <button th:unless="${category.getId() == null}" type="submit" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-danger float-right" data-bs-dismiss="modal">Close</button>
+        </div>
+    </form>
+</div>
+<script th:src="@{/js/common_form.js}" > </script>
+<script type="text/javascript">
+
+    function checkNameUnique(form) {
+        url = "[[@{/categories/check_unique}]]";
+        cateId = $("#id").val();
+        cateAlias = $("#alias").val();
+        cateName = $("#name").val();
+        _csrfValue = $("input[name='_csrf']").val();
+
+        params = {id: cateId, name: cateName, alias: cateAlias, _csrf: _csrfValue  };
+
+        $.post(url,params,function(reponse) {
+            if (reponse === "OK") {
+                form.submit();
+            } else if (reponse === "DuplicatedName") {
+                alert("There is another category having same name ");
+            } else if (reponse === "DuplicatedAlias") {
+                alert("There is another category having same alias ");
+            } else {
+                alert("Unknown reponse from server");
+            }
+        }).fail(function() {
+            alert("Cloud not connect to the server");
+        });
+
+        return false;
+    }
+</script>

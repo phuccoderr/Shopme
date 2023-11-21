@@ -1,0 +1,17 @@
+*.icon-white {color:white}
+*.icon-silver {color:silver}
+*.icon-black {color: #000000}
+*.icon-violet {color:violet}
+*.icon-dark {color:#808080}
+
+@keyframes navBar {
+    0%{
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+

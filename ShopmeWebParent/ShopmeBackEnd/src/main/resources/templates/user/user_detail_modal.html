@@ -1,0 +1,101 @@
+<div class="modal-header">
+    <h5 class="modal-title" >Edit User Detail</h5>
+    <button type="button" class="close" data-bs-dismiss="modal"  aria-label="Close">
+        &times;
+    </button>
+</div>
+<div class="modal-body">
+    <form th:action="@{/users/save}" method="post" enctype="multipart/form-data" onsubmit="return checkEmailUnique(this)"
+          th:object="${user}">
+        <input type="hidden" th:field="*{id}">
+        <div class="mb-3 mt-3">
+            <label class="form-label">Email:</label>
+            <div th:if="${user.email}">
+                <input type="text" class="form-control" th:field="*{email}" placeholder="Enter email" readonly>
+            </div>
+            <div th:unless="${user.email}">
+                <input type="text" class="form-control" th:field="*{email}" placeholder="Enter email" required>
+            </div>
+
+        </div>
+        <div th:unless="${user.password}">
+            <div class="mb-3 mt-3">
+                <label class="form-label">Password:</label>
+                <input type="password" class="form-control" th:field="*{password}"
+                       placeholder="Enter password" required
+                       oninput="checkPasswordMatch(document.getElementById('confirmPassword'))" >
+            </div>
+
+            <div class="mb-3 mt-3">
+                <label class="form-label">Confirm Password:</label>
+                <input type="password" class="form-control"
+                       id="confirmPassword"
+                       placeholder="check password" required
+                       oninput="checkPasswordMatch(this)" >
+            </div>
+        </div>
+        <div class="mb-3 mt-3">
+            <label class="form-label">First Name:</label>
+            <input type="text" class="form-control" th:field="*{firstName}" placeholder="Enter first name" required>
+        </div>
+        <div class="mb-3 mt-3">
+            <label class="form-label">Last Name:</label>
+            <input type="text" class="form-control" th:field="*{lastName}" placeholder="Enter last name" required>
+        </div>
+        <div class="mb-3 mt-3">
+            <label class="form-label mr-2">Enabled:</label>
+            <input type="checkbox" th:field="*{enabled}" >
+        </div>
+        <div class="mb-3 mt-3">
+            <label class="form-label mr-2">Role:</label>
+            <th:block th:each="role : ${listRoles}">
+                    <input class="m-2" type="checkbox" th:text="${role.name}" th:value="${role.id}" th:field="*{roles}" />
+            </th:block>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" >Default Image User</label>
+            <input type="file" id="fileImage" name="fileImage"  accept="image/png, image/jpeg" class="form-control"  />
+
+            <img id="thumbnail" alt="Photos preview" th:src="@{${user.photosImagePath}}"
+                 class="rounded-circle" style="max-width: 25%" />
+        </div>
+
+        <div>
+            <button th:if="${user.getId() == null}" type="submit" class="btn btn-primary">Create</button>
+            <button th:unless="${user.getId() == null}" type="submit" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-danger float-right" data-bs-dismiss="modal">Close</button>
+        </div>
+    </form>
+</div>
+<script th:src="@{/js/common_form.js}" > </script>
+<script type="text/javascript">
+
+    function checkEmailUnique(form) {
+        url = "[[@{/users/check_email}]]";
+        userEmail = $("#email").val();
+        userId = $("#id").val();
+        csrfValue = $("input[name='_csrf']").val();
+        params = {id: userId,email: userEmail,_csrf: csrfValue}
+
+        $.post(url,params,(response) => {
+            if(response == "OK") {
+                form.submit();
+            } else if (response == "Duplicated") {
+                alert("Da co tai khoan")
+            } else {
+                alert("Unknown respones from server")
+            }
+        }).fail(() => {
+            alert("Cloud not connect to the service")
+        });
+        return false;
+    }
+
+    function checkPasswordMatch(confirmPassword) {
+        if (confirmPassword.value != $("#password").val()) {
+            confirmPassword.setCustomValidity("Password do not match");
+        } else {
+            confirmPassword.setCustomValidity("");
+        }
+    }
+</script>

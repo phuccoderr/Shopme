@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="dc06181e-8018-4017-9ac1-b1a9b4dde484" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$PROJECT_DIR$/../../Phuc/Java/apache-maven-3.9.3" />
+        <option name="usePluginRegistry" value="true" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="jdkForImporter" value="19" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="19" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2YAKRdg1VWdkN5DwuPBAPjEzC8v" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "jdk.selected.JAVA_MODULE": "19",
+    "last_opened_file_path": "D:/workspace/ShopmeProject",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "project.propCompiler",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.shopme.admin.category" />
+      <recent name="com.shopme.admin.brand" />
+      <recent name="com.shopme.admin.user" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\workspace\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\main\resources\templates\category" />
+      <recent name="D:\workspace\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\main\resources\templates\brand" />
+      <recent name="D:\workspace\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\main\resources\templates\error" />
+      <recent name="D:\workspace\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\main\resources\static\images" />
+      <recent name="D:\workspace\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\main\resources\templates\user" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\workspace\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\main\resources\static\css" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.shopme.admin.product" />
+      <recent name="com.shopme.admin.category" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn test" />
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.ProductRepositoryTests.testCreateProduct">
+    <configuration name="CategoryRepositoryTests.testCreateParent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ShopmeBackEnd" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.shopme.admin.category.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.shopme.admin.category" />
+      <option name="MAIN_CLASS_NAME" value="com.shopme.admin.category.CategoryRepositoryTests" />
+      <option name="METHOD_NAME" value="testCreateParent" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CategoryRepositoryTests.testDelete" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ShopmeBackEnd" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.shopme.admin.category.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.shopme.admin.category" />
+      <option name="MAIN_CLASS_NAME" value="com.shopme.admin.category.CategoryRepositoryTests" />
+      <option name="METHOD_NAME" value="testDelete" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CategoryRepositoryTests.testGetCate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ShopmeBackEnd" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.shopme.admin.category.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.shopme.admin.category" />
+      <option name="MAIN_CLASS_NAME" value="com.shopme.admin.category.CategoryRepositoryTests" />
+      <option name="METHOD_NAME" value="testGetCate" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductRepositoryTests.testCreateProduct" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ShopmeBackEnd" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.shopme.admin.product.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.shopme.admin.product" />
+      <option name="MAIN_CLASS_NAME" value="com.shopme.admin.product.ProductRepositoryTests" />
+      <option name="METHOD_NAME" value="testCreateProduct" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ShopmeBackEndApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="ShopmeBackEnd" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.shopme.admin.ShopmeBackEndApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.shopme.admin.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ShopmeBackEndApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="ShopmeBackEnd" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.shopme.ShopmeBackEndApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ShopmeCommonApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="ShopmeCommon" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.shopme.ShopmeCommonApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ShopmeCommonApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="ShopmeCommon" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.shopme.common.ShopmeCommonApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ShopmeFrontEndApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="ShopmeFrontEnd" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.shopme.ShopmeFrontEndApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ShopmeWebParentApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="ShopmeWebParent" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.shopme.ShopmeWebParentApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ShopmeWebParentsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="ShopmeWebParents" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.shopme.shopmewebparents.ShopmeWebParentsApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.ProductRepositoryTests.testCreateProduct" />
+        <item itemvalue="Spring Boot.ShopmeBackEndApplication (1)" />
+        <item itemvalue="JUnit.CategoryRepositoryTests.testGetCate" />
+        <item itemvalue="JUnit.CategoryRepositoryTests.testDelete" />
+        <item itemvalue="JUnit.CategoryRepositoryTests.testCreateParent" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="dc06181e-8018-4017-9ac1-b1a9b4dde484" name="Changes" comment="" />
+      <created>1699962938071</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1699962938071</updated>
+      <workItem from="1699962939066" duration="44000" />
+      <workItem from="1699962992970" duration="3127000" />
+      <workItem from="1699966610171" duration="358000" />
+      <workItem from="1699966978766" duration="669000" />
+      <workItem from="1699967672057" duration="2459000" />
+      <workItem from="1699970152961" duration="13888000" />
+      <workItem from="1699985175635" duration="6159000" />
+      <workItem from="1700073161231" duration="12883000" />
+      <workItem from="1700086414230" duration="541000" />
+      <workItem from="1700088804341" duration="922000" />
+      <workItem from="1700117912104" duration="1452000" />
+      <workItem from="1700158363952" duration="17330000" />
+      <workItem from="1700244041293" duration="12440000" />
+      <workItem from="1700289557047" duration="6452000" />
+      <workItem from="1700317402985" duration="2761000" />
+      <workItem from="1700334890030" duration="8028000" />
+      <workItem from="1700397958214" duration="19395000" />
+      <workItem from="1700417854487" duration="3104000" />
+      <workItem from="1700487957869" duration="23313000" />
+      <workItem from="1700553829207" duration="365000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

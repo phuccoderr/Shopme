@@ -1,0 +1,92 @@
+<div class="modal-header">
+    <h5 class="modal-title" >Edit User Detail</h5>
+    <button type="button" class="close" data-bs-dismiss="modal"  aria-label="Close">
+        &times;
+    </button>
+</div>
+<div class="modal-body">
+    <form th:action="@{/brands/save}" method="post" enctype="multipart/form-data"
+          th:object="${brand}" onsubmit="return checkUnique(this)">
+        <input type="hidden" th:field="*{id}">
+        <div class="mb-3 mt-3">
+            <label class="form-label">Logo Name:</label>
+            <input type="text" class="form-control" th:field="*{name}" placeholder="Enter first name" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" >Default Image Logo</label>
+            <input type="file" id="fileImage" name="fileImage"  accept="image/png, image/jpeg" class="form-control" />
+
+            <img id="thumbnail" alt="Photos preview" th:src="@{${brand.logoPath}}"
+                 class="rounded-circle" style="max-width: 25%" />
+        </div>
+
+        <div class="mb-3 mt-3 row">
+            <label class="col-sm-4 col-form-label">Category:</label>
+            <div class="col-sm-8">
+                <select class="form-select" multiple th:field="*{categories}" style="resize: vertical; height: 200px;">
+                    <option value="0">[No parent]</option>
+                    <th:block th:each="cat : ${listCategories}">
+                        <option th:value="${cat.id}">[[${cat.name}]]</option>
+                    </th:block>
+                </select>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="col-sm-4 col-form-label">chosen categories:</label>
+            <div class="col-sm-8">
+                <div id="chosenCategories">
+
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <button th:if="${brand.getId() == null}" type="submit" class="btn btn-primary">Create</button>
+            <button th:unless="${brand.getId() == null}" type="submit" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-danger float-right" data-bs-dismiss="modal">Close</button>
+        </div>
+    </form>
+</div>
+<script th:src="@{/js/common_form.js}" > </script>
+<script type="text/javascript">
+    function checkUnique(form) {
+        brandId = $("#id").val();
+        brandName = $("#name").val();
+        csrfValue = $("input[name='_csrf']").val();
+        url = "[[@{/brands/check_unique}]]";
+        params = {id: brandId , name: brandName,_csrf: csrfValue};
+
+        $.post(url,params,function(reponse) {
+            if (reponse == "OK") {
+                form.submit();
+            } else  {
+                alert("There is another brand having same name " + brandName);
+            }
+        }).fail(function() {
+            alert("Cloud not connect to the server");
+        });
+        return false;
+    }
+    
+    $(document).ready(function () {
+        dropdownCategories = $("#categories");
+        divChosenCategories = $("#chosenCategories")
+
+        dropdownCategories.change(function () {
+            divChosenCategories.empty();
+            showChosenCategories();
+        })
+    })
+
+    function showChosenCategories() {
+        dropdownCategories.children("option:selected").each(function() {
+            selectedCategory = $(this);
+            catId = selectedCategory.val();
+            catName = selectedCategory.text().replace(/-/g,"");
+
+            divChosenCategories.append("<span class='badge badge-secondary m-1'>"+catName+"</span>")
+
+        })
+    }
+</script>

@@ -38,3 +38,10 @@ function addDetails() {
 function removeDetailByIndex(id) {
     $("#" + id).remove();
 }
+
+
+
+
+
+
+

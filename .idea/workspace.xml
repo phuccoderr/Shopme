@@ -4,7 +4,45 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dc06181e-8018-4017-9ac1-b1a9b4dde484" name="Changes" comment="commit" />
+    <list default="true" id="dc06181e-8018-4017-9ac1-b1a9b4dde484" name="Changes" comment="update pom.xm WebParent">
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/java/com/shopme/admin/brand/BrandNotFoundRestException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/java/com/shopme/admin/product/ProductController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/java/com/shopme/admin/product/ProductRestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/java/com/shopme/admin/product/ProductService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/static/js/product_form_images.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/static/js/product_form_overview.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/static/js/product_from_details.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/product/product.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/product/product_form_description_modal.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/product/product_form_detail_modal.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/product/product_form_image_modal.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/product/product_form_modal.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/product/product_form_overview_modal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeCommon/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeCommon/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/IdBasedEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/IdBasedEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/entity/Brand.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/entity/Brand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/entity/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/entity/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/entity/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/entity/ProductDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/entity/ProductDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/entity/ProductImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/entity/ProductImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/entity/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/entity/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/java/com/shopme/admin/brand/BrandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/java/com/shopme/admin/brand/BrandController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/java/com/shopme/admin/brand/BrandRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/java/com/shopme/admin/brand/BrandRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/java/com/shopme/admin/brand/BrandService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/java/com/shopme/admin/brand/BrandService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/java/com/shopme/admin/brand/CategoryDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/java/com/shopme/admin/brand/CategoryDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/java/com/shopme/admin/category/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/java/com/shopme/admin/category/CategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/java/com/shopme/admin/product/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/java/com/shopme/admin/product/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/java/com/shopme/admin/user/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/java/com/shopme/admin/user/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/category/category.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/category/category.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/fragments.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/fragments.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/test/java/com/shopme/admin/category/CategoryRepositoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/test/java/com/shopme/admin/category/CategoryRepositoryTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/test/java/com/shopme/admin/product/ProductRepositoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/test/java/com/shopme/admin/product/ProductRepositoryTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,15 +54,30 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
-        <option value="HTML File" />
         <option value="Interface" />
+        <option value="HTML File" />
         <option value="Class" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="9abab110-b9ec-4695-bb83-9474b7994426" />
+        <option name="url" value="https://github.com/phuccoderr/shopme.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/product/product_form_image_modal.html" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -57,32 +110,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "jdk.selected.JAVA_MODULE": "19",
-    "last_opened_file_path": "D:/workspace/ShopmeProject",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "project.propCompiler",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;19&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/workspace/ShopmeProject/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/product&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.shopme.admin.category" />
@@ -90,13 +143,14 @@
       <recent name="com.shopme.admin.user" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\workspace\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\main\resources\templates\product" />
+      <recent name="D:\workspace\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\main\resources\static" />
       <recent name="D:\workspace\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\main\resources\templates\category" />
       <recent name="D:\workspace\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\main\resources\templates\brand" />
       <recent name="D:\workspace\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\main\resources\templates\error" />
-      <recent name="D:\workspace\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\main\resources\static\images" />
-      <recent name="D:\workspace\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\main\resources\templates\user" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\workspace\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\main\resources\templates\product" />
       <recent name="D:\workspace\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\main\resources\static\css" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -109,39 +163,7 @@
       <command value="mvn test" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ProductRepositoryTests.testCreateProduct">
-    <configuration name="CategoryRepositoryTests.testCreateParent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ShopmeBackEnd" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.shopme.admin.category.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.shopme.admin.category" />
-      <option name="MAIN_CLASS_NAME" value="com.shopme.admin.category.CategoryRepositoryTests" />
-      <option name="METHOD_NAME" value="testCreateParent" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CategoryRepositoryTests.testDelete" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ShopmeBackEnd" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.shopme.admin.category.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.shopme.admin.category" />
-      <option name="MAIN_CLASS_NAME" value="com.shopme.admin.category.CategoryRepositoryTests" />
-      <option name="METHOD_NAME" value="testDelete" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Spring Boot.ShopmeBackEndApplication (1)">
     <configuration name="CategoryRepositoryTests.testGetCate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ShopmeBackEnd" />
       <extension name="coverage">
@@ -158,6 +180,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ProductRepositoryTests.getProduct" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ShopmeBackEnd" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.shopme.admin.product.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.shopme.admin.product" />
+      <option name="MAIN_CLASS_NAME" value="com.shopme.admin.product.ProductRepositoryTests" />
+      <option name="METHOD_NAME" value="getProduct" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ProductRepositoryTests.testCreateProduct" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ShopmeBackEnd" />
       <extension name="coverage">
@@ -169,6 +207,22 @@
       <option name="PACKAGE_NAME" value="com.shopme.admin.product" />
       <option name="MAIN_CLASS_NAME" value="com.shopme.admin.product.ProductRepositoryTests" />
       <option name="METHOD_NAME" value="testCreateProduct" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductRepositoryTests.testGetByName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ShopmeBackEnd" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.shopme.admin.product.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.shopme.admin.product" />
+      <option name="MAIN_CLASS_NAME" value="com.shopme.admin.product.ProductRepositoryTests" />
+      <option name="METHOD_NAME" value="testGetByName" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -231,11 +285,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ProductRepositoryTests.testCreateProduct" />
         <item itemvalue="Spring Boot.ShopmeBackEndApplication (1)" />
+        <item itemvalue="JUnit.ProductRepositoryTests.testGetByName" />
+        <item itemvalue="JUnit.ProductRepositoryTests.getProduct" />
         <item itemvalue="JUnit.CategoryRepositoryTests.testGetCate" />
-        <item itemvalue="JUnit.CategoryRepositoryTests.testDelete" />
-        <item itemvalue="JUnit.CategoryRepositoryTests.testCreateParent" />
+        <item itemvalue="JUnit.ProductRepositoryTests.testCreateProduct" />
       </list>
     </recent_temporary>
   </component>
@@ -266,7 +320,11 @@
       <workItem from="1700397958214" duration="19395000" />
       <workItem from="1700417854487" duration="3104000" />
       <workItem from="1700487957869" duration="23313000" />
-      <workItem from="1700553829207" duration="690000" />
+      <workItem from="1700553829207" duration="5738000" />
+      <workItem from="1700561095036" duration="271000" />
+      <workItem from="1700570058286" duration="12443000" />
+      <workItem from="1700583401900" duration="6568000" />
+      <workItem from="1700673220660" duration="15908000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <option name="closed" value="true" />
@@ -276,15 +334,55 @@
       <option name="project" value="LOCAL" />
       <updated>1700554471032</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="commit">
+      <option name="closed" value="true" />
+      <created>1700554602816</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1700554602816</updated>
+    </task>
+    <task id="LOCAL-00003" summary="update pom.xm WebParent">
+      <option name="closed" value="true" />
+      <created>1700555121322</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1700555121322</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit" />
+    <MESSAGE value="update pom.xm WebParent" />
+    <option name="LAST_COMMIT_MESSAGE" value="update pom.xm WebParent" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

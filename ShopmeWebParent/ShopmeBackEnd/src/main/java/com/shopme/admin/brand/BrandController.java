@@ -22,7 +22,6 @@ import java.util.List;
 
 @Controller
 public class BrandController {
-
     @Autowired private BrandService service;
     @Autowired private CategoryService categoryService;
 

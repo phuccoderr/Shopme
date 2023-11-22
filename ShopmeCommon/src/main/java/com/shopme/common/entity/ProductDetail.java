@@ -2,7 +2,13 @@ package com.shopme.common.entity;
 
 import com.shopme.common.IdBasedEntity;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "product_details")
 public class ProductDetail extends IdBasedEntity {
@@ -14,27 +20,9 @@ public class ProductDetail extends IdBasedEntity {
     @JoinColumn(name = "product_id")
     private Product product;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    public ProductDetail(String name,String value,Product product) {
         this.name = name;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
         this.value = value;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
         this.product = product;
     }
 }

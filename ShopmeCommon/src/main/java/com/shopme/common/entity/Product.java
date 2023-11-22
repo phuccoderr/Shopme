@@ -2,11 +2,16 @@ package com.shopme.common.entity;
 
 import com.shopme.common.IdBasedEntity;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "products")
 public class Product extends IdBasedEntity {
@@ -16,7 +21,7 @@ public class Product extends IdBasedEntity {
     private String alias;
     @Column(nullable = false, name = "short_description")
     private String shortDescription;
-    @Column(nullable = false, name = "full_description")
+    @Column(nullable = false, name = "full_description",length = Integer.MAX_VALUE)
     private String fullDescription;
     @Column(name = "created_time")
     private Date createdTime;
@@ -38,121 +43,25 @@ public class Product extends IdBasedEntity {
     @JoinColumn(name = "brand_id")
     private Brand brand;
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL)
     private Set<ProductDetail> productDetails = new HashSet<>();
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL)
     private Set<ProductImage> productImages = new HashSet<>();
 
-    public String getName() {
-        return name;
+    @Transient
+    public String getMainImagePath() {
+        if (this.id == null || this.mainImage.isEmpty() ) return "/images/default-user.png";
+        return "/product-images/" + this.id +  "/" + this.mainImage;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void addDetail(String detailName,String detailValue) {
+        this.productDetails.add(new ProductDetail(detailName,detailValue,this));
     }
 
-    public String getAlias() {
-        return alias;
+    public void addExtraImage(String name) {
+        this.productImages.add(new ProductImage(name,this));
     }
 
-    public void setAlias(String alias) {
-        this.alias = alias;
-    }
 
-    public String getShortDescription() {
-        return shortDescription;
-    }
-
-    public void setShortDescription(String shortDescription) {
-        this.shortDescription = shortDescription;
-    }
-
-    public String getFullDescription() {
-        return fullDescription;
-    }
-
-    public void setFullDescription(String fullDescription) {
-        this.fullDescription = fullDescription;
-    }
-
-    public Date getCreatedTime() {
-        return createdTime;
-    }
-
-    public void setCreatedTime(Date createdTime) {
-        this.createdTime = createdTime;
-    }
-
-    public Date getUpdatedTime() {
-        return updatedTime;
-    }
-
-    public void setUpdatedTime(Date updatedTime) {
-        this.updatedTime = updatedTime;
-    }
-
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    public float getPrice() {
-        return price;
-    }
-
-    public void setPrice(float price) {
-        this.price = price;
-    }
-
-    public float getSale() {
-        return sale;
-    }
-
-    public void setSale(float sale) {
-        this.sale = sale;
-    }
-
-    public String getMainImage() {
-        return mainImage;
-    }
-
-    public void setMainImage(String mainImage) {
-        this.mainImage = mainImage;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public Brand getBrand() {
-        return brand;
-    }
-
-    public void setBrand(Brand brand) {
-        this.brand = brand;
-    }
-
-    public Set<ProductDetail> getProductDetails() {
-        return productDetails;
-    }
-
-    public void setProductDetails(Set<ProductDetail> productDetails) {
-        this.productDetails = productDetails;
-    }
-
-    public Set<ProductImage> getProductImages() {
-        return productImages;
-    }
-
-    public void setProductImages(Set<ProductImage> productImages) {
-        this.productImages = productImages;
-    }
 }

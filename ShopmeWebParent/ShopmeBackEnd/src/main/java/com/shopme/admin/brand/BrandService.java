@@ -1,6 +1,7 @@
 package com.shopme.admin.brand;
 
 import com.shopme.common.entity.Brand;
+import com.shopme.common.entity.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -34,11 +35,17 @@ public class BrandService {
     }
 
     public Brand save(Brand brand) {
-        Brand brandInDB = repo.findByName(brand.getName());
-        if (brandInDB != null) {
-            brand.setLogo(brandInDB.getLogo());
-        } else {
+
+        boolean haveLogo = brand.getId() == null;
+
+        if ( brand.getLogo() == null) {
             brand.setLogo("");
+            if (haveLogo) {
+                brand.setLogo("");
+            } else {
+                Brand brandInDB = repo.findByName(brand.getName());
+                brand.setLogo(brandInDB.getLogo());
+            }
         }
         return repo.save(brand);
     }

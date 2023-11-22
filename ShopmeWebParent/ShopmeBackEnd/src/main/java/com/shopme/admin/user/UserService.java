@@ -1,5 +1,6 @@
 package com.shopme.admin.user;
 
+import com.shopme.common.entity.Category;
 import com.shopme.common.entity.Role;
 import com.shopme.common.entity.User;
 import jakarta.transaction.Transactional;
@@ -60,6 +61,16 @@ public class UserService {
                 encodePassword(user);
             }
             if (user.getPhoto() == null) {
+                user.setPhoto(userInDB.getPhoto());
+            }
+        }
+
+        if ( user.getPhoto() == null) {
+            user.setPhoto("");
+            if (!isUpdatingUser) {
+                user.setPhoto("");
+            } else {
+                User userInDB = repo.findById(user.getId()).get();
                 user.setPhoto(userInDB.getPhoto());
             }
         }

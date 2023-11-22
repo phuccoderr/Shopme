@@ -2,10 +2,17 @@ package com.shopme.common.entity;
 
 import com.shopme.common.IdBasedEntity;
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "brands")
 public class Brand extends IdBasedEntity {
@@ -22,37 +29,14 @@ public class Brand extends IdBasedEntity {
     )
     private Set<Category> categories = new HashSet<>();
 
-    public Brand() {
-    }
+
 
     public Brand(String name, String logo) {
         this.name = name;
         this.logo = logo;
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLogo() {
-        return logo;
-    }
-
-    public void setLogo(String logo) {
-        this.logo = logo;
-    }
-
-    public Set<Category> getCategories() {
-        return categories;
-    }
-
-    public void setCategories(Set<Category> categories) {
-        this.categories = categories;
-    }
 
     @Transient
     public String getLogoPath() {

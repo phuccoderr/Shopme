@@ -2,7 +2,13 @@ package com.shopme.common.entity;
 
 import com.shopme.common.IdBasedEntity;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "product_images")
 public class ProductImage extends IdBasedEntity {
@@ -13,19 +19,14 @@ public class ProductImage extends IdBasedEntity {
     @JoinColumn(name = "product_id")
     private Product product;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    public ProductImage(String name, Product product) {
         this.name = name;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
         this.product = product;
+    }
+
+    @Transient
+    public String getImagePath() {
+        if (this.id == null || this.name.isEmpty() ) return "/images/default-user.png";
+        return "/product-images/" + this.id +  "/extras" + this.name;
     }
 }

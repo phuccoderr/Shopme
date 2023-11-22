@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
-<head th:replace="~{ fragments :: page_head('Shopme Category','none')}" />
+<head>
+    <head th:replace="~{ fragments :: page_head('Shopme Product','tag')}" />
+    <link rel="stylesheet" th:href="@{/richtext/richtext.min.css}"/>
+    <script th:src="@{/richtext/jquery.richtext.min.js}"></script>
+</head>
 <body id="page-top">
     <div id="wrapper">
      <ul th:replace="~{fragments :: navbar}"></ul>
@@ -12,63 +16,55 @@
                 <div class="container-fluid">
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Category</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">DataTables Brands</h6>
                         </div>
                         <div th:if="${message != null}" class="alert alert-success text-center">
                             [[${message}]]
                         </div>
-
-
                         <div class="card-body">
                             <div class="table-responsive">
                                 <div class="row">
                                     <div class="col-sm-6 col-md-6">
-                                        <a th:href="@{/categories/new}" id="linkAddNew" class="fa-solid fa-user-plus fa-2x icon-dark mb-2"> </a>
+                                        <a th:href="@{/products/new}" id="linkAddNew" class="fa-solid fa-user-plus fa-2x icon-dark mb-2"> </a>
                                     </div>
                                     <div class="col-sm-6 col-md-6">
-                                        <div th:replace="~{fragments :: search('/categories/page/1')}"></div>
+
                                     </div>
                                 </div>
                                 <table class="table table-bordered" id="dataTable" >
                                     <thead>
                                     <tr>
-                                        <th>id</th>
+                                        <th>Id</th>
+                                        <th>MainImage</th>
                                         <th>Name</th>
-                                        <th>Alias</th>
                                         <th>Enabled</th>
-                                        <th>Image</th>
                                         <th>Edit</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <th:block th:each="category : ${listCategories}">
-                                        <tr>
-                                            <td>[[${category.id}]]</td>
-                                            <td>[[${category.name}]]</td>
-                                            <td>[[${category.alias}]]</td>
-                                            <td>
-                                                <div th:replace="~{fragments :: enabled('/categories/' + ${category.id},${category.isEnabled()})}"></div>
-                                            </td>
-                                            <td>
-                                                <img th:src="@{${category.imagePath}}" style="width: 100px;"/>
-                                            </td>
-                                            <td>
-                                                <a th:replace="~{fragments :: edit('/categories/detail/',${category.id})}"></a>
-                                                <a th:replace="~{fragments :: delete('/categories/delete/',${category.id},${category.parent})}"></a>
-                                            </td>
-                                        </tr>
-                                    </th:block>
+                                        <th:block th:each="product : ${listProducts}">
+                                            <tr>
+                                                <td>[[${product.id}]]</td>
+                                                <td>[[${product.mainImage}]]</td>
+                                                <td>
+                                                    [[${product.name}]]
+                                                </td>
+                                                <td>
 
+                                                </td>
+                                                <td>
+                                                    <a th:replace="~{fragments :: edit('/products/detail/',${product.id})}" ></a>
+                                                </td>
+                                            </tr>
+                                        </th:block>
                                     </tbody>
                                 </table>
                                 <div class="row">
-                                    <div th:replace="~{fragments :: pagination('/categories','categories')}"></div>
+
                                 </div>
                             </div>
                         </div>
-
                     </div>
-
                 </div>
             </div>
         </div>
@@ -76,7 +72,7 @@
 
     <!-- Modal -->
     <div class="modal fade" id="detailModal">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
 
             </div>
@@ -108,15 +104,13 @@
 <script th:src="@{/js/common_form.js}" ></script>
 <script th:src="@{/js/common.js}" ></script>
 <script type="text/javascript">
-    moduleURL = "[[@{/categories}]]";
+    moduleURL = "[[@{/products}]]";
     $(document).ready(function () {
         $(".link-delete").on("click", function(e)  {
             e.preventDefault();
             showDeleteConfirmModal($(this),'brand')
         });
-    });
-
-
+    })
 </script>
 </body>
 </html>

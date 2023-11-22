@@ -2,11 +2,17 @@ package com.shopme.common.entity;
 
 import com.shopme.common.IdBasedEntity;
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+
+
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "categories")
 public class Category extends IdBasedEntity {
@@ -28,11 +34,10 @@ public class Category extends IdBasedEntity {
     @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL)
     private Set<Category> children = new HashSet<>();
 
-
-
-
-    public Category() {
+    public Category(Integer id) {
+        this.id = id;
     }
+
 
     public static Category copyFull(Category category) {
         Category copyCategory = new Category();
@@ -60,73 +65,8 @@ public class Category extends IdBasedEntity {
 
     }
 
-    public Category(Integer id) {
-        this.id = id;
-    }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAlias() {
-        return alias;
-    }
-
-    public void setAlias(String alias) {
-        this.alias = alias;
-    }
-
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
-    }
-
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    public String getAllParentIds() {
-        return allParentIds;
-    }
-
-    public void setAllParentIds(String allParentIds) {
-        this.allParentIds = allParentIds;
-    }
-
-    public Category getParent() {
-        return parent;
-    }
-
-    public void setParent(Category parent) {
-        this.parent = parent;
-    }
-
-    public Set<Category> getChildren() {
-        return children;
-    }
-
-    public void setChildren(Set<Category> children) {
-        this.children = children;
-    }
-
-    public boolean isHasChildren() {
-        return hasChildren;
-    }
-
-    public void setHasChildren(boolean hasChildren) {
-        this.hasChildren = hasChildren;
-    }
 
     @Transient
     private boolean hasChildren;

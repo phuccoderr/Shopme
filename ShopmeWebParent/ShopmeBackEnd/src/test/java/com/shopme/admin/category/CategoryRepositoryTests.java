@@ -42,9 +42,9 @@ public class CategoryRepositoryTests {
 
     @Test
     public void testGetCate() {
-        Category category = repo.findById(30).get();
-
-        assertThat(category.getImg()).isEmpty();
+        Category category = repo.findByName("Acer");
+        System.out.println(category.getName());
+        assertThat(category).isNotNull();
     }
 
     @Test

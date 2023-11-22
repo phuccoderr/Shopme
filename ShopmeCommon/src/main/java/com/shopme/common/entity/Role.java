@@ -4,7 +4,13 @@ import com.shopme.common.IdBasedEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "roles")
 public class Role extends IdBasedEntity {
@@ -13,8 +19,7 @@ public class Role extends IdBasedEntity {
     @Column(length = 150,nullable = false)
     private String description;
 
-    public Role() {
-    }
+
 
     public Role(Integer id) {
         this.id = id;
@@ -25,19 +30,5 @@ public class Role extends IdBasedEntity {
         this.description = description;
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 }

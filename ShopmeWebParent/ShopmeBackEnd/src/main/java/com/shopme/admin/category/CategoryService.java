@@ -98,16 +98,22 @@ public class CategoryService {
 
     public Category save(Category category) {
         Category parent = category.getParent();
-        Category categoryInDB = repo.findByName(category.getName());
+
+        boolean haveImage = category.getId() == null;
+
         if (parent != null) {
             String allParentIds = parent.getAllParentIds() == null ? "-" : parent.getAllParentIds();
             allParentIds += String.valueOf(parent.getId()) + "-";
             category.setAllParentIds(allParentIds);
         }
-        if (categoryInDB != null) {
-            category.setImg(categoryInDB.getImg());
-        } else {
+        if ( category.getImg() == null) {
             category.setImg("");
+            if (haveImage) {
+                category.setImg("");
+            } else {
+                Category categoryInDB = repo.findByName(category.getName());
+                category.setImg(categoryInDB.getImg());
+            }
         }
         return repo.save(category);
     }

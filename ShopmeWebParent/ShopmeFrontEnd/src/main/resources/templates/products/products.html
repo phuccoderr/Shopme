@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{ fragments :: page_head('Shopme','none')}"></head>
+<body>
+<div th:replace="~{fragments :: header}"></div>
+<div class="container-fluid">
+    <div class="card mx-4">
+        <div class="row m-2 align-items-center">
+            <div class="col-2">
+                <span>Top Thương Hiệu:</span>
+            </div>
+            <div class="col-10">
+                <a href="#" class="btn border btn-hover-blue">Asus</a>
+            </div>
+        </div>
+        <hr class="hr mx-2">
+
+        </hr>
+        <div class="row m-2 align-items-center">
+            <div class="col">
+                <div class="dropdown">
+                    <button class="btn border btn-hover-blue dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+                        Dropdown
+                    </button>
+                    <ul class="dropdown-menu w-25 flex-wrap align-items-center" aria-labelledby="dropdownMenuButton">
+                        <div class="col-md-6 p-2 text-center">
+                            <a href="#" class="btn border btn-hover-blue" style="width: 100px;">Action1</a>
+                        </div>
+                        <div class="col-md-6 p-2 text-center">
+                            <a href="#" class="btn border btn-hover-blue" style="width: 100px;">Action1</a>
+                        </div>
+                        <div class="col-md-6 p-2 text-center">
+                            <a href="#" class="btn border btn-hover-blue" style="width: 100px;">Action1</a>
+                        </div>
+
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row m-2 align-items-center">
+        <div class="col-6">
+            <h2>Sản Phẩm</h2>
+        </div>
+        <div class="col-6 text-end  focus-ring-secondary">
+            <select class="w-50 border-1 rounded-3 p-1">
+                <option class="text-start" value="0">Mac Dinh</option>
+            </select>
+        </div>
+    </div>
+    <div class="row m-2">
+        <div class="col-3">
+            <div class="card bg-light">
+                <a href="#" class="text-decoration-none">
+                    <img class="card-img-top"
+                         src="https://nguyenvu-store-medias.tn-cdn.net/2023/10/cau-hinh-pc-gaming-i9-14900K-RTX-4060-gia-re-chinh-hang-02.jpg" />
+                    <div class="card-body">
+                        <h5 class="card-title text-uppercase icon-gray">acer</h5>
+                        <p class="text-dark">Laptop Acer Nitro 16 Phoenix AN16-41-R5M4 (NH.QKBSV.003) (AMD)</p>
+                        <p class="text-info h5">25.990.000Đ</p>
+                    </div>
+
+                </a>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="w-100">
+                <img class="img-fluid" src="https://nguyenvu-store-medias.tn-cdn.net/2023/10/cau-hinh-pc-gaming-i9-14900K-RTX-4060-gia-re-chinh-hang-02.jpg" />
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="w-100">
+                <img class="img-fluid" src="https://nguyenvu-store-medias.tn-cdn.net/2023/10/cau-hinh-pc-gaming-i9-14900K-RTX-4060-gia-re-chinh-hang-02.jpg" />
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="w-100">
+                <img class="img-fluid" src="https://nguyenvu-store-medias.tn-cdn.net/2023/10/cau-hinh-pc-gaming-i9-14900K-RTX-4060-gia-re-chinh-hang-02.jpg" />
+            </div>
+        </div>
+
+    </div>
+</div>
+<div th:replace="~{fragments :: footer}"></div>
+<script th:src="@{/js/common.js}"></script>
+<script type="text/javascript">
+    contextPath = "[[@{/}]]";
+</script>
+</body>
+</html>

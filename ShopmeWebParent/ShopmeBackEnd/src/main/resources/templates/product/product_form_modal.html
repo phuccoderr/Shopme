@@ -11,29 +11,29 @@
         <div>
             <ul class="nav justify-content-center" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link btn btn-primary m-2" data-bs-toggle="tab" href="#overview"  role="tab">Overview</a>
+                    <a class="nav-link btn btn-primary m-2" data-bs-toggle="tab" href="#overview" >Overview</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link btn btn-primary m-2" data-bs-toggle="tab" href="#description"  role="tab">Description</a>
+                    <a class="nav-link btn btn-primary m-2" data-bs-toggle="tab" href="#description"  >Description</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link btn btn-primary m-2" data-bs-toggle="tab" href="#image" role="tab" >Image</a>
+                    <a class="nav-link btn btn-primary m-2" data-bs-toggle="tab" href="#image" >Image</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link btn btn-primary m-2" data-bs-toggle="tab" href="#detail" role="tab" >Detail</a>
+                    <a class="nav-link btn btn-primary m-2" data-bs-toggle="tab" href="#detail">Detail</a>
                 </li>
             </ul>
         </div>
-        <div id="overview" class="collapse" role="tabpanel">
+        <div id="overview" class="collapse">
             <div th:replace="~{product/product_form_overview_modal :: content}" ></div>
         </div>
-        <div id="description" class="collapse" role="tabpanel">
+        <div id="description" class="collapse">
             <div th:replace="~{product/product_form_description_modal :: content}" ></div>
         </div>
-        <div id="image" class="collapse" role="tabpanel">
+        <div id="image" class="collapse" >
             <div th:replace="~{product/product_form_image_modal :: content}" ></div>
         </div>
-        <div id="detail" class="collapse" role="tabpanel">
+        <div id="detail" class="collapse">
             <div th:replace="~{product/product_form_detail_modal :: content}" ></div>
             <div class="mb-4">
                 <input type="button" class="btn btn-secondary" value="Add More Detail" onclick="addDetails()">

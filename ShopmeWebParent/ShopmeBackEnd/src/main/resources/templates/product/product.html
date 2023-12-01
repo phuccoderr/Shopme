@@ -28,7 +28,26 @@
                                         <a th:href="@{/products/new}" id="linkAddNew" class="fa-solid fa-user-plus fa-2x icon-dark mb-2"> </a>
                                     </div>
                                     <div class="col-sm-6 col-md-6">
+                                        <form class="form-inline justify-content-end" th:action="@{/products/page/1}" id="searchForm">
+                                            <div>
+                                                <input type="hidden" name="sortField" th:value="${sortField}"/>
+                                                <input type="hidden" name="sortDir" th:value="${sortDir}"/>
+                                                <input type="search" name="keyword" class="form-control" th:value="${keyword}" placeholder="search" />
+                                                <select class="form-control" name="categoryId" id="dropdownCategory">
+                                                    <option value="0">Categories</option>
+                                                    <th:block th:each="cat : ${listCategories}">
+                                                        <option th:value="${cat.id}" th:selected="(${categoryId} == ${cat.id})">[[${cat.name}]]</option>
+                                                    </th:block>
+                                                </select>
+                                                <button type="submit" class="btn btn-primary">
+                                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                                </button>
 
+                                                <button type="button" class="btn btn-secondary" onclick="clearFilter()">
+                                                    <i class="fa-solid fa-eraser"></i>
+                                                </button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                                 <table class="table table-bordered" id="dataTable" >
@@ -45,22 +64,25 @@
                                         <th:block th:each="product : ${listProducts}">
                                             <tr>
                                                 <td>[[${product.id}]]</td>
-                                                <td>[[${product.mainImage}]]</td>
+                                                <td>
+                                                    <img th:src="@{${product.mainImagePath}}" style="width: 100px;"/>
+                                                </td>
                                                 <td>
                                                     [[${product.name}]]
                                                 </td>
                                                 <td>
-
+                                                    <div th:replace="~{fragments :: enabled('/products/' + ${product.id},${product.isEnabled()})}"></div>
                                                 </td>
                                                 <td>
                                                     <a th:replace="~{fragments :: edit('/products/detail/',${product.id})}" ></a>
+                                                    <div th:replace="~{fragments :: delete('/products/delete/',${product.id},true)}"></div>
                                                 </td>
                                             </tr>
                                         </th:block>
                                     </tbody>
                                 </table>
                                 <div class="row">
-
+                                    <div th:replace="~{fragments :: pagination('/products','products')}"></div>
                                 </div>
                             </div>
                         </div>
@@ -108,7 +130,12 @@
     $(document).ready(function () {
         $(".link-delete").on("click", function(e)  {
             e.preventDefault();
-            showDeleteConfirmModal($(this),'brand')
+            showDeleteConfirmModal($(this),'product')
+        });
+
+        $("#dropdownCategory").on("change",function(e) {
+            e.preventDefault();
+            $("#searchForm").submit();
         });
     })
 </script>

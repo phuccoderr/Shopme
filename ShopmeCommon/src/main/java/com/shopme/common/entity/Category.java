@@ -1,5 +1,7 @@
 package com.shopme.common.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.shopme.common.IdBasedEntity;
 import jakarta.persistence.*;
 import lombok.*;
@@ -29,9 +31,11 @@ public class Category extends IdBasedEntity {
 
     @ManyToOne
     @JoinColumn(name = "parent_id")
+    @JsonBackReference
     private Category parent;
 
     @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Set<Category> children = new HashSet<>();
 
     public Category(Integer id) {

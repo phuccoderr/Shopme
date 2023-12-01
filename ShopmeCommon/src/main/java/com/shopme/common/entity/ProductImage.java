@@ -19,6 +19,12 @@ public class ProductImage extends IdBasedEntity {
     @JoinColumn(name = "product_id")
     private Product product;
 
+    public ProductImage(Integer id,String name, Product product) {
+        this.id = id;
+        this.name = name;
+        this.product = product;
+    }
+
     public ProductImage(String name, Product product) {
         this.name = name;
         this.product = product;
@@ -27,6 +33,6 @@ public class ProductImage extends IdBasedEntity {
     @Transient
     public String getImagePath() {
         if (this.id == null || this.name.isEmpty() ) return "/images/default-user.png";
-        return "/product-images/" + this.id +  "/extras" + this.name;
+        return "/product-images/" + product.getId() +  "/extras/" + this.name;
     }
 }

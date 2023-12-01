@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head th:fragment="page_head(title,remove)" th:remove="${remove}">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minium-scale=1.0">
+    <title>[[${title}]]</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/5.3.2/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div th:fragment="header">
+    <div class="container-fluid">
+        <header>
+            <div class="row m-2 ">
+                <div class="col-md-2">
+                    <a href="" class="">
+                        <img class="img-fluid" th:src="@{/images/logo.png}"
+                             style="min-width: 150px" />
+                    </a>
+                </div>
+                <div class="col-md-6 mt-md-3">
+                    <form action="#" class="align-content-center">
+                        <div class="input-group border rounded-5 position-relative ">
+                            <input type="search" class="form-control bg-gray-secondary rounded-5 border-0 z-0"
+                                   placeholder="search" />
+                            <button class="btn position-absolute end-0 z-1" type="button">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-4 mt-md-3">
+                    <div class="row">
+                        <div class="col-md-6 align-content-center">
+                            <a class="btn border rounded-5 " href="#">
+                                <span class="text-uppercase text-info fw-bold">Giỏ Hàng / <span>0111111111
+                                        Đ</span></span>
+
+                                <i class="fa-solid fa-cart-shopping icon-gray icon-focus-blue"></i>
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="#" class="btn border rounded-5 text-uppercase ">
+                                <span class="fw-bold icon-gray icon-focus-blue">Đăng nhập / Đăng ký </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-2">
+                <nav class="navbar navbar-expand-lg navbar-light ">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav text-uppercase ">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle icon-focus-blue"
+                                       href="#">
+                                        <i class="fa-solid fa-bars mr-2"></i>Danh Mục Sản Phẩm</a>
+                                    <ul class="dropdown-menu hover-dropdown" style="width: 150%">
+                                        <th:block th:each="cate : ${listCategories}">
+
+                                            <li class="dropdown-hover" >
+
+                                                <a class="dropdown-item" th:href="@{'/c/' + ${cate.alias}}" th:entityId="${cate.id}">[[${cate.name}]]</a>
+
+                                                <ul class="dropdown-menu top-0" style="margin-left: 95%;">
+                                                    <th:block th:each="parent : ${cate.children}">
+                                                       <div>
+                                                           <a class="text-info dropdown-item" th:href="@{'/c/' + ${parent.alias}}">[[${parent.name}]]</a>
+
+                                                           <th:block th:each="child : ${parent.children}">
+                                                               <li><a class="dropdown-item" th:href="@{'/c/' + ${child.alias}}">[[${child.name}]]</a></li>
+                                                           </th:block>
+                                                       </div>
+                                                    </th:block>
+                                                </ul>
+                                            </li>
+
+                                        </th:block>
+
+
+                                    </ul>
+
+
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link icon-focus-blue" href="#">Khuyến Mãi</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link icon-focus-blue" href="#">
+                                        <i class="fa-solid fa-screwdriver-wrench mr-2"></i>Thông Tin Công Nghệ</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link icon-focus-blue" href="#">
+                                        <i class="fa-solid fa-credit-card mr-2"></i>Hướng Dẫn Thanh Toán</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+    </div>
+</div>
+<div th:fragment="footer">
+    <footer class="container-fluid" style="background-color: #808080;">
+        <div class=" my-auto">
+            <div class="row">
+                <div class="col-sm-3">
+                    <img th:src="@{/images/logo-no-text.png}" class="img-fluid" style="max-width: 75%" />
+                </div>
+                <div class="col-sm-3 fa-1x">
+                    <div class="p-md-4">
+                    </div>
+                    <div class="mb-5">
+                        <span class="icon-white fs-4">Về Chúng tôi</span>
+                        <div class="vr-orange"></div>
+                    </div>
+                    <div class="text-lg-start m-1">
+                        <span class="icon-white"><i class="fa-regular fa-clock mr-2"></i>Giờ làm việc: </span>
+
+                        <span class="text-info">08:00 - 21:30</span>
+                    </div>
+                    <div class="text-lg-start m-1">
+                        <span class="icon-white"><i class="fa-solid fa-phone mr-2"></i>Hotline: </span>
+                        <span class="text-info">1900.571.269</span>
+                    </div>
+                    <div class="text-lg-start m-1">
+                        <div class="text-lg-start ">
+                            <span class="icon-white"><i class="fa-regular fa-clock mr-2"></i>Email: </span>
+                            <span class="text-info">phuctapcode@gmail.com</span>
+                        </div>
+                        <div class="text-lg-start m-1">
+                            <a class="text-info fa-1-5x mr-2" target="_blank"
+                               href="https://www.facebook.com/profile.php?id=100085149655708"> <i
+                                    class="fa-brands fa-facebook"></i></a>
+                            <a class="icon-gray fa-1-5x" target="_blank" href="https://www.instagram.com/xylitol_1604/">
+                                <i class="fa-brands fa-instagram"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-sm-3 fa-1x">
+                    <div class="p-md-4">
+                    </div>
+                    <div class="mb-5">
+                        <span class="icon-white fs-4">CÔNG TY CỔ PHẦN ĐẦU TƯ VÀ CÔNG NGHỆ NGUYỄN VŨ</span> </br>
+                        <span class="icon-white">Giấy ĐKKD số 1801608803 do Sở KH&ĐT TP. Cần Thơ cấp Ngày 19/07/2018</span>
+                    </div>
+                    <div class="text-lg-start m-1">
+                        <span class="icon-white"><i class="fa-solid fa-map-pin mr-2"></i>Showroom Cần Thơ:</span>
+                        <a class="text-info text-decoration-none"  target="_blank" href="https://www.google.com/maps/place/Nguy%E1%BB%85n+V%C5%A9+Store/@10.0249928,105.7674279,20z/data=!4m6!3m5!1s0x31a0895db247e369:0x52c682645aa5b138!8m2!3d10.0249871!4d105.7675639!16s%2Fg%2F11s2q82pbt?entry=ttu">
+                            47C Đ. 3/2, Ninh Kiều
+                        </a>
+                    </div>
+                    <div class="text-lg-start m-1">
+                        <span class="icon-white"><i class="fa-solid fa-map-pin mr-2" ></i>V.P Cần Thơ:</span>
+                        <a class="text-info text-decoration-none"  target="_blank" href="https://www.google.com/maps/dir/Nguy%E1%BB%85n+V%C5%A9+Store,+47C+%C4%90.+3%2F2,+Xu%C3%A2n+Kh%C3%A1nh,+Ninh+Ki%E1%BB%81u,+C%E1%BA%A7n+Th%C6%A1+90000/Nguy%E1%BB%85n+V%C5%A9+Store,+L%C3%AA+B%C3%ACnh,+H%C6%B0ng+L%E1%BB%A3i,+Ninh+Ki%E1%BB%81u,+C%E1%BA%A7n+Th%C6%A1/@10.0232056,105.7653289,18z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x31a0895db247e369:0x52c682645aa5b138!2m2!1d105.767626!2d10.0250513!1m5!1m1!1s0x31a0883070b2e4d5:0x2bd0c209ecd3eeda!2m2!1d105.768105!2d10.0220506!3e0">
+                            60 - 62 Đ. Lê Bình, Ninh Kiều
+                        </a>
+                    </div>
+                    <div class="text-lg-start m-1">
+                        <a target="_blank" href="http://online.gov.vn/Home/WebDetails/71486?refurl=https://nguyenvu.store/&AspxAutoDetectCookieSupport=1">
+                            <img src="https://nguyenvu.store/wp-content/uploads/2020/09/logo-da-thong-bao-bo-cong-thuong.png" style="width: 75px;"/>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-sm-3 fa-1x">
+                    <div class="p-md-4">
+                    </div>
+                    <div class="mb-5">
+                        <span class="icon-white fs-4">Thông tin khác</span>
+                        <div class="vr-orange"></div>
+                    </div>
+                    <div class="text-lg-start m-1">
+                        <span class="icon-white mr-2"><i class="fa-regular fa-clock "></i></span>
+
+                        <a class="text-decoration-none icon-white" href="#">
+                            Chính sách trả góp
+                        </a>
+                    </div>
+                    <div class="text-lg-start m-1">
+                        <span class="icon-white mr-2"><i class="fa-regular fa-clock "></i></span>
+
+                        <a class="text-decoration-none icon-white" href="#">
+                            Chính sách bảo mật
+                        </a>
+                    </div>
+                    <div class="text-lg-start m-1">
+                        <span class="icon-white mr-2"><i class="fa-regular fa-clock "></i></span>
+
+                        <a class="text-decoration-none icon-white" href="#">
+                            Chính sách đổi trả
+                        </a>
+                    </div>
+                    <div class="text-lg-start m-1">
+                        <span class="icon-white mr-2"><i class="fa-regular fa-clock "></i></span>
+
+                        <a class="text-decoration-none icon-white" href="#">
+                            Chính sách vận chuyển
+                        </a>
+                    </div>
+                    <div class="text-lg-start m-1">
+                        <span class="icon-white mr-2"><i class="fa-regular fa-clock "></i></span>
+
+                        <a class="text-decoration-none icon-white" href="#">
+                            Thoả thuận sử dụng
+                        </a>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

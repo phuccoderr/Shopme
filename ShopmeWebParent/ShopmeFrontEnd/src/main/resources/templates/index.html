@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{ fragments :: page_head('Shopme','none')}"></head>
 <body>
-    <h1>Shopme Application</h1>
+
+
+<div th:replace="~{fragments :: header}"></div>
+<div th:replace="~{fragments :: footer}"></div>
+<script th:src="@{/js/common.js}"></script>
+<script type="text/javascript">
+    contextPath = "[[@{/}]]";
+</script>
 </body>
 </html>

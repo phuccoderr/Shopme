@@ -58,7 +58,7 @@
         params = {id: brandId , name: brandName,_csrf: csrfValue};
 
         $.post(url,params,function(reponse) {
-            if (reponse == "OK") {
+            if (reponse === "OK") {
                 form.submit();
             } else  {
                 alert("There is another brand having same name " + brandName);

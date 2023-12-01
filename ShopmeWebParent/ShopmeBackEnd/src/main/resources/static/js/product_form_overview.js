@@ -35,7 +35,7 @@ function checkUnique(form) {
         if (response == "OK") {
             form.submit();
         } else {
-            alert("da co product voi name la: " + productName);
+            alert("da co product voi name la: " + productName + productId);
         }
     }).fail (function () {
         alert("Cloud not connect to the server");

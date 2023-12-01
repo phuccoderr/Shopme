@@ -1,0 +1,26 @@
+*.bg-gray-secondary {background-color: rgba(0, 0, 0, 0.03) !important;}
+
+*.icon-gray {color: #808080;}
+
+*.icon-white {color: white;}
+
+*.fa-1-5x {font-size: 1.5em;}
+
+*.icon-focus-blue:hover {color: rgb(0, 153, 255)!important;}
+
+*.text-small {
+    font-size: 12.8px;
+    font-weight: 700;
+}
+
+*.mr-2 {margin-right: 0.5em;}
+
+*.vr-orange {
+    width: 50px; /* Đặt chiều rộng theo nhu cầu của bạn */
+    height: 2px; /* Đặt chiều cao theo nhu cầu của bạn */
+    background-color: red;
+}
+
+.nav-item.dropdown:hover .hover-dropdown{
+    display: block;
+}

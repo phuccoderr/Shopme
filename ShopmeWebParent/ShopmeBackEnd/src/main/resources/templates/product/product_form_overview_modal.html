@@ -7,7 +7,7 @@
     </div>
     <div class="mb-3 mt-3">
         <label class="form-label">Alias:</label>
-        <input type="text" class="form-control" th:field="*{alias}" placeholder="Enter first alias" required>
+        <input type="text" class="form-control" th:field="*{alias}" placeholder="Enter first alias">
     </div>
     <div class="mb-3 mt-3 row">
         <label class="col-sm-4 col-form-label">Brand:</label>
@@ -38,11 +38,13 @@
     </div>
     <div class="mb-3 mt-3">
         <label class="form-label">Price:</label>
-        <input type="text" class="form-control" th:field="*{price}" placeholder="Enter first alias" required>
+        <label class="form-label" th:text="${#numbers.formatDecimal(product.price,1, 2, 'COMMA')}"></label>
+        <input type="number" class="form-control" th:field="*{price}"
+               required>
     </div>
     <div class="mb-3 mt-3">
         <label class="form-label">Sale:</label>
-        <input type="text" class="form-control" th:field="*{sale}" placeholder="Enter first alias" required>
+        <input type="number" class="form-control" th:field="*{sale}" placeholder="Enter first alias" required>
     </div>
 </div>
 </body>

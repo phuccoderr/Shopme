@@ -25,4 +25,11 @@ public class ProductDetail extends IdBasedEntity {
         this.value = value;
         this.product = product;
     }
+
+    public ProductDetail(Integer id, String name, String value, Product product) {
+        this.id = id;
+        this.name = name;
+        this.value = value;
+        this.product = product;
+    }
 }

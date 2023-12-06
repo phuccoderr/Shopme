@@ -7,6 +7,7 @@ $(document).ready(function() {
     logoutAccount();
     showProfileAdmin();
     showAccountDetail();
+    showSetting();
 });
 
 function  showNavBar() {
@@ -41,5 +42,13 @@ function showAccountDetail () {
         e.preventDefault();
         linkDetailURL = $(this).attr("href");
         $("#detailModal").modal("show").find(".modal-content").load(linkDetailURL);
+    })
+}
+
+function showSetting() {
+    $(".link-Setting").on("click",function (e) {
+        e.preventDefault();
+        linkDetailURL = $(this).attr("href");
+        window.location.href = linkDetailURL;
     })
 }

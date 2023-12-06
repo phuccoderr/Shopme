@@ -4,13 +4,14 @@
 <head th:fragment="page_head(title,remove)" th:remove="${remove}">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0, minium-scale=1.0">
-    <title>[[${title}]]</title>
+    <title th:if="${title == ''}"> [[${SITE_NAME}]]</title>
+    <title th:unless="${title == ''}"> [[${SITE_NAME}]] - [[${title}]]</title>
 
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}" />
     <link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/5.3.2/js/bootstrap.bundle.js}"></script>
     <script type="text/javascript" th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
-    <script type="text/javascript" th:src="@{/webjars/bootstrap/5.3.2/js/bootstrap.min.js}"></script>
 </head>
 <body>
 <div th:fragment="header">
@@ -18,8 +19,8 @@
         <header>
             <div class="row m-2 ">
                 <div class="col-md-2">
-                    <a href="" class="">
-                        <img class="img-fluid" th:src="@{/images/logo.png}"
+                    <a th:href="@{/}" class="">
+                        <img class="img-fluid" th:src="@{${SITE_LOGO}}"
                              style="min-width: 150px" />
                     </a>
                 </div>
@@ -223,5 +224,33 @@
         </div>
     </footer>
 </div>
+<a th:fragment="page_link(moduleURL,pageNum,label)"
+   class="page-link"
+   th:href="@{${moduleURL} + '/page/' + ${pageNum} + '?sortField=' + ${sortField}
+        + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword=' + keyword :''}}">[[${label}]]</a>
+
+<div th:fragment="pagination(url)" th:remove="tag">
+    <div>
+        <ul class="pagination justify-content-center">
+            <li class="page-item">
+                <a th:replace="~{fragments :: page_link(${url},1,'First')}"></a>
+            </li>
+            <li th:class="${currentPage > 1 ? 'page-item' : 'page-item disabled'}">
+                <a th:replace="~{fragments :: page_link(${url},${currentPage - 1},'Previous')}"></a>
+            </li>
+            <li th:class="${currentPage != i ? 'page-item' : 'page-item active'}"
+                th:each="i : ${#numbers.sequence(1,totalPages)}">
+                <a th:replace="~{fragments :: page_link(${url},${i},${i})}"></a>
+            </li>
+            <li th:class="${currentPage < totalPages ? 'page-item' : 'page-item disabled'}">
+                <a th:replace="~{fragments :: page_link(${url},${currentPage + 1},'Next')}"></a>
+            </li>
+            <li class="page-item">
+                <a th:replace="~{fragments :: page_link(${url},${totalPages},'First')}"></a>
+            </li>
+        </ul>
+    </div>
+</div>
+
 </body>
 </html>

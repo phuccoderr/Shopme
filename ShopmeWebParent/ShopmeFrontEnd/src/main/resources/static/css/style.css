@@ -13,6 +13,11 @@
     font-weight: 700;
 }
 
+.btn-hover-blue:hover {
+    color: #0dcaf0!important;
+    border-color: #0dcaf0!important;
+}
+
 *.mr-2 {margin-right: 0.5em;}
 
 *.vr-orange {

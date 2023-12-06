@@ -6,9 +6,15 @@ $(document).ready(function () {
         },function () {
             $(this).children('ul').removeClass("d-flex").hide()
         })
-
-
     })
 
+    $(".dropdownClick").on("click",function() {
+
+        if ($(this).children('ul').hasClass('d-flex')) {
+            $(this).children('ul').removeClass('d-flex')
+        } else {
+            $(this).children('ul').addClass("d-flex")
+        }
+    })
 })
 

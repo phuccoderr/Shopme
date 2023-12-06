@@ -1,7 +1,6 @@
 package com.shopme.admin.product;
 import static org.assertj.core.api.Assertions.assertThat;
-import com.shopme.common.entity.Product;
-import com.shopme.common.entity.ProductImage;
+import com.shopme.common.entity.product.Product;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -9,8 +8,6 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)

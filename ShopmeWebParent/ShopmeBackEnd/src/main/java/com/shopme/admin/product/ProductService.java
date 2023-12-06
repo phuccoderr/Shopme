@@ -1,6 +1,6 @@
 package com.shopme.admin.product;
 
-import com.shopme.common.entity.Product;
+import com.shopme.common.entity.product.Product;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -67,7 +67,8 @@ public class ProductService {
             product.setCreatedTime(new Date());
         }
         if (product.getAlias() == null || product.getAlias().isEmpty()) {
-            String defaultAlias = product.getName().replace(" ","-");
+            String replace = product.getName().replace(" ","-");
+            String defaultAlias = replace.replace("/","-");
             product.setAlias(defaultAlias);
         } else {
             product.setAlias(product.getAlias().replace(" ","-"));

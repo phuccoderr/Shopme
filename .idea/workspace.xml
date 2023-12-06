@@ -5,57 +5,65 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dc06181e-8018-4017-9ac1-b1a9b4dde484" name="Changes" comment="update pom.xm WebParent">
-      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/java/com/shopme/MvcConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/java/com/shopme/WebSecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/java/com/shopme/category/CategoryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/java/com/shopme/category/CategoryRestController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/java/com/shopme/category/CategoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/java/com/shopme/product/ProductController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/java/com/shopme/product/ProductRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/java/com/shopme/product/ProductService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/resources/static/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/resources/static/fontawesome/all.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/resources/static/images/logo-no-text.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/resources/static/images/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/resources/static/js/common.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/resources/static/webfonts/fa-brands-400.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/resources/static/webfonts/fa-brands-400.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/resources/static/webfonts/fa-regular-400.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/resources/static/webfonts/fa-regular-400.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/resources/static/webfonts/fa-solid-900.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/resources/static/webfonts/fa-solid-900.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/resources/static/webfonts/fa-v4compatibility.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/resources/static/webfonts/fa-v4compatibility.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/resources/templates/fragments.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/resources/templates/products/products.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/test/java/com/shopme/ProductRepositoryTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/test/java/com/shopme/category/CategoryRepositoryTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/entity/AuthenticationType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/entity/Country.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/entity/Currency.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/entity/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/entity/State.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/entity/StateDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/entity/setting/Setting.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/entity/setting/SettingBag.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/entity/setting/SettingCategory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/java/com/shopme/admin/country/CountryRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/java/com/shopme/admin/country/CountryRestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/java/com/shopme/admin/setting/CurrencyRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/java/com/shopme/admin/setting/GeneralSettingBag.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/java/com/shopme/admin/setting/SettingController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/java/com/shopme/admin/setting/SettingRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/java/com/shopme/admin/setting/SettingService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/java/com/shopme/admin/state/StateRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/java/com/shopme/admin/state/StateRestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/static/images/login-logo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/static/js/countries_setting.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/static/js/states_setting.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/setting/countries.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/setting/general.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/setting/mailServer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/setting/settings.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/setting/states.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/test/java/com/shopme/admin/setting/SettingRepositoryTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/java/com/shopme/brand/BrandRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/java/com/shopme/brand/BrandService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/java/com/shopme/setting/SettingFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/java/com/shopme/setting/SettingRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/java/com/shopme/setting/SettingService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/resources/templates/products/product_detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/test/java/com/shopme/brand/BrandRepositoryTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/test/java/com/shopme/product/ProductRepositoryTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopmeCommon/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeCommon/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/ShopmeCommonApplication.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/entity/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/entity/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/entity/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/entity/ProductDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/entity/ProductDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/entity/ProductImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/entity/ProductImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/entity/product/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/entity/ProductDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/entity/product/ProductDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/entity/ProductImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeCommon/src/main/java/com/shopme/common/entity/product/ProductImage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/java/com/shopme/admin/MvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/java/com/shopme/admin/MvcConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/java/com/shopme/admin/product/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/java/com/shopme/admin/product/ProductController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/java/com/shopme/admin/product/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/java/com/shopme/admin/product/ProductRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/java/com/shopme/admin/product/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/java/com/shopme/admin/product/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/static/js/product_form_images.js" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/static/js/product_form_images.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/static/js/product_form_overview.js" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/static/js/product_form_overview.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/static/js/product_from_details.js" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/static/js/product_from_details.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/brand/brand_detail_modal.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/brand/brand_detail_modal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/product/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/product/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/product/product_form_detail_modal.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/product/product_form_detail_modal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/product/product_form_image_modal.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/product/product_form_image_modal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/product/product_form_modal.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/product/product_form_modal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/static/js/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/static/js/common.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/fragments.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/fragments.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/product/product_form_overview_modal.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/product/product_form_overview_modal.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/test/java/com/shopme/admin/product/ProductRepositoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/test/java/com/shopme/admin/product/ProductRepositoryTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/java/com/shopme/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/java/com/shopme/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/java/com/shopme/ShopmeFrontEndApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/java/com/shopme/ShopmeFrontEndApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/java/com/shopme/MvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/java/com/shopme/MvcConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/java/com/shopme/product/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/java/com/shopme/product/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/java/com/shopme/product/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/java/com/shopme/product/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/java/com/shopme/product/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/java/com/shopme/product/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/resources/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/resources/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/resources/static/js/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/resources/static/js/common.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/resources/templates/fragments.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/resources/templates/fragments.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/resources/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/category-images/55/realme.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/resources/templates/products/products.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/resources/templates/products/products.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +80,7 @@
         <option value="JavaScript File" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -138,7 +147,7 @@
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;19&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/workspace/ShopmeProject/ShopmeWebParent/ShopmeFrontEnd/src/main/resources/templates/products&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/workspace/ShopmeProject/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/setting&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -153,16 +162,17 @@
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.shopme.common.entity" />
       <recent name="com.shopme.admin.category" />
       <recent name="com.shopme.admin.brand" />
       <recent name="com.shopme.admin.user" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\workspace\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\main\resources\templates\setting" />
+      <recent name="D:\workspace\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\main\resources\static\images" />
       <recent name="D:\workspace\ShopmeProject\ShopmeWebParent\ShopmeFrontEnd\src\main\resources\templates\products" />
       <recent name="D:\workspace\ShopmeProject\ShopmeWebParent\ShopmeFrontEnd\src\main\resources\static\images" />
       <recent name="D:\workspace\ShopmeProject\ShopmeWebParent\ShopmeFrontEnd\src\main\resources\static" />
-      <recent name="D:\workspace\ShopmeProject\ShopmeWebParent\ShopmeFrontEnd\src\main\resources\templates" />
-      <recent name="D:\workspace\ShopmeProject\ShopmeWebParent\ShopmeBackEnd\src\main\resources\templates\product" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\workspace\ShopmeProject\ShopmeWebParent\ShopmeFrontEnd\src\main\resources\static" />
@@ -184,65 +194,65 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.ShopmeFrontEndApplication">
-    <configuration name="CategoryRepositoryTests.testGetCategory" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ProductRepositoryTests.testGetDetail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ShopmeFrontEnd" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.shopme.category.*" />
+          <option name="PATTERN" value="com.shopme.product.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.shopme.category" />
-      <option name="MAIN_CLASS_NAME" value="com.shopme.category.CategoryRepositoryTests" />
-      <option name="METHOD_NAME" value="testGetCategory" />
+      <option name="PACKAGE_NAME" value="com.shopme.product" />
+      <option name="MAIN_CLASS_NAME" value="com.shopme.product.ProductRepositoryTests" />
+      <option name="METHOD_NAME" value="testGetDetail" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CategoryRepositoryTests.testListByEnabled" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ProductRepositoryTests.testGetListByCategoryAndBrand" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ShopmeFrontEnd" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.shopme.category.*" />
+          <option name="PATTERN" value="com.shopme.product.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.shopme.category" />
-      <option name="MAIN_CLASS_NAME" value="com.shopme.category.CategoryRepositoryTests" />
-      <option name="METHOD_NAME" value="testListByEnabled" />
+      <option name="PACKAGE_NAME" value="com.shopme.product" />
+      <option name="MAIN_CLASS_NAME" value="com.shopme.product.ProductRepositoryTests" />
+      <option name="METHOD_NAME" value="testGetListByCategoryAndBrand" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CategoryRepositoryTests.testListByParent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ShopmeFrontEnd" />
+    <configuration name="SettingRepositoryTests.testCreateSetting" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ShopmeBackEnd" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.shopme.category.*" />
+          <option name="PATTERN" value="com.shopme.admin.setting.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.shopme.category" />
-      <option name="MAIN_CLASS_NAME" value="com.shopme.category.CategoryRepositoryTests" />
-      <option name="METHOD_NAME" value="testListByParent" />
+      <option name="PACKAGE_NAME" value="com.shopme.admin.setting" />
+      <option name="MAIN_CLASS_NAME" value="com.shopme.admin.setting.SettingRepositoryTests" />
+      <option name="METHOD_NAME" value="testCreateSetting" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ProductRepositoryTest.testGetListProduct" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ShopmeFrontEnd" />
+    <configuration name="SettingRepositoryTests.testGet" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ShopmeBackEnd" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.shopme.*" />
+          <option name="PATTERN" value="com.shopme.admin.setting.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.shopme" />
-      <option name="MAIN_CLASS_NAME" value="com.shopme.ProductRepositoryTest" />
-      <option name="METHOD_NAME" value="testGetListProduct" />
+      <option name="PACKAGE_NAME" value="com.shopme.admin.setting" />
+      <option name="MAIN_CLASS_NAME" value="com.shopme.admin.setting.SettingRepositoryTests" />
+      <option name="METHOD_NAME" value="testGet" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -305,11 +315,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ProductRepositoryTest.testGetListProduct" />
-        <item itemvalue="JUnit.CategoryRepositoryTests.testGetCategory" />
         <item itemvalue="Spring Boot.ShopmeBackEndApplication (1)" />
-        <item itemvalue="JUnit.CategoryRepositoryTests.testListByParent" />
-        <item itemvalue="JUnit.CategoryRepositoryTests.testListByEnabled" />
+        <item itemvalue="JUnit.SettingRepositoryTests.testGet" />
+        <item itemvalue="JUnit.SettingRepositoryTests.testCreateSetting" />
+        <item itemvalue="JUnit.ProductRepositoryTests.testGetDetail" />
+        <item itemvalue="JUnit.ProductRepositoryTests.testGetListByCategoryAndBrand" />
       </list>
     </recent_temporary>
   </component>
@@ -362,7 +372,20 @@
       <workItem from="1701277903615" duration="5300000" />
       <workItem from="1701402486152" duration="3485000" />
       <workItem from="1701408530858" duration="1172000" />
-      <workItem from="1701454944204" duration="140000" />
+      <workItem from="1701454944204" duration="7580000" />
+      <workItem from="1701532976213" duration="2069000" />
+      <workItem from="1701541624092" duration="7874000" />
+      <workItem from="1701575285871" duration="5094000" />
+      <workItem from="1701606659971" duration="10834000" />
+      <workItem from="1701618721812" duration="834000" />
+      <workItem from="1701622606625" duration="3460000" />
+      <workItem from="1701627191885" duration="2338000" />
+      <workItem from="1701665324349" duration="906000" />
+      <workItem from="1701690048628" duration="15106000" />
+      <workItem from="1701705257156" duration="10850000" />
+      <workItem from="1701798481297" duration="5671000" />
+      <workItem from="1701869453184" duration="1785000" />
+      <workItem from="1701886902853" duration="993000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <option name="closed" value="true" />
@@ -404,7 +427,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700689571888</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="update pom.xm WebParent">
+      <option name="closed" value="true" />
+      <created>1701455201135</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1701455201135</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

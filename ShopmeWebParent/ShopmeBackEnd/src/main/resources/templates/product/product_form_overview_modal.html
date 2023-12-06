@@ -38,8 +38,8 @@
     </div>
     <div class="mb-3 mt-3">
         <label class="form-label">Price:</label>
-        <label class="form-label" th:text="${#numbers.formatDecimal(product.price,1, 2, 'COMMA')}"></label>
-        <input type="number" class="form-control" th:field="*{price}"
+        <label class="form-label" th:text="${#numbers.formatDecimal(product.price,3, 'POINT',3, 'COMMA')}"></label>
+        <input type="number" class="form-control" th:value="${#numbers.formatDecimal(product.price,3, 'POINT',3, 'COMMA')}" th:field="*{price}"
                required>
     </div>
     <div class="mb-3 mt-3">

@@ -38,6 +38,9 @@ public class Category extends IdBasedEntity {
     @JsonManagedReference
     private Set<Category> children = new HashSet<>();
 
+    @ManyToMany(mappedBy = "categories")
+    private Set<Brand> brands = new HashSet<>();
+
     public Category(Integer id) {
         this.id = id;
     }

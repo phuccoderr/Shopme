@@ -1,10 +1,13 @@
-package com.shopme.common.entity;
+package com.shopme.common.entity.product;
 
 import com.shopme.common.IdBasedEntity;
+import com.shopme.common.entity.Brand;
+import com.shopme.common.entity.Category;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.NumberFormat;
 
 import java.text.DecimalFormat;
 import java.util.Date;
@@ -21,7 +24,7 @@ public class Product extends IdBasedEntity {
     private String name;
     @Column(unique = true, length = 256, nullable = false)
     private String alias;
-    @Column(nullable = false, name = "short_description")
+    @Column(nullable = false, name = "short_description",length = Integer.MAX_VALUE)
     private String shortDescription;
     @Column(nullable = false, name = "full_description",length = Integer.MAX_VALUE)
     private String fullDescription;
@@ -30,7 +33,6 @@ public class Product extends IdBasedEntity {
     @Column(name = "updated_time")
     private Date updatedTime;
     private boolean enabled;
-
     private float price;
     private float sale;
 

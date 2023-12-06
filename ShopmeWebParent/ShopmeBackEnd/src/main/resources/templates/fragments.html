@@ -132,7 +132,7 @@
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     Profile
                 </a>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item link-Setting" th:href="@{/settings}">
                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                     Settings
                 </a>
@@ -151,17 +151,14 @@
 
 </nav>
 
-<a th:fragment="page_link(moduleURL,pageNum,label)"
-   class="page-link"
-   th:href="@{${moduleURL} + '/page/' + ${pageNum} + '?sortField=' + ${sortField}
-        + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword=' + keyword :''}}">[[${label}]]</a>
+
 
 <div th:fragment="search(url)" th:remove="tag">
     <form class="form-inline justify-content-end" th:action="@{${url}}" >
         <div>
             <input type="hidden" name="sortField" th:value="${sortField}"/>
             <input type="hidden" name="sortDir" th:value="${sortDir}"/>
-            <input type="search" name="keyword" class="form-control" th:value="${keyword}" placeholder="search" />
+            <input name="keyword" class="form-control" th:value="${keyword}" placeholder="search" />
             <button type="submit" class="btn btn-primary">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button>
@@ -200,6 +197,11 @@
         </ul>
     </div>
 </div>
+
+<a th:fragment="page_link(moduleURL,pageNum,label)"
+   class="page-link"
+   th:href="@{${moduleURL} + '/page/' + ${pageNum} + '?sortField=' + ${sortField}
+        + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword=' + keyword :''}}">[[${label}]]</a>
 
 <div th:fragment="enabled(url,enabled)" th:remove="tag">
     <a th:if="${enabled == true}" class="fa-sharp fa-solid fa-circle-check icon-green"

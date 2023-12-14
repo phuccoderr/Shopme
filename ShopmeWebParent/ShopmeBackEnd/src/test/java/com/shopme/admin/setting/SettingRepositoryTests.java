@@ -1,5 +1,6 @@
 package com.shopme.admin.setting;
 
+import com.shopme.common.entity.AuthenticationType;
 import com.shopme.common.entity.setting.Setting;
 import com.shopme.common.entity.setting.SettingBag;
 import com.shopme.common.entity.setting.SettingCategory;
@@ -21,7 +22,7 @@ public class SettingRepositoryTests {
 
     @Test
     public void testCreateSetting() {
-        Setting setting = new Setting("THOUSANDS_POINT_TYPE","COMMA",SettingCategory.CURRENCY);
+        Setting setting = new Setting("CUSTOMER_VERIFY_CONTENT","2",SettingCategory.MAIL_TEMPLATE);
         Setting saved = repo.save(setting);
 
         Assertions.assertThat(saved).isNotNull();
@@ -32,6 +33,14 @@ public class SettingRepositoryTests {
         SettingBag settingBag = new SettingBag((List<Setting>) repo.findAll());
         int index = ((List<Setting>) repo.findAll()).indexOf(new Setting("THOUSANDS_POINT_TYPE"));
         System.out.println(index);
+
+    }
+
+    @Test
+    public void testUpdate() {
+        Setting setting = repo.findById("SMTP_SECURED").get();
+        setting.setCategory(SettingCategory.MAIL_SERVER);
+        repo.save(setting);
 
     }
 }

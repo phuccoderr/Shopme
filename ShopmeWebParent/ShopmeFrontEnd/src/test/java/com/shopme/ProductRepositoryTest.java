@@ -3,6 +3,7 @@ package com.shopme;
 import com.shopme.category.CategoryRepository;
 import static org.assertj.core.api.Assertions.assertThat;
 import com.shopme.common.entity.Category;
+import com.shopme.common.entity.product.Product;
 import com.shopme.product.ProductRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ public class ProductRepositoryTest {
 
     @Test
     public void testGetListProduct() {
+
 
     }
 }

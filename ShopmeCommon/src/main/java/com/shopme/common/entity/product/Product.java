@@ -89,4 +89,10 @@ public class Product extends IdBasedEntity {
     }
 
 
+    @Transient
+    public float getDiscountPrice() {
+        return price;
+    }
+
+
 }

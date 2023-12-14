@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Login - ARTERMIS</title>
+
+	<link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+</head>
+<body>
+<div class="limiter">
+	<div class="container-login100">
+		<div class="wrap-login100">
+			<div>
+				<img th:src="@{images/img-01.png}" alt="IMG">
+			</div>
+
+
+			<form class="login100-form validate-form" th:action="@{/login}" method="post">
+				<span class="login100-form-title">
+					Member Login
+				</span>
+
+				<div th:if="${param.error}">
+					<p class="text-danger">Bạn chưa xác thực tài khoản hoặc nhập sai mật khẩu ( làm biếng làm riêng 2 cái quá nên gọi chung )</p>
+				</div>
+				<div th:if="${param.logout}">
+					<p class="text-warning">Bạn đã đăng xuất.</p>
+				</div>
+
+				<div class="wrap-input100 validate-input" >
+					<input class="input100" type="text" name="email" placeholder="Email">
+					<span class="focus-input100"></span>
+					<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+				</div>
+
+				<div class="wrap-input100 validate-input">
+					<input class="input100" type="password" name="password" placeholder="Password">
+					<span class="focus-input100"></span>
+					<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+				</div>
+
+				<div class="container-login100-form-btn">
+					<button class="login100-form-btn">
+						Login
+					</button>
+				</div>
+				<div class="row mb-4">
+					<div class="col d-flex justify-content-center">
+						<!-- Checkbox -->
+						<div class="form-check">
+							<input class="form-check-input" name="remember-me" type="checkbox" />
+							<label class="form-check-label"> Remember me </label>
+						</div>
+					</div>
+
+					<div class="col">
+						<!-- Simple link -->
+						<a th:href="@{/forgot_password}">Forgot password?</a>
+					</div>
+				</div>
+
+
+
+				<div class="text-center">
+					<p>Not a member? <a href="#!">Register</a></p>
+					<p>or sign up with:</p>
+					<a class="btn btn-link btn-floating mx-1" th:href="@{/oauth2/authorization/google}">
+						<i class="fa-brands fa-google icon-gray fa-2x"></i>
+					</a>
+
+					<a class="btn btn-link btn-floating mx-1" th:href="@{/oauth2/authorization/github}">
+						<i class="fa-brands fa-github icon-gray fa-2x"></i>
+					</a>
+
+					<a class="btn btn-link btn-floating mx-1" th:href="@{/oauth2/authorization/facebook}">
+						<i class="fa-brands fa-facebook icon-gray fa-2x"></i>
+					</a>
+				</div>
+
+				<div class="text-center p-t-136">
+					<a class="txt2" th:href="@{/register}">
+						Trang Đăng Ký
+						<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+					</a>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<script th:src="@{webjars/jquery/3.4.1/jquery.min.js}"></script>
+<script th:src="@{webjars/bootstrap/5.3.2/js/bootstrap.min.js}"></script>
+</body>
+</html>

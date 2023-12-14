@@ -13,7 +13,7 @@ import java.util.Date;
 @Getter
 @NoArgsConstructor
 @Table(name = "customers")
-public class Customer extends IdBasedEntity {
+public class Customer extends AbstractAddress {
     @Column(nullable = false,length = 45)
     private String email;
     @Column(nullable = false,length = 64)
@@ -34,4 +34,39 @@ public class Customer extends IdBasedEntity {
     @Enumerated(EnumType.STRING)
     @Column(name = "authentication_type", length = 10)
     private AuthenticationType authenticationType;
+
+    @Column(name = "reset_password_token",length = 30)
+    private String resetPasswordToken;
+
+    public Customer(Integer id) {
+        this.id = id;
+    }
+
+    @Transient
+    public String getAddress() {
+        String address = firstName;
+
+        if (lastName != null && !lastName.isEmpty()) address += " " + lastName;
+
+        if (!addressLine1.isEmpty()) address += ", " + addressLine1;
+
+        if (addressLine2 != null && !addressLine2.isEmpty() ) address += ", " + addressLine1;
+
+        if (!city.isEmpty()) address += ", " + city;
+
+        if (state != null && !state.isEmpty()) address += " " + state;
+
+        if (!postalCode.isEmpty()) address += ". Postal Code:" + postalCode;
+
+        if (!phoneNumber.isEmpty()) address += ". Phone Number:" + phoneNumber + ", ";
+
+        address += country.getName();
+
+        return address;
+    }
+
+    @Transient
+    public String getFullName() {
+        return  this.firstName + " " + this.lastName;
+    }
 }

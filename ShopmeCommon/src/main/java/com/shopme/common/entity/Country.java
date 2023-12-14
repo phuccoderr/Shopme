@@ -27,4 +27,15 @@ public class Country extends IdBasedEntity {
     public Country(Integer id) {
         this.id = id;
     }
+
+    public Country(String countryName, String countryCode) {
+        this.name = countryName;
+        this.code = countryCode;
+    }
+
+    public Country(Integer countryId, String countryName, String countryCode) {
+        this.id = countryId;
+        this.name = countryName;
+        this.code = countryCode;
+    }
 }

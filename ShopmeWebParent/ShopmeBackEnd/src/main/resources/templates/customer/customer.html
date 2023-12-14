@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head th:replace="~{ fragments :: page_head('Shopme Customer','none')}" />
+<body id="page-top">
+
+
+    <div id="wrapper">
+     <ul th:replace="~{fragments :: navbar}"></ul>
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <nav th:replace="~{fragments :: header}"></nav>
+
+                <div class="container-fluid">
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">DataTables Customer</h6>
+                        </div>
+                        <div th:if="${message != null}" class="alert alert-success text-center">
+                            [[${message}]]
+                        </div>
+
+
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <div class="row">
+                                    <div class="col-sm-6 col-md-6">
+
+                                    </div>
+                                    <div class="col-sm-6 col-md-6">
+                                        <div th:replace="~{fragments :: search('/customers/page/1')}"></div>
+                                    </div>
+                                </div>
+                                <table class="table table-bordered" id="dataTable" >
+                                    <thead>
+                                    <tr>
+                                        <th>id</th>
+                                        <th>Email</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Phone Number</th>
+                                        <th>Address Line 1</th>
+                                        <th>city</th>
+                                        <th>state</th>
+                                        <th>Edit</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <th:block th:each="customer : ${listCustomers}">
+                                        <tr>
+                                            <td>[[${customer.id}]]</td>
+                                            <td><b>[[${customer.email}]]</b></td>
+                                            <td>[[${customer.firstName}]]</td>
+                                            <td>[[${customer.lastName}]]</td>
+                                            <td>[[${customer.phoneNumber}]]</td>
+                                            <td>[[${customer.addressLine1}]]</td>
+                                            <td>[[${customer.city}]]</td>
+                                            <td>[[${customer.state}]]</td>
+
+                                            <td>
+                                                <a th:replace="~{fragments :: edit('/customers/detail/',${customer.id})}"></a>
+                                                <div th:replace="~{fragments :: delete('/customers/delete/',${customer.id},true)}"></div>
+                                            </td>
+                                        </tr>
+                                    </th:block>
+
+                                    </tbody>
+                                </table>
+                                <div class="row">
+                                    <div th:replace="~{fragments :: pagination('/customers','customers')}"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="detailModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade text-center" id="confirmModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete Confirmation</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal">
+                        &times;
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <span id="confirmText"></span>
+                </div>
+                <div class="modal-footer">
+                    <a href="" class="btn btn-primary" id="yesButton">Yes</a>
+                    <button type="button" class="btn btn-secondary clickClose" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer th:replace="~{fragments :: footer}"></footer>
+<script th:src="@{/js/common_list.js}"></script>
+<script th:src="@{/js/common_form.js}" ></script>
+<script th:src="@{/js/common.js}" ></script>
+<script type="text/javascript">
+    moduleURL = "[[@{/customers}]]";
+    $(document).ready(function () {
+        $(".link-delete").on("click", function(e)  {
+            e.preventDefault();
+            showDeleteConfirmModal($(this),'customer')
+        });
+    })
+</script>
+</body>
+</html>

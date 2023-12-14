@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{ fragments :: page_head('','none')}"></head>
+<body>
+<div th:replace="~{fragments :: header}"></div>
+<div class="container-fluid">
+
+    <div class="text-center">
+        <h2>Đăng Ký</h2>
+        <h4>Thành Công! Tài Khoản của bạn đã được xác thực.</h4>
+        <p><a th:href="@{/login}">Login Now</a></p>
+    </div>
+</div>
+<div th:replace="~{fragments :: footer}"></div>
+<script th:src="@{/js/common.js}"></script>
+<script type="text/javascript">
+    contextPath = "[[@{/}]]";
+</script>
+</body>
+</html>

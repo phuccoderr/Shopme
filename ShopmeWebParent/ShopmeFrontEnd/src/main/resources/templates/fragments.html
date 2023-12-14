@@ -39,17 +39,48 @@
                 <div class="col-md-4 mt-md-3">
                     <div class="row">
                         <div class="col-md-6 align-content-center">
-                            <a class="btn border rounded-5 " href="#">
-                                <span class="text-uppercase text-info fw-bold">Giỏ Hàng / <span>0111111111
-                                        Đ</span></span>
+                            <a class="btn border rounded-5 " th:href="@{/cart}">
+                                <span class="text-uppercase text-info fw-bold">Giỏ Hàng</span>
 
                                 <i class="fa-solid fa-cart-shopping icon-gray icon-focus-blue"></i>
                             </a>
                         </div>
                         <div class="col-md-6">
-                            <a href="#" class="btn border rounded-5 text-uppercase ">
-                                <span class="fw-bold icon-gray icon-focus-blue">Đăng nhập / Đăng ký </span>
-                            </a>
+                            <th:block sec:authorize="isAuthenticated()">
+                                <form th:action="@{/logout}" method="post" name="logoutForm" th:hidden="true">
+                                    <input type="submit" />
+                                </form>
+
+                                <a href="#" class="dropdown btn border rounded-5" data-bs-toggle="dropdown">
+                                    <span sec:authentication="principal.fullName" class="col icon-focus-blue"></span>
+                                    <i class="col dropdown-toggle">
+                                        <img th:src="@{/images/logo.png}"
+                                             class="border-0 rounded-5" style="width: 22px;"/>
+                                    </i>
+                                </a>
+                                <div class="btn-group" style="width: 70%">
+                                    <ul class="dropdown-menu w-100">
+                                        <li><a class="dropdown-item" th:href="@{/account_detail}">Tài Khoản</a></li>
+                                        <li><a class="dropdown-item" th:href="@{/address}">Địa Chỉ</a></li>
+                                        <li><a class="dropdown-item" href="#">Đơn Hàng</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li>
+                                            <a class="dropdown-item" id="logoutLink" href="#">
+                                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            Logout
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </th:block>
+
+                            <th:block sec:authorize="!isAuthenticated()">
+                                <a th:href="@{/login}" class="btn border rounded-5 text-uppercase ">
+                                    <span class="fw-bold icon-gray icon-focus-blue">Đăng nhập / Đăng ký </span>
+                                </a>
+                            </th:block>
+
+
                         </div>
                     </div>
                 </div>
@@ -251,6 +282,25 @@
         </ul>
     </div>
 </div>
+<div th:fragment="confirm_modal" class="modal fade text-center" tabindex="-1"  aria-labelledby="confirmModal" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Delete Confirmation</h4>
+                <button type="button" class="close" data-bs-dismiss="modal">
+                    &times;
+                </button>
 
+            </div>
+            <div class="modal-body">
+                <span id="confirmText"></span>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-success" href="" id="yesButton" >Yes</a>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

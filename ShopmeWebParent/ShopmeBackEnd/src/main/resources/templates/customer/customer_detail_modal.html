@@ -1,0 +1,73 @@
+<div class="modal-header">
+    <h5 class="modal-title" >Edit User Detail</h5>
+    <button type="button" class="close" data-bs-dismiss="modal"  aria-label="Close">
+        &times;
+    </button>
+</div>
+<div class="modal-body">
+    <form th:action="@{/customers/save}" method="post" enctype="multipart/form-data"
+          th:object="${customer}" onsubmit="return checkUnique(this)">
+        <input type="hidden" th:field="*{id}">
+        <input type="hidden" th:field="*{country}">
+        <input type="hidden" th:field="*{password}">
+        <div class="mb-3 mt-3">
+            <label class="form-label">Authenticated Type:</label>
+            <input type="text" class="form-control" th:field="*{authenticationType}" placeholder="Enter first name" readonly>
+        </div>
+        <div class="mb-3 mt-3">
+            <label class="form-label">Email:</label>
+            <input type="text" class="form-control" th:field="*{email}"readonly>
+        </div>
+        <div class="mb-3 mt-3">
+            <label class="form-label">FirstName:</label>
+            <input type="text" class="form-control" th:field="*{firstName}" readonly>
+        </div>
+        <div class="mb-3 mt-3">
+            <label class="form-label">LastName:</label>
+            <input type="text" class="form-control" th:field="*{lastName}"readonly>
+        </div>
+        <div class="mb-3 mt-3">
+            <label class="form-label">Phone Number:</label>
+            <input type="text" class="form-control" th:field="*{phoneNumber}" readonly>
+        </div>
+        <div class="mb-3 mt-3">
+            <label class="form-label">AddressLine 1:</label>
+            <input type="text" class="form-control" th:field="*{addressLine1}" readonly>
+        </div>
+        <div class="mb-3 mt-3">
+            <label class="form-label">AddressLine 2:</label>
+            <input type="text" class="form-control" th:field="*{addressLine2}" readonly>
+        </div>
+        <div class="mb-3 mt-3">
+            <label class="form-label">city:</label>
+            <input type="text" class="form-control" th:field="*{city}" readonly>
+        </div>
+        <div class="mb-3 mt-3">
+            <label class="form-label">state:</label>
+            <input type="text" class="form-control" th:field="*{state}"  readonly>
+        </div>
+        <div class="mb-3 mt-3">
+            <label class="form-label">Postal Code:</label>
+            <input type="text" class="form-control" th:field="*{postalCode}" readonly>
+        </div>
+        <div class="mb-3 mt-3">
+            <label class="form-label">Create Time:</label>
+            <input type="Date" class="form-control" th:value="${customer.createdTime}" readonly>
+        </div>
+        <div class="mb-3 mt-3">
+            <label class="form-label">Enabled:</label>
+            <input type="checkbox" th:field="*{enabled}" >
+        </div>
+
+
+
+
+        <div>
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-danger float-right" data-bs-dismiss="modal">Close</button>
+        </div>
+    </form>
+</div>
+<script th:src="@{/js/common_form.js}" > </script>
+<script type="text/javascript">
+</script>

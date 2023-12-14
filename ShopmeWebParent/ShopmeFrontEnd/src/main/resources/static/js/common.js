@@ -16,5 +16,14 @@ $(document).ready(function () {
             $(this).children('ul').addClass("d-flex")
         }
     })
+
+    logoutAccount();
 })
 
+function logoutAccount() {
+    $("#logoutLink").on("click",function (e) {
+        e.preventDefault();
+        document.logoutForm.submit();
+    })
+
+}

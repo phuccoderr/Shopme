@@ -4,20 +4,20 @@
 <body>
 <div th:replace="~{fragments :: header}"></div>
 <div class="container-fluid">
+    <form class="form-control border border-0" id="searchForm" method="get" th:action="@{'/c/' + ${category.alias} + '/page/1'}">
     <div class="card mx-4">
+
         <div class="row m-2 align-items-center">
             <div class="col-1">
                 <span>Top Thương Hiệu:</span>
             </div>
 
             <div class="col-11">
+                <th:block th:each="brand : ${#lists.sort(category.getBrands())}">
+                    <input type="submit" name="brandName" th:value="${brandName == brand.name ? brandName : brand.name  }" class="btn border btn-hover-blue p-2"
+                        style="margin-right: 10px">
+                </th:block>
 
-                <form class="w-25" method="get" th:action="@{'/c/' + ${category.alias}}">
-                    <th:block th:each="brand : ${category.getBrands()}">
-                        <input type="submit" name="brandName" th:value="${brand.name}" class="btn border btn-hover-blue p-2"
-                            style="margin-right: 10px"/>
-                    </th:block>
-                </form>
 
             </div>
 
@@ -26,7 +26,7 @@
 
         </hr>
         <div class="m-2">
-            <form class="form-control border-0" method="get" th:action="@{'/c/' + ${category.alias} + '/page/1'}">
+
                 <div class="input-group">
                     <div class="form-outline w-25">
                         <input type="search" name="keyword" th:value="${keyword}" class="form-control" placeholder="tìm thông tin sản phẩm..." />
@@ -35,19 +35,29 @@
                         <i class="fas fa-search"></i>
                     </button>
                 </div>
-            </form>
+
         </div>
+
     </div>
+
     <div class="row m-2 align-items-center">
+        <div th:replace="~{breadcumb :: content}"></div>
         <div class="col-6">
             <h2>Sản Phẩm</h2>
         </div>
         <div class="col-6 text-end  focus-ring-secondary">
-            <select class="w-50 border-1 rounded-3 p-1">
-                <option class="text-start" value="0">Mac Dinh</option>
+            <button type="button" id="clearFilter" class="btn btn-outline-info">Làm mới</button>
+            <select class="w-50 d-inline-block form-select" name="sortField" id="dropdownCategory">
+                <option class="text-start" value="">Mac Dinh</option>
+                <option class="text-start" th:selected="${sortField == 'highPrice'}" value="highPrice">Gia Cao Nhat</option>
+                <option class="text-start" th:selected="${sortField == 'lowPrice'}" value="lowPrice">Gia Thap Nhat</option>
+                <option class="text-start" th:selected="${sortField == 'createdTime'}" value="createdTime">Mới Đây</option>
             </select>
+
         </div>
     </div>
+    </form>
+
     <div class="row m-3">
         <th:block th:each="product : ${listProducts}">
             <div class="col-3 p-2">
@@ -76,6 +86,12 @@
 <script th:src="@{/js/common.js}"></script>
 <script type="text/javascript">
     contextPath = "[[@{/}]]";
+    $("#dropdownCategory").on("change",function() {
+        $("#searchForm").submit();
+    });
+    $("#clearFilter").on("click",function (e) {
+        window.location = window.location.origin + window.location.pathname
+    })
 </script>
 </body>
 </html>

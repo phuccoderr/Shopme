@@ -71,6 +71,7 @@ public class SettingController {
         return "redirect:/settings";
     }
 
+
     private void updateSettingValuesFromForm(HttpServletRequest request, List<Setting> listSettings) {
         for (Setting setting : listSettings) {
             String value = request.getParameter(setting.getKey());

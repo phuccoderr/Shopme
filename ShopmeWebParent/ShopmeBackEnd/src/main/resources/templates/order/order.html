@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head th:replace="~{ fragments :: page_head('Shopme Orders','none')}" />
+<body id="page-top">
+    <div id="wrapper">
+     <ul th:replace="~{fragments :: navbar}"></ul>
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <nav th:replace="~{fragments :: header}"></nav>
+
+                <div class="container-fluid">
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">DataTables Orders</h6>
+                        </div>
+                        <div th:if="${message != null}" class="alert alert-success text-center">
+                            [[${message}]]
+                        </div>
+
+
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <div class="row">
+                                    <div class="col-sm-6 col-md-6">
+
+                                    </div>
+                                    <div class="col-sm-6 col-md-6">
+                                        <div th:replace="~{fragments :: search('/orders/page/1')}"></div>
+                                    </div>
+                                </div>
+                                <table class="table table-bordered" id="dataTable" >
+                                    <thead>
+                                    <tr>
+                                        <th>id</th>
+
+                                        <th>Customer</th>
+
+                                        <th>Total</th>
+
+                                        <th th:replace="~{fragments :: column_link('/orders','orderTime','Order Time','none')} "></th>
+
+                                        <th>Destination</th>
+
+                                        <th>Payment Method</th>
+
+                                        <th>Status</th>
+
+                                        <th>Edit</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <th:block th:each="order : ${listOrders}" th:with="customer = order.customer">
+                                        <tr>
+                                            <td>[[${order.id}]]</td>
+                                            <td>[[${order.customer.firstName}]] </td>
+                                            <td>
+                                                <div th:replace="~{fragments :: format_currency(${order.total})}"></div>
+                                            </td>
+                                            <td>
+                                                <div th:replace="~{fragments :: format_time(${order.orderTime})}"></div>
+                                            </td>
+                                            <td>[[${order.destination}]]</td>
+                                            <td>[[${order.paymentMethod}]]</td>
+                                            <td>[[${order.status}]]</td>
+                                            <td>
+                                                <a th:replace="~{fragments :: edit('/orders/detail/',${order.id})}"></a>
+                                                <div th:replace="~{fragments :: delete('/orders/delete/',${order.id},true)}"></div>
+                                            </td>
+                                        </tr>
+                                    </th:block>
+
+                                    </tbody>
+                                </table>
+                                <div class="row">
+                                    <div th:replace="~{fragments :: pagination('/orders','Orders')}"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="detailModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade text-center" id="confirmModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete Confirmation</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal">
+                        &times;
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <span id="confirmText"></span>
+                </div>
+                <div class="modal-footer">
+                    <a href="" class="btn btn-primary" id="yesButton">Yes</a>
+                    <button type="button" class="btn btn-secondary clickClose" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer th:replace="~{fragments :: footer}"></footer>
+<script th:src="@{/js/common_list.js}"></script>
+<script th:src="@{/js/common_form.js}" ></script>
+<script th:src="@{/js/common.js}" ></script>
+<script type="text/javascript">
+    moduleURL = "[[@{/orders}]]";
+    contextPath = "[[@{/}]]";
+    $(document).ready(function () {
+        $(".link-delete").on("click", function(e)  {
+            e.preventDefault();
+            showDeleteConfirmModal($(this),'customer')
+        });
+    })
+</script>
+</body>
+</html>

@@ -1,17 +1,14 @@
-package com.shopme.category;
+package com.shopme.admin.order;
 
-import com.shopme.common.entity.Category;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
-public class CategoryRestController {
-    @Autowired private CategoryService service;
+public class OrderRestController {
+    @Autowired private OrderService service;
 
 
 }

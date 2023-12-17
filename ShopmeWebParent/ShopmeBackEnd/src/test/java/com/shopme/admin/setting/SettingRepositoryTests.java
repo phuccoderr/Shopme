@@ -22,7 +22,7 @@ public class SettingRepositoryTests {
 
     @Test
     public void testCreateSetting() {
-        Setting setting = new Setting("CUSTOMER_VERIFY_CONTENT","2",SettingCategory.MAIL_TEMPLATE);
+        Setting setting = new Setting("ORDER_CONFIRMATION_CONTENT","2",SettingCategory.MAIL_TEMPLATE);
         Setting saved = repo.save(setting);
 
         Assertions.assertThat(saved).isNotNull();

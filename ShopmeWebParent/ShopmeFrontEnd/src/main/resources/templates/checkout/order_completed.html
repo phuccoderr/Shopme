@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{ fragments :: page_head('','none')}"></head>
+<body>
+<div th:replace="~{fragments :: header}"></div>
+<div class="container-fluid">
+    <div class="text-center border border-secondary rounded m-3 p-3">
+        <h2>Your Order has been completed!</h2>
+    </div>
+
+
+</div>
+<div th:replace="~{fragments :: footer}"></div>
+<script th:src="@{/js/common.js}"></script>
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

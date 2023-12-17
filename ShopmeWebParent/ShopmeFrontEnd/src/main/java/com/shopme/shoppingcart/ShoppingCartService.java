@@ -56,4 +56,8 @@ public class ShoppingCartService {
         float subtotal = product.getDiscountPrice() * quantity;
         return subtotal;
     }
+
+    public void deleteByCustomer(Customer customer) {
+        repo.deleteByCustomer(customer.getId());
+    }
 }

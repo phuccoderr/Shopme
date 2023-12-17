@@ -4,16 +4,19 @@ import com.shopme.Utility;
 import com.shopme.common.entity.Customer;
 import com.shopme.customer.CustomerNotFoundException;
 import com.shopme.customer.CustomerService;
+import com.shopme.order.OrderReturnRequest;
+import com.shopme.order.OrderReturnResponse;
+import com.shopme.order.OrderService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ShoppingCartRestController {
     @Autowired private ShoppingCartService service;
+    @Autowired private OrderService orderService;
     @Autowired private CustomerService customerService;
 
     @PostMapping("/cart/add/{productId}/{quantity}")
@@ -66,5 +69,20 @@ public class ShoppingCartRestController {
         } catch (CustomerNotFoundException e) {
             return "You must login to change quantity of cart";
         }
+    }
+
+    @PostMapping("/orders/return")
+    public ResponseEntity<?> handleOrderReturnRequest(@RequestBody OrderReturnRequest returnRequest,
+                                                      HttpServletRequest request) {
+        Customer customer = null;
+        try {
+            customer = getAuthenticatedCustomer(request);
+
+        } catch (CustomerNotFoundException e) {
+            return new ResponseEntity<>("Authenticated required", HttpStatus.BAD_REQUEST);
+        }
+
+        orderService.setOrderReturnRequest(returnRequest,customer);
+        return new ResponseEntity<>(new OrderReturnResponse(returnRequest.getOrderId()),HttpStatus.OK);
     }
 }

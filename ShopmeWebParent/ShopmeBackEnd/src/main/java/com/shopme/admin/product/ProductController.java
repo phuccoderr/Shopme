@@ -41,9 +41,9 @@ public class ProductController {
     @GetMapping("/products/page/{pageNum}")
     public String listByPage(@PathVariable(name = "pageNum") int pageNum,
                              @Param("sortDir") String sortDir,
-                             @Param("keyWord") String keyWord,
+                             @Param("keyword") String keyword,
                              @Param("categoryId") Integer categoryId, Model model) {
-        Page<Product> page = service.listByPage(pageNum,sortDir,keyWord,categoryId);
+        Page<Product> page = service.listByPage(pageNum,sortDir,keyword,categoryId);
         List<Product> listProducts = page.getContent();
         if (sortDir == null || sortDir.isEmpty()) {
             sortDir = "asc";
@@ -64,7 +64,7 @@ public class ProductController {
         model.addAttribute("currentPage",pageNum);
         model.addAttribute("sortField","name");
         model.addAttribute("sortDir", sortDir);
-        model.addAttribute("keyWord", keyWord);
+        model.addAttribute("keyword", keyword);
         model.addAttribute("listProducts",listProducts);
         model.addAttribute("startCount",startCount);
         model.addAttribute("endCount",endCount);

@@ -15,7 +15,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 @Table(name = "brands")
-public class Brand extends IdBasedEntity {
+public class Brand extends IdBasedEntity implements Comparable<Brand> {
     @Column(length = 40, nullable = false,unique = true)
     private String name;
     @Column(length = 128,nullable = false)
@@ -42,5 +42,10 @@ public class Brand extends IdBasedEntity {
     public String getLogoPath() {
         if (this.id == null || this.logo.isEmpty() ) return "/images/default-user.png";
         return "/brand-logos/" + this.id +  "/" + this.logo;
+    }
+
+    @Override
+    public int compareTo(Brand brand) {
+        return this.name.compareTo(brand.getName());
     }
 }

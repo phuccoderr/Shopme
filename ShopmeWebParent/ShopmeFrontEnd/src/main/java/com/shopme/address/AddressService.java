@@ -42,4 +42,8 @@ public class AddressService {
     public void delete(Integer id) {
         repo.deleteById(id);
     }
+
+    public Address getDefaultAddress(Customer customer) {
+        return repo.findByDefaultByCustomer(customer.getId());
+    }
 }

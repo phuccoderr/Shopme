@@ -49,13 +49,15 @@
                 <h2 class="collapse-header">Data Shopme: <span class="fa fa-database fa-2x"></span></h2>
                 <th:block sec:authorize="hasAnyAuthority('Admin')">
                     <a class="collapse-item" th:href="@{/users}">Users</a>
+                </th:block>
+                <th:block sec:authorize="hasAnyAuthority('Admin','Sale')">
                     <a class="collapse-item" th:href="@{/brands}">Brands</a>
                     <a class="collapse-item" th:href="@{/categories}">Categories</a>
                     <a class="collapse-item" th:href="@{/products}">Products</a>
                     <a class="collapse-item" th:href="@{/customers}">Customers</a>
                     <a class="collapse-item" th:href="@{/shippingrates}">Shipping Rates</a>
+                    <a class="collapse-item" th:href="@{/orders}">Orders</a>
                 </th:block>
-
             </div>
         </div>
 
@@ -224,7 +226,25 @@
     </th:block>
 </div>
 
+<div th:fragment="format_currency(total)" th:remove="tag">
+    <span th:if="${CURRENCY_SYMBOL_POSITION == 'Before price'}" th:remove="tag">[[${CURRENCY_SYMBOL}]]</span>
+    [[${#numbers.formatDecimal(total,1,THOUSANDS_POINT_TYPE,DECIMAL_DIGITS,DECIMAL_POINT_TYPE)}]]
+    <span th:if="${CURRENCY_SYMBOL_POSITION == 'After price'}" th:remove="tag">[[${CURRENCY_SYMBOL}]]</span>
+</div>
 
+<div th:fragment="format_time(datetime)">
+    <span th:text="${#dates.format(datetime,'yyyy-MM-dd HH:mm:ss')}"></span>
+</div>
+
+<th th:fragment="column_link(moduleURL,fieldName, columnLabel,removeTag)" th:remove="${removeTag}">
+    <a
+       th:href="@{${moduleURL} + '/page/' + ${currentPage} + '?sortField=' + ${fieldName} + '&sortDir=' + ${sortField != fieldName ? sortDir : reverseSortDir}
+			+ ${keyword != null ? '&keyword=' + keyword : ''}}">
+        [[${columnLabel}]]
+    </a>
+    <span th:if="${sortField == fieldName}"
+          th:class="${sortDir == 'asc' ? 'fa-solid fa-sort-up' : 'fa-solid fa-sort-down'} "></span>
+</th>
 
 
 </body>

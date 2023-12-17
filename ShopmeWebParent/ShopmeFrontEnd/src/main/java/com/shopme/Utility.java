@@ -1,7 +1,10 @@
 package com.shopme;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.Properties;
 
 import com.shopme.security.oauth.CustomerOAuth2User;
+import com.shopme.setting.CurrencySettingBag;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.security.authentication.RememberMeAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -49,10 +52,39 @@ public class Utility {
         Properties props = mailSender.getJavaMailProperties();
         props.put("mail.smtp.auth", settings.getSmtpAuth());
         props.put("mail.smtp.starttls.enable", settings.getSmtpSecured());
-        //chuyen text sang tieng viet
-        props.put("mail.smtp.allow8bitmime", "true");
-        props.put("mail.smtps.allow8bitmime", "true");
+
 
         return mailSender;
+    }
+
+    public static String formatCurrency(float total, CurrencySettingBag currencySettingBag) {
+        String symbol = currencySettingBag.getSymbol();
+        String symbolPosition = currencySettingBag.getSymbolPositon();
+        String decimalPointType = currencySettingBag.getDecimalPointType();
+        String thousandPointType = currencySettingBag.getThousandsPointType();
+        int decimalDigits = currencySettingBag.getDecimalDigits();
+
+
+        String pattern = symbolPosition.equals("Before price") ? symbol : "";
+        pattern += "###,###";
+        if (decimalDigits > 0) {
+            pattern += ".";
+            for (int count = 1;count <= decimalDigits;count++) {
+                pattern += "#";
+            }
+        }
+
+        pattern += symbolPosition.equals("After price") ? symbol : "";
+
+        char thousandSeparator = thousandPointType.equals("POINT") ? '.' : ',';
+        char decimalSeparator = decimalPointType.equals("POINT") ? '.' : ',';
+
+        DecimalFormatSymbols decimalFormatSymbols = DecimalFormatSymbols.getInstance();
+        decimalFormatSymbols.setDecimalSeparator(decimalSeparator);
+        decimalFormatSymbols.setGroupingSeparator(thousandSeparator);
+
+        DecimalFormat format = new DecimalFormat(pattern,decimalFormatSymbols);
+        return format.format(total);
+
     }
 }

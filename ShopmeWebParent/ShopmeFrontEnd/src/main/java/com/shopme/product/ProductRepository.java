@@ -12,15 +12,19 @@ public interface ProductRepository extends CrudRepository<Product,Integer>, Pagi
     @Query("SELECT p FROM Product p WHERE p.enabled = true AND (p.category.id = ?1 or p.category.allParentIds like %?2%)")
     public Page<Product> listByCategory(Integer cateId, String categoryIdMatch,Pageable pageable);
 
-    @Query("SELECT p FROM Product p WHERE p.enabled = true AND (p.category.id = ?1 or p.category.allParentIds like %?2%)" +
-            " AND p.brand.id = ?3")
-    public Page<Product> listByCategoryAndBrand(Integer cateId,String categoryIdMatch,Integer brandId,Pageable pageable);
+    @Query("SELECT p FROM Product p WHERE p.enabled = true AND p.brand.id = ?1")
+    public Page<Product> listByBrand(Integer brandId,Pageable pageable);
 
     public Product findByAlias(String alias);
     @Query(value = "SELECT * FROM Products "
             + "WHERE enabled = true and MATCH(name, short_description, full_description) AGAINST (?1)"
             ,nativeQuery = true)
     public Page<Product> search(String keyword, Pageable pageable);
+
+    @Query("SELECT p FROM Product p WHERE p.enabled = true")
+    public Page<Product> findByPrice(Pageable pageable);
+
+
 
 
 

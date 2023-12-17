@@ -11,14 +11,14 @@
                     <div class="card-body p-4">
                         <div class="row">
                             <div class="col-lg-8">
-                                <h5 class="mb-3"><a href="#!" class="text-body"><i
-                                        class="fas fa-long-arrow-alt-left me-2"></i>Continue shopping</a></h5>
+                                <h5 class="mb-3"><a th:href="@{/}" class="text-body"><i
+                                        class="fas fa-long-arrow-alt-left me-2"></i>Quay về trang chủ</a></h5>
                                 <hr>
 
                                 <div class="d-flex justify-content-between align-items-center mb-4">
                                     <div>
-                                        <p class="mb-1">Shopping cart</p>
-                                        <p class="mb-0">You have [[${quantity}]] items in your cart</p>
+                                        <p class="mb-1">Giỏ Hàng</p>
+                                        <p class="mb-0">Bạn đang có [[${quantity}]] sản phẩm trong giỏ hàng</p>
                                     </div>
 
                                 </div>
@@ -109,7 +109,7 @@
                                         <hr class="my-4">
 
                                         <div class="d-flex justify-content-between">
-                                            <p class="mb-2">Subtotal</p>
+                                            <p class="mb-2">Tiền sản phẩm</p>
                                             <p class="mb-2">
                                                 <span th:if="${CURRENCY_SYMBOL_POSITION == 'Before price'}" th:remove="tag">[[${CURRENCY_SYMBOL}]]</span>
                                                 <span id="subtotals">[[${#numbers.formatDecimal(sum,1,THOUSANDS_POINT_TYPE,DECIMAL_DIGITS,DECIMAL_POINT_TYPE)}]]</span>
@@ -118,12 +118,12 @@
                                         </div>
 
                                         <div class="d-flex justify-content-between">
-                                            <p class="mb-2">Shipping</p>
+                                            <p class="mb-2">Phí vận chuyển</p>
                                             <p class="mb-2">20,000 đ</p>
                                         </div>
 
                                         <div class="d-flex justify-content-between mb-4">
-                                            <p class="mb-2">Total(Incl. taxes)</p>
+                                            <p class="mb-2">Tổng tiền</p>
                                             <span>
                                                 <span th:if="${CURRENCY_SYMBOL_POSITION == 'Before price'}" th:remove="tag">[[${CURRENCY_SYMBOL}]]</span>
                                                 <span id="total">[[${#numbers.formatDecimal(sum + 20000,1,THOUSANDS_POINT_TYPE,DECIMAL_DIGITS,DECIMAL_POINT_TYPE)}]]</span>
@@ -133,8 +133,25 @@
                                         </div>
 
                                         <button type="button" class="btn btn-info btn-block btn-lg">
-                                            <div class="d-flex justify-content-between">
-                                                <span>Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
+                                            <div th:if="${shippingRateSupported}">
+
+                                                <div th:if="${quantity > 0}" class="d-flex justify-content-between">
+                                                    <a class="text-decoration-none text-light" th:href="@{/checkout}">Thanh Toán<i class="fas fa-long-arrow-alt-right ms-2"></i></a>
+                                                </div>
+                                                <div th:unless="${quantity > 0}" class="d-flex justify-content-between">
+                                                    <span class="h5">Bạn chưa thêm sản phẩm nào vào giỏ hàng!</span>
+                                                </div>
+                                            </div>
+                                            <div th:unless="${shippingRateSupported}">
+                                                <div>
+                                                    <span class="h5 ">Không hỗ trợ địa chỉ bạn muốn giao!</span>
+                                                </div>
+                                                <div th:if="${usePrimaryAddressAsDefault}">
+                                                    <a th:href="@{/account_detail(redirect=cart)}">Cập nhật lại địa chỉ của bạn.</a>
+                                                </div>
+                                                <div th:unless="${usePrimaryAddressAsDefault}">
+                                                    <a th:href="@{/address(redirect=cart)}">Dùng một địa chỉ khác.</a>
+                                                </div>
                                             </div>
                                         </button>
 

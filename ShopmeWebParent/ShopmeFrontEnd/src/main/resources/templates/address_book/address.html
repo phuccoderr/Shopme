@@ -4,9 +4,9 @@
 <body>
 <div th:replace="~{fragments :: header}"></div>
 <div class="text-center">
-    <div><h1>Your Address Book</h1></div>
+    <div><h1>Địa chỉ của bạn</h1></div>
     <div>
-        <a th:href="@{/address_book/new}" class="h4">Add New address</a>
+        <a th:href="@{/address_book/new}" class="h4">Thêm một địa chỉ mới</a>
     </div>
 </div>
 <div th:if="${message != null}" class="alert alert-success text-center">
@@ -18,7 +18,7 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col">
-                        <b>Your primary Address</b>
+                        <b>Địa chỉ chính của bạn</b>
                         <th:block th:unless="${defaultAddress}">
                             <span class="text-danger">[Default]</span>
                         </th:block>

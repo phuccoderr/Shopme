@@ -48,7 +48,7 @@ public class ForgotPasswordController {
     private void sendEmail(String link, String email) throws MessagingException, UnsupportedEncodingException {
         EmailSettingBag emailSettingBag = settingService.getEmailSettings();
         JavaMailSenderImpl mailSender = Utility.prepareMailSender(emailSettingBag);
-
+        mailSender.setDefaultEncoding("utf-8");
         String toAddress = email;
         String subject = "Ấn vào link dưới đây để đặt lại mật khẩu";
 

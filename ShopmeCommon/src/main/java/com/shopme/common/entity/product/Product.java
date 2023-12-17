@@ -53,6 +53,10 @@ public class Product extends IdBasedEntity {
     @OneToMany(mappedBy = "product",cascade = CascadeType.ALL,orphanRemoval = true)
     private Set<ProductImage> productImages = new HashSet<>();
 
+    public Product(Integer id) {
+        this.id = id;
+    }
+
     @Transient
     public String getMainImagePath() {
         if (this.id == null || this.mainImage.isEmpty() ) return "/images/default-user.png";

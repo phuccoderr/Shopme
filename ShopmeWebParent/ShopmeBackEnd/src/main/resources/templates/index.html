@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head th:replace="~{ fragments :: page_head('Shopme Admin','none')}" />
 <body id="page-top">
 
@@ -17,16 +18,11 @@
 
                     <div class="row mt-4">
                         <div class="col-sm-8 text-left ">
-                            <h6 class="icon-violet">I'm: Nguyen Hoang Phuc</h6>
+                            Welcome :<a class="link-Account"  th:href="@{/account}" sec:authentication="principal.fullName"></a>&nbsp; <span sec:authentication="principal.authorities"></span>
                             <p>This is the first e-commerce website that I wrote with my own hands using the Java language. This website is built following the MVC (Model-View-Controller) architecture</p>
                         </div>
                         <div class="col-sm-4">
                             <img class="rounded-circle img-fluid" th:src="@{/images/spring-boot.png}" style="max-width: 80%" />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="text-center h3 bold">
-                            <span class="icon-black">TECHNOLOGY IS USED</span>
                         </div>
                     </div>
                     <a class="dropdown-item" th:href="@{/settings}">

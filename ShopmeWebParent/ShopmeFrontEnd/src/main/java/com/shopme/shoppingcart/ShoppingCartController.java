@@ -1,9 +1,13 @@
 package com.shopme.shoppingcart;
 
 import com.shopme.Utility;
+import com.shopme.address.AddressService;
+import com.shopme.common.entity.Address;
 import com.shopme.common.entity.CartItem;
 import com.shopme.common.entity.Customer;
+import com.shopme.common.entity.ShippingRate;
 import com.shopme.customer.CustomerService;
+import com.shopme.shippingrate.ShippingRateService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +20,9 @@ import java.util.List;
 public class ShoppingCartController {
     @Autowired private ShoppingCartService service;
     @Autowired private CustomerService customerService;
+    @Autowired private AddressService addressService;
+    @Autowired private ShippingRateService shippingRateService;
+
 
     @GetMapping("/cart")
     public String viewCart(Model model, HttpServletRequest request) {
@@ -26,6 +33,21 @@ public class ShoppingCartController {
         for (CartItem item : cartItems) {
             sum += item.getSubTotal();
         }
+
+        Address address = addressService.getDefaultAddress(customer);
+        ShippingRate shippingRate = null;
+        boolean usePrimaryAddressAsDefault = false;
+
+        if (address != null) {
+            shippingRate = shippingRateService.getShippingRateForAddress(address);
+        } else {
+            usePrimaryAddressAsDefault = true;
+            shippingRate = shippingRateService.getShippingRateForCustomer(customer);
+        }
+
+        model.addAttribute("usePrimaryAddressAsDefault",usePrimaryAddressAsDefault);
+        model.addAttribute("shippingRateSupported",shippingRate != null);
+
 
         int quantity = cartItems.size();
         model.addAttribute("quantity", quantity);

@@ -1,0 +1,46 @@
+<div class="modal-header">
+    <h5 class="modal-title" >Edit Order Customer</h5>
+    <button type="button" class="close" data-bs-dismiss="modal"  aria-label="Close">
+        &times;
+    </button>
+</div>
+<div class="modal-body">
+    <form th:action="@{/orders/save}" method="post"
+          th:object="${order}" onsubmit="return checkUnique(this)" >
+        <input type="hidden" th:field="*{id}" >
+        <div>
+            <ul class="nav justify-content-center" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link btn btn-primary m-2" data-bs-toggle="tab" href="#overview" >Overview</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-primary m-2" data-bs-toggle="tab" href="#product"  >Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-primary m-2" data-bs-toggle="tab" href="#shipping" >Shipping</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-primary m-2" data-bs-toggle="tab" href="#track">Detail</a>
+                </li>
+            </ul>
+        </div>
+        <div id="overview" class="collapse">
+            <div th:replace="~{order/order_form_overview_modal :: content}" ></div>
+        </div>
+        <div id="product" class="collapse">
+            <div th:replace="~{order/order_form_product_modal :: content}" ></div>
+        </div>
+        <div id="shipping" class="collapse" >
+            <div th:replace="~{order/order_form_shipping_modal :: content}" ></div>
+        </div>
+        <div id="track" class="collapse">
+            <div th:replace="~{order/order_form_track_modal :: content}" ></div>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-danger float-right" data-bs-dismiss="modal">Close</button>
+        </div>
+
+    </form>
+</div>
+<script th:src="@{/js/common_form.js}" > </script>>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{ fragments :: page_head('','none')}"></head>
+<body>
+<div th:replace="~{fragments :: header}"></div>
+<div class="container-sm">
+    <div class="card-body">
+        <table class="table table-bordered table-responsive-xl" id="dataTable" >
+            <thead>
+                <tr class="table-info">
+                    <th>Mã đơn hàng</th>
+
+                    <th>Thời gian đặt hàng</th>
+
+                    <th>Tên sản phẩm</th>
+
+                    <th>Tổng tiền</th>
+
+                    <th>Trạng thái</th>
+
+                    <th>Phương thức thanh toán</th>
+
+                    <th>Chi tiết</th>
+                </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="order : ${listOrders}" th:with="customer = order.customer">
+                <tr class="table-light">
+                    <td th:text="${order.id}"></td>
+                    <td><div th:replace="~{fragments :: format_time(${order.orderTime})}"></div></td>
+                    <td th:utext="${order.productNames}">
+                    </td>
+                    <td>
+                        <div th:replace="~{fragments :: format_currency(${order.total})}"></div>
+                    </td>
+                    <td><span>[[${order.status}]]</span></td>
+                    <td>[[${order.paymentMethod}]]</td>
+                    <td>
+                        <a th:href="@{'/orders/detail/' + ${order.id}}" class="link-detail">
+                            <i class="fa-solid fa-circle-info fa-1-5x"></i>
+                        </a>
+                        <th:block th:if="${(order.returnRequest == false && order.returned == false) || order.delivered == true}">
+                            <a class="m-2 linkReturnOrder"
+                               th:orderId="${order.id}"
+                               href="#"
+                               title="Return">
+                                <i class="fa-solid fa-arrow-rotate-left fa-1-5x"></i>
+                            </a>
+                        </th:block>
+                    </td>
+                </tr>
+            </th:block>
+
+            </tbody>
+        </table>
+        <div class="row">
+            <div th:replace="~{fragments :: pagination('/orders')}"></div>
+        </div>
+    </div>
+
+</div>
+<div th:replace="~{order/return_order_fragment :: content}"></div>
+<!-- Modal -->
+<div class="modal fade" id="detailModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+        </div>
+    </div>
+</div>
+<div th:replace="~{fragments :: footer}"></div>
+<script th:src="@{/js/common.js}"></script>
+<script th:src="@{/js/return_order.js}"></script>
+<script type="text/javascript">
+    contextPath = "[[@{/}]]";
+    var csrfHeaderName = "[[${_csrf.headerName}]]";
+    var csrfValue = "[[${_csrf.token}]]";
+
+    $(".link-detail").on("click",function (e) {
+        e.preventDefault();
+        linkDetailURL = $(this).attr("href");
+        $("#detailModal").modal("show").find(".modal-content").load(linkDetailURL);
+    })
+</script>
+</body>
+</html>

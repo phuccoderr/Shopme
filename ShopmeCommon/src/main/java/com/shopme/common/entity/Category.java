@@ -6,10 +6,7 @@ import com.shopme.common.IdBasedEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
+import java.util.*;
 
 
 @Getter
@@ -17,7 +14,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 @Table(name = "categories")
-public class Category extends IdBasedEntity {
+public class Category extends IdBasedEntity implements Comparable<Category>{
     @Column(length = 128, nullable = false, unique = true)
     private String name;
     @Column(length = 64, nullable = false, unique = true)
@@ -86,4 +83,8 @@ public class Category extends IdBasedEntity {
         return "/category-images/" + this.id + "/" + this.img;
     }
 
+    @Override
+    public int compareTo(Category category) {
+        return this.name.compareTo(category.getName());
+    }
 }

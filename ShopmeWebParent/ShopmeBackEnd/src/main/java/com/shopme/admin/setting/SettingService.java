@@ -28,6 +28,10 @@ public class SettingService {
         return new GeneralSettingBag(settings);
     }
 
+    public List<Setting> getCurrencySettings() {
+        return repo.findByCategory(SettingCategory.CURRENCY);
+    }
+
     public void saveAll(Iterable<Setting> settings) {
         repo.saveAll(settings);
     }

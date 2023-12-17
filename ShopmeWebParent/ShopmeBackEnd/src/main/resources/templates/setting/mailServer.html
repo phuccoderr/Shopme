@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <body th:fragment="content" id="page-top">
     <div class="mb-5">
         <h5 class="mb-0">Site Settings</h5>
@@ -81,8 +82,8 @@
 
         <div>
             <div class="text-center">
-                <input type="submit" value="Save" class	="btn btn-primary m-3" />
-                <input type="button" value="Cancel" class="btn btn-secondary" id="buttonCancel" />
+                <input sec:authorize="hasRole('Admin')" type="submit" value="Save" class	="btn btn-primary m-3" />
+                <a th:href="@{/}"  class="btn btn-secondary" id="buttonCancel">Cancel</a>
             </div>
         </div>
     </form>

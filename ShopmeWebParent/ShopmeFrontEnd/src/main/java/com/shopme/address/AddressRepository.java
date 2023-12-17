@@ -23,6 +23,6 @@ public interface AddressRepository extends CrudRepository<Address,Integer> {
     @Query("SELECT a FROM Address a WHERE a.id = ?1 AND a.customer.id = ?2")
     public Address findByCustomer(Integer addressId,Integer customerId);
 
-
-
+    @Query("SELECT a FROM Address  a WHERE a.defaultAddress = true AND a.customer.id = ?1")
+    public Address findByDefaultByCustomer(Integer customerId);
 }

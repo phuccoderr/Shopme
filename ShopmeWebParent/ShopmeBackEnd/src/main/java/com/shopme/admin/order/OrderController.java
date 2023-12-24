@@ -73,14 +73,23 @@ public class OrderController {
 
     @GetMapping("/orders/detail/{id}")
     public String editOrder(@PathVariable("id") Integer id,Model model,
+                            RedirectAttributes ra,
                             HttpServletRequest request) {
-        Order order = service.get(id);
-        List<Country> listCountries = service.listCountries();
-        model.addAttribute("order",order);
-        model.addAttribute("listCountries",listCountries);
+        Order order = null;
+        try {
+            order = service.get(id);
+            List<Country> listCountries = service.listCountries();
+            model.addAttribute("order",order);
+            model.addAttribute("listCountries",listCountries);
+            loadCurrencySetting(request);
+            return "order/order_form_modal";
+        } catch (OrderNotFoundException e) {
+            ra.addFlashAttribute("message",e.getMessage());
+            return "order/order";
+        }
 
-        loadCurrencySetting(request);
-        return "order/order_form_modal";
+
+
     }
 
     @PostMapping("/orders/save")

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 @Transactional
@@ -42,8 +43,12 @@ public class ProductService {
         return repo.findAll(pageable);
     }
 
-    public Product get(Integer id) {
-        return repo.findById(id).get();
+    public Product get(Integer id) throws ProductNotFoundException {
+        try {
+            return repo.findById(id).get();
+        } catch(NoSuchElementException e) {
+            throw new ProductNotFoundException("Could not find any product with ID " + id);
+        }
     }
 
     public String checkUnique(Integer id, String name) {
@@ -93,7 +98,11 @@ public class ProductService {
         repo.enabled(id,enabled);
     }
 
-    public void delete(Integer id) {
+    public void delete(Integer id) throws ProductNotFoundException {
+        Long countById = repo.countById(id);
+        if (countById == null || countById ==0) {
+            throw new ProductNotFoundException("Cloud not find any product  with ID:" + id);
+        }
         repo.deleteById(id);
     }
 }

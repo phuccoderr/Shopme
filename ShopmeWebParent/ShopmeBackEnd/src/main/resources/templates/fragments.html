@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/sb-admin-2.min.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
     <script type="text/javascript" th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"/></script>
-    <script type="text/javascript" th:src="@{/webjars/bootstrap/5.3.2/js/bootstrap.min.js}"/></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/5.3.2/js/bootstrap.bundle.js}"/></script>
 </head>
 <body>
 <footer th:fragment="footer" class="sticky-footer bg-white">
@@ -32,6 +32,11 @@
     </a>
 
     <hr class="sidebar-divider my-0">
+    <li class="nav-item active">
+        <a class="nav-link" th:href="@{/reports}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Sales Report</span></a>
+    </li>
     <hr class="sidebar-divider">
 
     <div class="sidebar-heading">

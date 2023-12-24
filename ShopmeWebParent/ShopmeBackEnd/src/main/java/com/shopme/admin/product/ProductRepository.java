@@ -30,4 +30,5 @@ public interface ProductRepository extends CrudRepository<Product,Integer>, Pagi
             + " or p.brand.name like %?3%)")
     public Page<Product> searchInCategory(Integer id,String categoryIdMatch,String keyword,Pageable pageable) ;
 
+    public Long countById(Integer id);
 }

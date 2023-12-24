@@ -70,11 +70,17 @@ public class ShippingRateController {
 
     @GetMapping("/shippingrates/detail/{id}")
     public String editShippingRate(Model model,@PathVariable("id")Integer id) {
-        ShippingRate shippingRate = service.get(id);
-        List<Country> listCountries = service.listCountries();
-        model.addAttribute("shippingRate",shippingRate);
-        model.addAttribute("listCountries",listCountries);
-        return "shippingrate/shippingrate_detail_modal";
+        ShippingRate shippingRate = null;
+        try {
+            shippingRate = service.get(id);
+            List<Country> listCountries = service.listCountries();
+            model.addAttribute("shippingRate",shippingRate);
+            model.addAttribute("listCountries",listCountries);
+            return "shippingrate/shippingrate_detail_modal";
+        } catch (ShippingRateNotFoundException e) {
+            return "shippingrate/shippingrate";
+        }
+
     }
 
     @PostMapping("/shippingrates/save")
@@ -102,9 +108,15 @@ public class ShippingRateController {
 
     @GetMapping("/shippingrates/delete/{id}")
     public String deleteBrand(@PathVariable(name = "id")Integer id, RedirectAttributes ra) {
-        service.delete(id);
-        String message = "The Shipping Rate ID " + id + " has been deleted";
-        ra.addFlashAttribute("message",message);
-        return "redirect:/shippingrates";
+        try {
+            service.delete(id);
+            String message = "The Shipping Rate ID " + id + " has been deleted";
+            ra.addFlashAttribute("message",message);
+            return "redirect:/shippingrates";
+        } catch (ShippingRateNotFoundException e) {
+            ra.addFlashAttribute("message",e.getMessage());
+            return "redirect:/shippingrates";
+        }
+
     }
 }

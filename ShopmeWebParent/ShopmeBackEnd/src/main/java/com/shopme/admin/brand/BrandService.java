@@ -58,7 +58,11 @@ public class BrandService {
         }
     }
 
-    public void delete(Integer id) {
+    public void delete(Integer id) throws BrandNotFoundException {
+        Long countById = repo.countById(id);
+        if (countById == null || countById ==0) {
+            throw new BrandNotFoundException("Cloud not find any category  with ID:" + id);
+        }
         repo.deleteById(id);
     }
 

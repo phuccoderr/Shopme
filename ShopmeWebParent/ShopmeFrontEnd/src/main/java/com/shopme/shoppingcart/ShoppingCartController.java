@@ -6,6 +6,7 @@ import com.shopme.common.entity.Address;
 import com.shopme.common.entity.CartItem;
 import com.shopme.common.entity.Customer;
 import com.shopme.common.entity.ShippingRate;
+import com.shopme.common.entity.product.Product;
 import com.shopme.customer.CustomerService;
 import com.shopme.shippingrate.ShippingRateService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -50,8 +51,12 @@ public class ShoppingCartController {
 
 
         int quantity = cartItems.size();
+        float shippingCost = 0;
+        for (CartItem item :  cartItems) {
+            shippingCost += (shippingRate.getRate() * item.getQuantity());
+        }
         model.addAttribute("quantity", quantity);
-
+        model.addAttribute("shippingCost",shippingCost);
         model.addAttribute("sum",sum);
         model.addAttribute("cartItems", cartItems);
 

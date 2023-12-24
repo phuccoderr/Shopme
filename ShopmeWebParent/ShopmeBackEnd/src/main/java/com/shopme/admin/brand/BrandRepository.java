@@ -13,4 +13,5 @@ public interface BrandRepository extends CrudRepository<Brand,Integer>, PagingAn
     @Query(value = "SELECT b FROM Brand b where b.name like %?1%")
     public Page<Brand> findAll(String keyword, Pageable pageable);
 
+    public Long countById(Integer id);
 }

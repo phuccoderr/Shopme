@@ -52,11 +52,19 @@ public class ShippingRateService {
         repo.save(shippingRate);
     }
 
-    public ShippingRate get(Integer id) {
-       return repo.findById(id).get();
+    public ShippingRate get(Integer id) throws ShippingRateNotFoundException {
+        try {
+            return repo.findById(id).get();
+        } catch (Exception e) {
+            throw new ShippingRateNotFoundException("Cloud not find any user  with ID:" + id);
+        }
     }
 
-    public void delete(Integer id) {
+    public void delete(Integer id) throws ShippingRateNotFoundException {
+        Long findById = repo.countById(id);
+        if (findById == 0 || findById == null) {
+            throw new ShippingRateNotFoundException("Cloud not find any customer  with ID:" + id);
+        }
         repo.deleteById(id);
     }
 }

@@ -33,6 +33,7 @@ public class Product extends IdBasedEntity {
     @Column(name = "updated_time")
     private Date updatedTime;
     private boolean enabled;
+    private float cost;
     private float price;
     private float sale;
 
@@ -55,6 +56,10 @@ public class Product extends IdBasedEntity {
 
     public Product(Integer id) {
         this.id = id;
+    }
+
+    public Product(String name) {
+        this.name = name;
     }
 
     @Transient

@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class OrderService {
@@ -35,8 +36,12 @@ public class OrderService {
         return repo.findAll(pageable);
     }
 
-    public Order get(Integer id) {
-        return repo.findById(id).get();
+    public Order get(Integer id) throws OrderNotFoundException {
+        try {
+            return repo.findById(id).get();
+        } catch (NoSuchElementException e) {
+            throw new OrderNotFoundException("Cloud not find any orders with ID " + id);
+        }
     }
 
     public List<Country> listCountries() {

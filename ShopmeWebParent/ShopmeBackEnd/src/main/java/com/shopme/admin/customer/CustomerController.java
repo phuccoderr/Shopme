@@ -83,9 +83,14 @@ public class CustomerController {
 
     @GetMapping("/customers/delete/{id}")
     public String deleteBrand(@PathVariable(name = "id")Integer id, RedirectAttributes ra) {
-        service.delete(id);
-        String message = "The Customer ID " + id + " has been deleted";
-        ra.addFlashAttribute("message",message);
+        try {
+            service.delete(id);
+            String message = "The Customer ID " + id + " has been deleted";
+            ra.addFlashAttribute("message",message);
+        } catch (CustomerNotFoundException e) {
+            ra.addFlashAttribute("message",e.getMessage());
+        }
+
         return "redirect:/customers";
     }
 }

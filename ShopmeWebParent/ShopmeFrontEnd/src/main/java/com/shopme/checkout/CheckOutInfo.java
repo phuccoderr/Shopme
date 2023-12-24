@@ -10,6 +10,7 @@ import java.util.Date;
 @Getter
 public class CheckOutInfo {
     private float productTotal;
+    private float productCost;
     private float shippingCostTotal;
     private float paymentTotal;
     private int deliverDays;

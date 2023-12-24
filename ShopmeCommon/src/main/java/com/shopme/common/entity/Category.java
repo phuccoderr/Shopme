@@ -42,6 +42,10 @@ public class Category extends IdBasedEntity implements Comparable<Category>{
         this.id = id;
     }
 
+    public Category(String name) {
+        this.name = name;
+    }
+
 
     public static Category copyFull(Category category) {
         Category copyCategory = new Category();

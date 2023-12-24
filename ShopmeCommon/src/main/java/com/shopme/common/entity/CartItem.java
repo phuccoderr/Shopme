@@ -21,6 +21,8 @@ public class CartItem extends IdBasedEntity {
     @JoinColumn(name = "product_id")
     private Product product;
     private int quantity;
+    @Transient
+    private float shippingCost;
 
     @Transient
     public float getSubTotal() {

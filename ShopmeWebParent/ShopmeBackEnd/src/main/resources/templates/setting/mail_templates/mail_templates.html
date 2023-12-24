@@ -23,7 +23,7 @@
 
         </div>
         <div class="text-center">
-            <input sec:authorize="hasRole('Admin')" type="submit" value="Save" class="btn btn-primary m-3" />
+            <input sec:authorize="hasAuthority('Admin')" type="submit" value="Save" class="btn btn-primary m-3" />
             <a th:href="@{/}"  class="btn btn-secondary" id="buttonCancel">Cancel</a>
         </div>
     </div>

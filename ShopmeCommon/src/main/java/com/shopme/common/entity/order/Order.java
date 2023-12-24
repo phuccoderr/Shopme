@@ -27,6 +27,7 @@ public class Order extends AbstractAddress {
     private float ShippingCost;
     private float subtotal;
     private float total;
+    private float productCost;
 
     private int deliverDays;
 
@@ -48,6 +49,15 @@ public class Order extends AbstractAddress {
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     @OrderBy("updatedTime ASC")
     private List<OrderTrack> orderTrack = new ArrayList<>();
+
+    public Order(Integer id,Date orderTime,float productCost, float subtotal, float total) {
+
+        this.id = id;
+        this.orderTime = orderTime;
+        this.productCost = productCost;
+        this.subtotal = subtotal;
+        this.total = total;
+    }
 
     public void copyAddressFromCustomer() {
         setFirstName(customer.getFirstName());

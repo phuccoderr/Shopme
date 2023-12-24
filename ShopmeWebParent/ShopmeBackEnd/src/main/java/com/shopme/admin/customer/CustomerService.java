@@ -45,7 +45,11 @@ public class CustomerService {
 
     }
 
-    public void delete(Integer id) {
+    public void delete(Integer id) throws CustomerNotFoundException {
+        Long findById = repo.countById(id);
+        if (findById == 0 || findById == null) {
+            throw new CustomerNotFoundException("Cloud not find any customer  with ID:" + id);
+        }
         repo.deleteById(id);
     }
 }

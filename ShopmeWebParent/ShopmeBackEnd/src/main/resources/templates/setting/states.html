@@ -36,9 +36,9 @@
         </div>
 
         <div class="col-lg-4 mt-2">
-            <input sec:authorize="hasRole('Admin')" type="button" id="buttonAddState" value="Add" class="btn btn-secondary mr-2" />
-            <input sec:authorize="hasRole('Admin')" type="button" id="buttonUpdateState" value="Update" class="btn btn-secondary mr-2" disabled="disabled" />
-            <input sec:authorize="hasRole('Admin')" type="button" id="buttonDeleteState" value="Delete" class="btn btn-secondary" disabled="disabled" />
+            <input sec:authorize="hasAuthority('Admin')" type="button" id="buttonAddState" value="Add" class="btn btn-secondary mr-2" />
+            <input sec:authorize="hasAuthority('Admin')" type="button" id="buttonUpdateState" value="Update" class="btn btn-secondary mr-2" disabled="disabled" />
+            <input sec:authorize="hasAuthority('Admin')" type="button" id="buttonDeleteState" value="Delete" class="btn btn-secondary" disabled="disabled" />
         </div>
     </div>
 </body>

@@ -84,7 +84,7 @@
         </div>
         <div class="text-end mt-2">
 
-            <button sec:authorize="hasRole('Admin')" type="submit" class="btn btn-primary">Save</button>
+            <button sec:authorize="hasAuthority('Admin')" type="submit" class="btn btn-primary">Save</button>
             <a th:href="@{/}"  class="btn btn-secondary" id="buttonCancel">Cancel</a>
         </div>
     </form>

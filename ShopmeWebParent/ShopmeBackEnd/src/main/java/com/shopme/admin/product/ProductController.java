@@ -87,15 +87,22 @@ public class ProductController {
     }
 
     @GetMapping("/products/detail/{id}")
-    public String editProduct(Model model, @PathVariable(name = "id") Integer id) {
-        Product product = service.get(id);
-        List<Brand> listBrands = brandService.listBrand();
-        model.addAttribute("listBrands",listBrands);
-        model.addAttribute("product",product);
+    public String editProduct(Model model, @PathVariable(name = "id") Integer id,RedirectAttributes ra) {
+        Product product = null;
+        try {
+            product = service.get(id);
+            List<Brand> listBrands = brandService.listBrand();
+            model.addAttribute("listBrands",listBrands);
+            model.addAttribute("product",product);
 
-        Integer numberOfExistingExtraImages = product.getProductImages().size();
-        model.addAttribute("numberOfExistingExtraImages", numberOfExistingExtraImages);
-        return "product/product_form_modal";
+            Integer numberOfExistingExtraImages = product.getProductImages().size();
+            model.addAttribute("numberOfExistingExtraImages", numberOfExistingExtraImages);
+            return "product/product_form_modal";
+        } catch (ProductNotFoundException e) {
+            ra.addFlashAttribute("message",e.getMessage());
+            return "product/product";
+        }
+
     }
 
     @PostMapping("/products/save")
@@ -238,9 +245,15 @@ public class ProductController {
     @GetMapping("/products/delete/{id}")
     public String deleteProduct(@PathVariable(name = "id")Integer id,
                                 RedirectAttributes ra) {
-        service.delete(id);
-        String message = "The product ID " + id + " has been delete";
-        ra.addFlashAttribute("message", message);
-        return "redirect:/products";
+        try {
+            service.delete(id);
+            String message = "The product ID " + id + " has been delete";
+            ra.addFlashAttribute("message", message);
+            return "redirect:/products";
+        } catch (ProductNotFoundException e) {
+            ra.addFlashAttribute("message", e.getMessage());
+            return "redirect:/products";
+        }
+
     }
 }

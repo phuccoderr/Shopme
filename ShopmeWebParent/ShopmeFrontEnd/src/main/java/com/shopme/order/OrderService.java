@@ -29,11 +29,12 @@ public class OrderService {
         newOrder.setPaymentMethod(paymentMethod);
         newOrder.setOrderTime(new Date());
         newOrder.setSubtotal(checkOutInfo.getProductTotal());
-        newOrder.setShippingCost(20000);
+        newOrder.setShippingCost(checkOutInfo.getShippingCostTotal());
         newOrder.setTotal(checkOutInfo.getPaymentTotal());
         newOrder.setDeliverDays(checkOutInfo.getDeliverDays());
         newOrder.setDeliverDate(checkOutInfo.getDeliverDate());
         newOrder.setStatus(OrderStatus.NEW);
+        newOrder.setProductCost(checkOutInfo.getProductCost());
 
         if (address == null) {
             newOrder.copyAddressFromCustomer();
@@ -48,10 +49,11 @@ public class OrderService {
             OrderDetail orderDetail = new OrderDetail();
             orderDetail.setOrder(newOrder);
             orderDetail.setProduct(product);
-            orderDetail.setSubtotal(product.getPrice());
-            orderDetail.setShippingCost(20000);
+            orderDetail.setSubtotal(product.getPrice() * item.getQuantity());
+            orderDetail.setShippingCost(item.getShippingCost());
             orderDetail.setQuantity(item.getQuantity());
             orderDetail.setUnitPrice(0);
+            orderDetail.setProductCost(product.getCost() * item.getQuantity());
 
             orderDetails.add(orderDetail);
         }

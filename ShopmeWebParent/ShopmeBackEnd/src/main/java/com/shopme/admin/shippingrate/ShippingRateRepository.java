@@ -21,4 +21,6 @@ public interface ShippingRateRepository extends CrudRepository<ShippingRate,Inte
     @Query("UPDATE ShippingRate s SET s.codSupported = ?2 WHERE s.id = ?1")
     @Modifying
     public void enabled(Integer id, boolean status);
+
+    public Long countById(Integer id);
 }

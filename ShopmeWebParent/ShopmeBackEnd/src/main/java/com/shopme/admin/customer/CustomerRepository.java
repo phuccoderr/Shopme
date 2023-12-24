@@ -13,4 +13,5 @@ public interface CustomerRepository extends CrudRepository<Customer,Integer>, Pa
     @Query("SELECT c FROM Customer c WHERE c.firstName like %?1% or c.lastName like %?1%")
     public Page<Customer> findAll(String keyword, Pageable pageable);
 
+    public Long countById(Integer id);
 }

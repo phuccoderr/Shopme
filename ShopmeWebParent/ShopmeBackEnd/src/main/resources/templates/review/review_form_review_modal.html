@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<body>
+<div th:fragment="content" th:remove="tag">
+
+
+    <div class="mb-3 mt-3">
+        <label class="form-label">Review ID:</label>
+        <input type="text" class="form-control" th:value="${review.id}" readonly>
+    </div>
+    <div class="mb-3 mt-3">
+        <label class="form-label">Product:</label>
+        <input type="text" class="form-control" th:value="${review.product.name}" readonly>
+    </div>
+    <div class="mb-3 mt-3">
+        <label class="form-label">Customer:</label>
+        <input type="text" class="form-control" th:value="${review.customer.fullName}" readonly>
+    </div>
+    <div class="mb-3 mt-3">
+        <label class="form-label">Headline:</label>
+        <input type="text" class="form-control" th:value="${review.headline}" readonly>
+    </div>
+    <div class="mb-3 mt-3">
+        <label class="form-label">Rating:</label>
+        <input type="text" class="form-control" th:value="${review.rating}" readonly>
+    </div>
+    <div class="mb-3 mt-3">
+        <label class="form-label">Comment:</label>
+        <textarea class="form-control" th:utext="${review.comment}" rows="3" readonly></textarea>
+    </div>
+    <div class="mb-3 mt-3">
+        <label class="form-label">Votes:</label>
+        <input type="text" class="form-control" th:value="${review.votes}" readonly>
+    </div>
+    <div class="mb-3 mt-3">
+        <label class="form-label">Create Time:</label>
+        <span th:text="${#dates.format(review.reviewTime,'yyyy-MM-dd HH:mm:ss')}"></span>
+    </div>
+</div>
+</body>
+</html>

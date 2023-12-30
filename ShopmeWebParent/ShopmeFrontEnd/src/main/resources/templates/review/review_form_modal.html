@@ -1,0 +1,51 @@
+<div class="modal-header">
+    <h5 class="modal-title" >View Review</h5>
+    <button type="button" class="close" data-bs-dismiss="modal"  aria-label="Close">
+        &times;
+    </button>
+</div>
+<div class="modal-body">
+    <form action="#" th:object="${review}" >
+
+        <div class="mb-3 mt-3">
+            <label class="form-label">Review ID:</label>
+            <input type="text" class="form-control" th:value="${review.id}" readonly>
+        </div>
+        <div class="mb-3 mt-3">
+            <label class="form-label">Product:</label>
+            <input type="text" class="form-control" th:value="${review.product.name}" readonly>
+        </div>
+        <div class="mb-3 mt-3">
+            <label class="form-label">Customer:</label>
+            <input type="text" class="form-control" th:value="${review.customer.fullName}" readonly>
+        </div>
+        <div class="mb-3 mt-3">
+            <label class="form-label">Headline:</label>
+            <input type="text" class="form-control" th:value="${review.headline}" readonly>
+        </div>
+        <div class="mb-3 mt-3">
+            <label class="form-label">Rating:</label>
+            <input type="text" class="form-control" th:value="${review.rating}" readonly>
+        </div>
+        <div class="mb-3 mt-3">
+            <label class="form-label">Comment:</label>
+            <textarea class="form-control" th:utext="${review.comment}" rows="3" readonly></textarea>
+        </div>
+        <div class="mb-3 mt-3">
+            <label class="form-label">Votes:</label>
+            <input type="text" class="form-control" th:value="${review.votes}" readonly>
+        </div>
+        <div class="mb-3 mt-3">
+            <label class="form-label">Create Time:</label>
+            <span th:text="${#dates.format(review.reviewTime,'yyyy-MM-dd HH:mm:ss')}"></span>
+        </div>
+        <div>
+            <button type="button" class="btn btn-danger float-right" data-bs-dismiss="modal">Close</button>
+        </div>
+
+    </form>
+</div>
+
+<script type="text/javascript">
+
+</script>

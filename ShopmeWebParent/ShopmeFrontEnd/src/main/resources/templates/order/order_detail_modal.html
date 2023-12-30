@@ -1,30 +1,70 @@
 <div class="modal-header">
-    <h5 class="modal-title" >Thông tin vận chuyển</h5>
+    <h5 class="modal-title" >Hóa đơn chi tiết</h5>
     <button type="button" class="close" data-bs-dismiss="modal"  aria-label="Close">
         &times;
     </button>
 </div>
 <div class="modal-body">
-    <div class="row text-center">
-        <div th:replace="~{order/order_status_fragment :: content(${order.processing},'fa-spinner','Processing')}"></div>
-        <div th:replace="~{order/order_status_fragment :: content(${order.picked},'fa-people-carry','Picked')}"></div>
-        <div th:replace="~{order/order_status_fragment :: content(${order.shipping},'fa-shipping-fast','Shipping')}"></div>
-        <div th:replace="~{order/order_status_fragment :: content(${order.delivered},'fa-box-open','Delivered')}"></div>
+    <div>
+        <ul class="nav justify-content-center" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link btn btn-info m-2" data-bs-toggle="tab" href="#track" >Thông tin vận chuyển</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link btn btn-info m-2" data-bs-toggle="tab" href="#product"  >Sản phẩm</a>
+            </li>
+        </ul>
     </div>
-    <table class="table table-striped table-bordered table-hover table-responsive-lg">
-        <thead>
+    <div id="track" class="collapse">
+        <div class="row text-center">
+            <div th:replace="~{order/order_status_fragment :: content(${order.processing},'fa-spinner','Processing')}"></div>
+            <div th:replace="~{order/order_status_fragment :: content(${order.picked},'fa-people-carry','Picked')}"></div>
+            <div th:replace="~{order/order_status_fragment :: content(${order.shipping},'fa-shipping-fast','Shipping')}"></div>
+            <div th:replace="~{order/order_status_fragment :: content(${order.delivered},'fa-box-open','Delivered')}"></div>
+        </div>
+        <table class="table table-striped table-bordered table-hover table-responsive-lg">
+            <thead>
             <tr>
                 <th>Thời gian</th>
                 <th>Trạng thái</th>
                 <th>Nhật kí</th>
             </tr>
-        </thead>
-        <tbody>
+            </thead>
+            <tbody>
             <tr th:each="track : ${order.getOrderTrack()}">
                 <td>[[${track.updatedTime}]]</td>
                 <td>[[${track.orderStatus}]]</td>
                 <td>[[${track.notes}]]</td>
             </tr>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
+    <div id="product" class="collapse">
+        <div>
+            <th:block th:each="detail,status : ${order.orderDetails}">
+                <div class="row border rounded p-1" th:with="product = ${detail.product}">
+                    <div class="col-sm-1">
+                        <div>[[${status.count}]]</div>
+                    </div>
+                    <div class="col-sm-3"><img th:src="@{${product.mainImagePath}}" class="img-fluid"/></div>
+                    <div class="col-sm-8">
+                        <div class="text-wrap">
+                            <b>[[${product.name}]]</b>
+                        </div>
+                        <div>
+                            số lượng: [[${detail.quantity}]] x <div th:replace="~{fragments :: format_currency(${product.price})}"></div>
+                            = <div th:replace="~{fragments :: format_currency(${product.price} * ${detail.quantity})}"></div>
+                        </div>
+                        <div th:if="${!product.reviewedByCustomer && product.customerCanReview}">
+                            <a th:href="@{'/write_review/product/' + ${product.id}}" class="btn btn-info">Write Review</a>
+                        </div>
+                        <div th:if="${product.reviewedByCustomer}">
+                            <a th:href="@{'/reviews/page/1?sortField=reviewTime&sortDir=desc&keyword=' + ${product.name} }" class="btn btn-warning">See your Review</a>
+                        </div>
+                    </div>
+                </div>
+            </th:block>
+        </div>
+    </div>
+
 </div>

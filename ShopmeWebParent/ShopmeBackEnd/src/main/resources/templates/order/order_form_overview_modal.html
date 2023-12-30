@@ -14,6 +14,10 @@
         <input type="text" class="form-control" th:value="${order.shippingCost}" name="shippingCost"  required/>
     </div>
     <div class="mb-3 mt-3 row">
+        <label class="form-label">Product Cost:</label>
+        <input type="text" class="form-control" th:value="${order.productCost}" name="productCost"  required/>
+    </div>
+    <div class="mb-3 mt-3 row">
         <label class="form-label">Sub Total:</label>
         <input type="text" class="form-control" th:value="${order.subtotal}" name="subTotal"  required/>
     </div>

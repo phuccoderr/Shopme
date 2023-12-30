@@ -54,7 +54,7 @@
                                             </td>
                                             <td>
                                                 <a th:replace="~{fragments :: edit('/categories/detail/',${category.id})}"></a>
-                                                <a th:replace="~{fragments :: delete('/categories/delete/',${category.id},${category.parent})}"></a>
+                                                <div th:replace="~{fragments :: delete('/categories/delete/',${category.id},${!category.hasChildren})}"></div>
                                             </td>
                                         </tr>
                                     </th:block>

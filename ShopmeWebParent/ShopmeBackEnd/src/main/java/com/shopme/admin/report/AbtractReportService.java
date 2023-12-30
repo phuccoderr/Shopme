@@ -29,8 +29,8 @@ public abstract class AbtractReportService {
 
         Date startTime = calendar.getTime();
 
-        System.out.println("Start time: " + startTime);
-        System.out.println("End time: " + endTime);
+//        System.out.println("Start time: " + startTime);
+//        System.out.println("End time: " + endTime);
 
         dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         return getReportDataByDateRangeInternal(startTime,endTime,reportType);

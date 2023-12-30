@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{ fragments :: page_head('Product','none')}"></head>
+<head>
+    <head th:replace="~{ fragments :: page_head('Product','tag')}"></head>
+    <link th:href="@{/rating-stars/css/star-rating.css}" media="all" rel="stylesheet" type="text/css" />
+    <script th:src="@{/rating-stars/js/star-rating.js}" type="text/javascript"></script>
+    <link th:href="@{/rating-stars/themes/krajee-svg/theme.css}" media="all" rel="stylesheet" type="text/css" />
+    <script th:src="@{/rating-stars/themes/krajee-svg/theme.js}" type="text/javascript"></script>
+</head>
 <body>
 <div th:replace="~{fragments :: header}"></div>
 <div class="container-fluid">
@@ -13,10 +19,12 @@
             </div>
 
             <div class="col-11">
-                <th:block th:each="brand : ${#lists.sort(category.getBrands())}">
-                    <input type="submit" name="brandName" th:value="${brandName == brand.name ? brandName : brand.name  }" class="btn border btn-hover-blue p-2"
-                        style="margin-right: 10px">
-                </th:block>
+                <select name="selectedBrand" id="brand_select" class="BrandOnChange">
+                    <th:block th:each="brand : ${#lists.sort(category.getBrands())}" >
+                        <option th:selected="${selectedBrand == brand.name}" th:value="${brand.name}" th:text="${brand.name}"></option>
+                    </th:block>
+                </select>
+
 
 
             </div>
@@ -26,7 +34,6 @@
 
         </hr>
         <div class="m-2">
-
                 <div class="input-group">
                     <div class="form-outline w-25">
                         <input type="search" name="keyword" th:value="${keyword}" class="form-control" placeholder="tìm thông tin sản phẩm..." />
@@ -47,7 +54,7 @@
         </div>
         <div class="col-6 text-end  focus-ring-secondary">
             <button type="button" id="clearFilter" class="btn btn-outline-info">Làm mới</button>
-            <select class="w-50 d-inline-block form-select" name="sortField" id="dropdownCategory">
+            <select class="w-50 d-inline-block form-select" name="sortField" id="dropdownCategoryField">
                 <option class="text-start" value="">Mac Dinh</option>
                 <option class="text-start" th:selected="${sortField == 'highPrice'}" value="highPrice">Gia Cao Nhat</option>
                 <option class="text-start" th:selected="${sortField == 'lowPrice'}" value="lowPrice">Gia Thap Nhat</option>
@@ -68,6 +75,8 @@
                         <div class="card-body">
                             <h5 class="card-title text-uppercase icon-gray">[[${product.brand.name}]]</h5>
                             <p class="text-dark">[[${product.name}]]</p>
+                            <input type="text" class="product-detail-rating-star" dir="ltr" data-th-size="md"
+                                   th:value="${product.averageRating}"/>
                             <p class="text-info h5">
                                 <div th:replace="~{products/product_fragments :: price_fragment(${product.price},'tag')}"></div>
                             </p>
@@ -80,18 +89,22 @@
     </div>
 </div>
 <div class="row">
-    <div th:replace="~{fragments :: pagination('/c/' + ${category.alias})}"></div>
+    <div th:replace="~{fragments :: pagination('/c/' + ${category.alias},'product')}"></div>
 </div>
 <div th:replace="~{fragments :: footer}"></div>
 <script th:src="@{/js/common.js}"></script>
 <script type="text/javascript">
     contextPath = "[[@{/}]]";
-    $("#dropdownCategory").on("change",function() {
+    $("#dropdownCategoryField").on("change",function() {
         $("#searchForm").submit();
     });
+    $(".BrandOnChange").on("change",function () {
+        $("#searchForm").submit();
+    })
     $("#clearFilter").on("click",function (e) {
         window.location = window.location.origin + window.location.pathname
     })
 </script>
+<script th:src="@{/js/rating-star.js}"></script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 package com.shopme.admin.product;
 
 import com.shopme.common.entity.product.Product;
+import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
@@ -31,4 +32,9 @@ public interface ProductRepository extends CrudRepository<Product,Integer>, Pagi
     public Page<Product> searchInCategory(Integer id,String categoryIdMatch,String keyword,Pageable pageable) ;
 
     public Long countById(Integer id);
+    @Query("UPDATE Product p SET p.averageRating = COALESCE(CAST((SELECT AVG(r.rating) FROM Review r WHERE r.product.id = ?1) AS Float), 0)," +
+            " p.reviewCount = (SELECT COUNT(r.id) FROM Review r WHERE r.product.id = ?1)" +
+            " WHERE p.id = ?1")
+    @Modifying
+    public void updateReviewCountAndAverageRating(Integer productId);
 }

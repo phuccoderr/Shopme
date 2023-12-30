@@ -37,13 +37,17 @@
         </div>
     </div>
     <div class="mb-3 mt-3">
+        <label class="form-label mr-2">Enabled:</label>
+        <input type="checkbox" th:field="*{enabled}" >
+    </div>
+    <div class="mb-3 mt-3">
         <label class="form-label">Price:</label>
         <label class="form-label" th:text="${#numbers.formatDecimal(product.price,3, 'POINT',3, 'COMMA')}"></label>
         <input type="number" class="form-control" th:value="${#numbers.formatDecimal(product.price,3, 'POINT',3, 'COMMA')}" th:field="*{price}"
                required>
     </div>
     <div class="mb-3 mt-3">
-        <label class="form-label">Price:</label>
+        <label class="form-label">Cost:</label>
         <label class="form-label" th:text="${#numbers.formatDecimal(product.cost,3, 'POINT',3, 'COMMA')}"></label>
         <input type="number" class="form-control" th:value="${#numbers.formatDecimal(product.cost,3, 'POINT',3, 'COMMA')}" th:field="*{cost}"
                required>

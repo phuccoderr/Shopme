@@ -27,3 +27,8 @@ function logoutAccount() {
     })
 
 }
+
+function clearFilter() {
+    window.location = moduleURL;
+}
+

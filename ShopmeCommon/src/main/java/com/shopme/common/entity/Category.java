@@ -3,6 +3,8 @@ package com.shopme.common.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.shopme.common.IdBasedEntity;
+import com.shopme.common.entity.product.Product;
+import com.shopme.common.entity.product.ProductDetail;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -31,6 +33,9 @@ public class Category extends IdBasedEntity implements Comparable<Category>{
     @JsonBackReference
     private Category parent;
 
+    @OneToMany(mappedBy = "category",cascade = CascadeType.ALL)
+    private Set<Product> products = new HashSet<>();
+
     @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL)
     @JsonManagedReference
     private Set<Category> children = new HashSet<>();
@@ -54,6 +59,7 @@ public class Category extends IdBasedEntity implements Comparable<Category>{
         copyCategory.setImg(category.getImg());
         copyCategory.setAlias(category.getAlias());
         copyCategory.setEnabled(category.isEnabled());
+        copyCategory.setHasChildren(category.getChildren().size() > 0);
         return  copyCategory;
 
     }

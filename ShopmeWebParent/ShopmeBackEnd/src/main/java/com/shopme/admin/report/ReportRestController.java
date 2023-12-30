@@ -19,7 +19,6 @@ public class ReportRestController {
 
     @GetMapping("/report/sales_by_date/{period}")
     public List<ReportItem> getReportDataByDatePeriod(@PathVariable("period")String period) {
-        System.out.println("Report period: " + period);
         switch (period) {
             case "last_7_days":
                 return masterOrderReportService.getReportDataLast7Days(ReportType.DAY);
@@ -50,7 +49,6 @@ public class ReportRestController {
     public List<ReportItem> getReportDataByCategoryOrProduct(@PathVariable("groupBy") String groupBy,
                                                              @PathVariable("period")String period) {
         ReportType reportType = ReportType.valueOf(groupBy.toUpperCase());
-        System.out.println(ReportType.valueOf(groupBy.toUpperCase()));
         switch (period) {
             case "last_7_days":
                 return orderDetailReportService.getReportDataLast7Days(reportType);

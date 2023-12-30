@@ -32,20 +32,24 @@ public class FileUploadUtil {
 
     public static void cleanDir(String dir) {
         Path dirPath = Paths.get(dir);
-        try {
-            //duyệt từng file và thư mục trong đường dẫn
-            Files.list(dirPath).forEach(file -> {
-                //nếu file không phải là thư mục thì xóa hết
-                if(!Files.isDirectory(file)) {
-                    try {
-                        Files.delete(file);
-                    } catch (IOException ex) {
-                        System.out.println("Could not delete file: " + file);
+        if (Files.exists(dirPath)) {
+
+            try {
+                //duyệt từng file và thư mục trong đường dẫn
+                Files.list(dirPath).forEach(file -> {
+                    //nếu file không phải là thư mục thì xóa hết
+                    if(!Files.isDirectory(file)) {
+                        try {
+                            Files.delete(file);
+                        } catch (IOException ex) {
+                            System.out.println("Could not delete file: " + file);
+                        }
                     }
-                }
-            });
-        } catch (IOException ex) {
-            System.out.println("Could not list directory: " + dirPath );
+                });
+            } catch (IOException ex) {
+                System.out.println("Could not list directory: " + dirPath );
+                ex.printStackTrace();
+            }
         }
     }
     public static void removeDir(String dir) {

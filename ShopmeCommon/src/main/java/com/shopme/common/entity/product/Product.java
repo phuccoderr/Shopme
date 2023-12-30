@@ -3,7 +3,9 @@ package com.shopme.common.entity.product;
 import com.shopme.common.IdBasedEntity;
 import com.shopme.common.entity.Brand;
 import com.shopme.common.entity.Category;
+import com.shopme.common.entity.Review;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -36,6 +38,8 @@ public class Product extends IdBasedEntity {
     private float cost;
     private float price;
     private float sale;
+    private float averageRating;
+    private int reviewCount;
 
     @Column(name = "main_image",nullable = false)
     private String mainImage;
@@ -53,6 +57,12 @@ public class Product extends IdBasedEntity {
 
     @OneToMany(mappedBy = "product",cascade = CascadeType.ALL,orphanRemoval = true)
     private Set<ProductImage> productImages = new HashSet<>();
+
+    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL)
+    private Set<Review> reviews = new HashSet<>();
+
+    @Transient private boolean customerCanReview;
+    @Transient private boolean reviewedByCustomer;
 
     public Product(Integer id) {
         this.id = id;

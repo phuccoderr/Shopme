@@ -23,13 +23,13 @@ public class MasterOrderReportService extends AbtractReportService {
 
     protected List<ReportItem> getReportDataByDateRangeInternal(Date startTime, Date endTime, ReportType reportType) {
         List<Order> listOrders = repo.findByOrderTimeBetWeen(startTime,endTime);
-        printRawData(listOrders);
+//        printRawData(listOrders);
 
         List<ReportItem> listReportItems = createReportData(startTime,endTime,reportType);
 
 
         calculateSalesForReportData(listOrders,listReportItems);
-        printReportData(listReportItems);
+//        printReportData(listReportItems);
         return listReportItems;
     }
 
@@ -76,8 +76,6 @@ public class MasterOrderReportService extends AbtractReportService {
                 reportItem.addGrossSales(order.getTotal());
 
                 reportItem.addNetSales(order.getSubtotal() - order.getProductCost());
-                System.out.println("tong tien: " + order.getSubtotal() + " - " + order.getProductCost() );
-                System.out.println("chi phi: " + (order.getSubtotal() - order.getProductCost()));
                 reportItem.increaseOrderCount();
 
             }

@@ -1,10 +1,15 @@
 package com.shopme.product;
 
+import com.shopme.ControllerHelper;
+import com.shopme.Utility;
 import com.shopme.brand.BrandService;
 import com.shopme.category.CategoryService;
-import com.shopme.common.entity.Brand;
-import com.shopme.common.entity.Category;
+import com.shopme.common.entity.*;
 import com.shopme.common.entity.product.Product;
+import com.shopme.customer.CustomerService;
+import com.shopme.review.ReviewService;
+import com.shopme.review.vote.ReviewVoteService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.repository.query.Param;
@@ -22,6 +27,9 @@ public class ProductController {
     @Autowired private ProductService service;
     @Autowired private CategoryService cateService;
     @Autowired private BrandService brandService;
+    @Autowired private ReviewService reviewService;
+    @Autowired private ReviewVoteService voteService;
+    @Autowired private ControllerHelper controllerHelper;
 
     @GetMapping("/c/{alias}")
     public String viewCategoryFirstPage(@PathVariable(name = "alias") String alias,Model model) {
@@ -32,13 +40,13 @@ public class ProductController {
     public String listProduct(@PathVariable(name = "alias") String alias,
                               @PathVariable(name = "pageNum")Integer pageNum,
                               @Param("keyword") String keyword,
-                              @Param("brandName") String brandName,
+                              @Param("selectedBrand") String selectedBrand,
                               @Param("sortField") String sortField,
                               Model model) {
 
 
         Category category = cateService.getCategory(alias);
-        Brand brand = brandService.getByName(brandName);
+        Brand brand = brandService.getByName(selectedBrand);
         Page<Product> pageProducts = service.listByCategory(pageNum,category.getId(),brand,sortField,keyword);
         List<Product> listProducts = pageProducts.getContent();
         List<Category> listCategoryParents = cateService.getCategoryParents(category);
@@ -59,7 +67,7 @@ public class ProductController {
         model.addAttribute("listProducts",listProducts);
         model.addAttribute("category",category);
 
-        model.addAttribute("brandName",brandName);
+        model.addAttribute("selectedBrand",selectedBrand);
         model.addAttribute("keyword",keyword);
         model.addAttribute("sortField",sortField);
 
@@ -68,13 +76,33 @@ public class ProductController {
     }
 
     @GetMapping("/p/{product_alias}")
-    public String viewProductDetail(@PathVariable(name = "product_alias")String alias,Model model) {
-        Product product = service.getProduct(alias);
-        List<Category> listCategoryParents = cateService.getCategoryParents(product.getCategory());
+    public String viewProductDetail(@PathVariable(name = "product_alias")String alias,Model model,
+                                    HttpServletRequest request) {
+        Product product = null;
+        try {
+            product = service.getProduct(alias);
+            List<Category> listCategoryParents = cateService.getCategoryParents(product.getCategory());
+            Page<Review> listReviews = reviewService.listByProduct(product, 1, "votes", "desc");
+            Customer customer = controllerHelper.getAuthenticationCustomer(request);
+            if (customer != null) {
+                boolean customerReviewd = reviewService.didCustomerReviewProduct(customer, product.getId());
+                voteService.markReviewsVotedForProductByCustomer(listReviews.getContent(), product.getId(), customer.getId());
+                if(customerReviewd) {
+                    model.addAttribute("customerReviewed",customerReviewd);
+                } else {
+                    boolean customerCanReview = reviewService.canCustomerReviewProduct(customer, product.getId());
+                    model.addAttribute("customerCanReview",customerCanReview);
+                }
+            }
 
-        model.addAttribute("listCategoryParents",listCategoryParents);
-        model.addAttribute("product",product);
-        return "products/product_detail";
+            model.addAttribute("listCategoryParents",listCategoryParents);
+            model.addAttribute("listReviews",listReviews.getContent());
+            model.addAttribute("product",product);
+            return "products/product_detail";
+        } catch (ProductNotFoundException e) {
+            return "error/404";
+        }
+
     }
 
 

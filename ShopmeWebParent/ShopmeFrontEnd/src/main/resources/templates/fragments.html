@@ -63,6 +63,7 @@
                                         <li><a class="dropdown-item" th:href="@{/account_detail}">Tài Khoản</a></li>
                                         <li><a class="dropdown-item" th:href="@{/address}">Địa Chỉ</a></li>
                                         <li><a class="dropdown-item" th:href="@{/orders}">Đơn Hàng</a></li>
+                                        <li><a class="dropdown-item" th:href="@{/reviews}">Lịch sử mua hàng</a></li>
                                         <li><hr class="dropdown-divider"></li>
                                         <li>
                                             <a class="dropdown-item" id="logoutLink" href="#">
@@ -262,11 +263,11 @@
         + ${keyword != null ? '&keyword=' + keyword :''}
         + ${sortField != null ? '&sortField=' + sortField : ''}}">[[${label}]]</a>
 
-<div th:fragment="pagination(url)" th:remove="tag">
+<div th:fragment="pagination(url,EntityName)" th:remove="tag">
     <div>
         <ul class="pagination justify-content-center">
             <div class="text-center m-1" th:unless="${totalItems > 0}">
-                <span>No Products found</span>
+                <span>No [[${EntityName}]] found</span>
             </div>
             <div th:if="${totalItems > 0}" th:remove="tag">
                 <li class="page-item">
@@ -317,5 +318,14 @@
 <div th:fragment="format_time(datetime)">
     <span th:text="${#dates.format(datetime,'yyyy-MM-dd HH:mm:ss')}"></span>
 </div>
+<th th:fragment="column_link(moduleURL,fieldName, columnLabel,removeTag)" th:remove="${removeTag}">
+    <a
+            th:href="@{${moduleURL} + '/page/' + ${currentPage} + '?sortField=' + ${fieldName} + '&sortDir=' + ${sortField != fieldName ? sortDir : reverseSortDir}
+			+ ${keyword != null ? '&keyword=' + keyword : ''}}">
+        [[${columnLabel}]]
+    </a>
+    <span th:if="${sortField == fieldName}"
+          th:class="${sortDir == 'asc' ? 'fa-solid fa-sort-up' : 'fa-solid fa-sort-down'} "></span>
+</th>
 </body>
 </html>

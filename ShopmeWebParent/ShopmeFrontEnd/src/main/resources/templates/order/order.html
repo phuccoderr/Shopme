@@ -3,6 +3,9 @@
 <head th:replace="~{ fragments :: page_head('','none')}"></head>
 <body>
 <div th:replace="~{fragments :: header}"></div>
+<div class="text-center">
+    <div><h1>Đơn hàng của bạn</h1></div>
+</div>
 <div class="container-sm">
     <div class="card-body">
         <table class="table table-bordered table-responsive-xl" id="dataTable" >
@@ -54,7 +57,7 @@
             </tbody>
         </table>
         <div class="row">
-            <div th:replace="~{fragments :: pagination('/orders')}"></div>
+            <div th:replace="~{fragments :: pagination('/orders','orders')}"></div>
         </div>
     </div>
 

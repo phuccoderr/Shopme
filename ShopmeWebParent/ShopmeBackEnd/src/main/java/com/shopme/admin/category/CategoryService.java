@@ -28,7 +28,7 @@ public class CategoryService {
 
 
         Page<Category> pageCategories = null;
-        if (keyword != null) {
+        if (keyword != null && !keyword.isEmpty()) {
             pageCategories = repo.search(keyword,pageable);
         } else {
             pageCategories = repo.findRootCategories(pageable);
@@ -38,12 +38,11 @@ public class CategoryService {
         //Category muc 0 hoac category da tim duoc
         List<Category> rootCategories = pageCategories.getContent();
 
-        if (keyword != null) {
-            List<Category> searchResult = pageCategories.getContent();
-            for (Category category : searchResult) {
+        if (keyword != null && !keyword.isEmpty()) {
+            for (Category category : rootCategories) {
                 category.setHasChildren(category.getChildren().size() > 0);
             }
-            return searchResult;
+            return rootCategories;
         } else {
             return listHierarchicalCategories(rootCategories);
         }
@@ -55,7 +54,7 @@ public class CategoryService {
         List<Category> hierarchicalCategories = new ArrayList<>();
 
         for(Category rootCategory : rootCategories) {
-            hierarchicalCategories.add(rootCategory);
+            hierarchicalCategories.add(Category.copyFull(rootCategory));
             Set<Category> children = rootCategory.getChildren();
 
             // Sort the children set based on Category name

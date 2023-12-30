@@ -95,6 +95,7 @@ public class OrderController {
     @PostMapping("/orders/save")
     public String saveOrder(Model model,Order order,HttpServletRequest request,RedirectAttributes ra) {
         float shippingCost = Float.parseFloat(request.getParameter("shippingCost"));
+        float productCost = Float.parseFloat(request.getParameter("productCost"));
         float subTotal = Float.parseFloat(request.getParameter("subTotal"));
         float total = Float.parseFloat(request.getParameter("total"));
         String countryName = request.getParameter("countryName");
@@ -103,6 +104,7 @@ public class OrderController {
         order.setSubtotal(subTotal);
         order.setTotal(total);
         order.setCountry(countryName);
+        order.setProductCost(productCost);
 
 
         updateProductDetail(order,request);
@@ -118,6 +120,7 @@ public class OrderController {
 
         String[] detailIds = request.getParameterValues("detailId");
         String[] productIds = request.getParameterValues("productId");
+        String[] productCosts = request.getParameterValues("productCost");
         String[] quantitys = request.getParameterValues("quantity");
         String[] productPrices = request.getParameterValues("productPrice");
         String[] productSubtotals = request.getParameterValues("productSubtotal");
@@ -138,6 +141,7 @@ public class OrderController {
             orderDetail.setSubtotal(Float.parseFloat(productSubtotals[i]));
             orderDetail.setShippingCost(Float.parseFloat(productShipCosts[i]));
             orderDetail.setUnitPrice(Float.parseFloat(productPrices[i]));
+            orderDetail.setProductCost(Float.parseFloat(productCosts[i]));
 
             orderDetails.add(orderDetail);
         }

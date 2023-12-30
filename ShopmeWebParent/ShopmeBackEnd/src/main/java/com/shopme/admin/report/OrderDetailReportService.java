@@ -23,7 +23,7 @@ public class OrderDetailReportService extends AbtractReportService {
             listOrderDetails = repo.findWithProductAndTimeBetween(startDate,endState);
         }
 
-        printRawData(listOrderDetails);
+//        printRawData(listOrderDetails);
 
         List<ReportItem> listReportItems = new ArrayList<>();
         for (OrderDetail detail : listOrderDetails) {
@@ -51,7 +51,7 @@ public class OrderDetailReportService extends AbtractReportService {
 
         };
 
-        printReportData(listReportItems);
+//        printReportData(listReportItems);
 
         return listReportItems;
     }

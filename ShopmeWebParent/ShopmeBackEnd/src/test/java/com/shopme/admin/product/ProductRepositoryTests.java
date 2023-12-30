@@ -78,4 +78,9 @@ public class ProductRepositoryTests {
         assertThat(product).isNotNull();
     }
 
+    @Test
+    public void testUpdateReviewCountAndAverageRating() {
+        Integer productId = 2;
+        repo.updateReviewCountAndAverageRating(productId);
+    }
 }

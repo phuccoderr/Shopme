@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Setter
@@ -37,6 +39,9 @@ public class Customer extends AbstractAddress {
 
     @Column(name = "reset_password_token",length = 30)
     private String resetPasswordToken;
+
+    @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
+    private Set<Review> reviews = new HashSet<>();
 
     public Customer(Integer id) {
         this.id = id;

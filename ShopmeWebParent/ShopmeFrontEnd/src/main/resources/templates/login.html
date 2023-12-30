@@ -32,7 +32,7 @@
 				</div>
 
 				<div class="wrap-input100 validate-input" >
-					<input class="input100" type="text" name="email" placeholder="Email">
+					<input class="input100" type="email" name="email" placeholder="Email" minlength="8" max="128" required>
 					<span class="focus-input100"></span>
 					<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
@@ -40,7 +40,7 @@
 				</div>
 
 				<div class="wrap-input100 validate-input">
-					<input class="input100" type="password" name="password" placeholder="Password">
+					<input class="input100" type="password" name="password" placeholder="Password" minlength="8" maxlength="64" required>
 					<span class="focus-input100"></span>
 					<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
@@ -84,7 +84,11 @@
 						<i class="fa-brands fa-facebook icon-gray fa-2x"></i>
 					</a>
 				</div>
-
+				<div class="text-center mt-4">
+					<a class="btn btn-info" th:href="@{/}">
+						Trang Chủ
+					</a>
+				</div>
 				<div class="text-center p-t-136">
 					<a class="txt2" th:href="@{/register}">
 						Trang Đăng Ký

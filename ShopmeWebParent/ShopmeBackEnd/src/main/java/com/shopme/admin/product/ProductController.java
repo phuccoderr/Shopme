@@ -139,21 +139,23 @@ public class ProductController {
         String extraImage = "product-images/" + product.getId() + "/extras";
         Path dirpath = Paths.get(extraImage);
 
-        try {
-            Files.list(dirpath).forEach(file -> {
-                String fileName = file.toFile().getName();
+        if (Files.exists(dirpath)) {
+            try {
+                Files.list(dirpath).forEach(file -> {
+                    String fileName = file.toFile().getName();
 
-                if (!product.containsImageName(fileName)) {
-                    try {
-                        System.out.println("file delete: " + fileName);
-                        Files.delete(file);
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
+                    if (!product.containsImageName(fileName)) {
+                        try {
+                            System.out.println("file delete: " + fileName);
+                            Files.delete(file);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                     }
-                }
-            });
-        } catch (IOException e) {
-            throw new IOException("could not list directory: " + dirpath);
+                });
+            } catch (IOException e) {
+                throw new IOException("could not list directory: " + dirpath);
+            }
         }
     }
 

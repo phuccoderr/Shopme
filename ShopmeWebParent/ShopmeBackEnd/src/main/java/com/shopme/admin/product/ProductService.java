@@ -70,6 +70,9 @@ public class ProductService {
         boolean isProduct = product.getId() == null;
         if (product.getId() == null) {
             product.setCreatedTime(new Date());
+        } else {
+            Product productInDB = repo.findById(product.getId()).get();
+            product.setCreatedTime(productInDB.getCreatedTime());
         }
         if (product.getAlias() == null || product.getAlias().isEmpty()) {
             String replace = product.getName().replace(" ","-");
@@ -90,8 +93,9 @@ public class ProductService {
             }
         }
         product.setUpdatedTime(new Date());
-
-        return repo.save(product);
+        Product saved = repo.save(product);
+        repo.updateReviewCountAndAverageRating(saved.getId());
+        return saved;
     }
 
     public void updateEnabled(Integer id,boolean enabled) {

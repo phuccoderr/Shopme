@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="content"  >
+    <th:block th:each="review : ${listReviews}">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-2">
+                    <img th:src="@{/images/default-user.png}" class="img img-rounded img-fluid"/>
+                    <div th:replace="~{fragments :: format_time(${review.reviewTime})}"></div>
+                </div>
+                <div class="col-md-10">
+                    <p>
+                        <a class="float-start"><strong>[[${review.customer.fullName}]]</strong></a>
+                        <input type="text" class="product-detail-rating-star float-end" dir="ltr" data-th-size="md"
+                               th:value="${review.rating}"/>
+                    </p>
+                    <div class="clearfix"></div>
+                    <b>[[${review.headline}]]</b>
+                    <p>
+                        <a class="linkVoteReview fa-thumbs-up"
+                           th:classappend="${review.upvotedByCurrentCustomer ? 'fa-solid' : 'fa-regular'}"
+                           th:id="'linkVoteUp-' + ${review.id}"
+                           th:reviewId="${review.id}"
+                           th:href="@{'/vote_review/' + ${review.id} + '/up'}">
+                        </a>
+                        <span th:id="'voteCount-' + ${review.id}">[[${review.votes}]] Votes</span>
+
+                        <a class="linkVoteReview fa-regular fa-thumbs-down"
+                           th:classappend="${review.downvotedByCurrentCustomer ? 'fa-solid' : 'fa-regular'}"
+                           th:id="'linkVoteDown-' + ${review.id}"
+                           th:reviewId="${review.id}"
+                           th:href="@{'/vote_review/' + ${review.id} + '/down'}">
+                        </a>
+                    </p>
+                    <p>[[${review.comment}]]</p>
+                    <p>
+                        <a class="float-right btn btn-outline-primary ml-2"> <i class="fa fa-reply"></i> Reply</a>
+                        <a class="float-right btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </th:block>
+</div>
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="row m-1">
+                <h3 id="review">Đánh giá & nhận xét:</h3>
+            </div>
+
+            <div class="d-flex align-items-center">
+                <input type="text" class="product-detail-rating-star" dir="ltr" data-th-size="md"
+                       th:value="${product.averageRating}"/>
+                <span class="text-muted">[[${product.averageRating}]] trên 5</span>
+            </div>
+            <div class="row m-1 m-l-3">
+                <a th:href="@{'/ratings/' + ${product.alias}}">Xem tất cả bài đánh giá [[${product.reviewCount}]]</a>
+            </div>
+            <div th:if="${customerReviewed}" class="row m-1 m-l-3">
+                <span class="text-success">Bạn đã đánh giá sản phẩm này!</span>
+            </div>
+            <div th:if="${customerCanReview}" class="row m-1 m-l-3">
+                <span class="text-info">
+                    Bạn đã mua và nhận được sản phẩm này!
+                    <b>
+                        <a th:href="@{'/write_review/product/' + ${product.id}}">Viết đánh giá sản phẩm!</a>
+                    </b>
+                </span>
+            </div>
+
+            <div class="row"><div class="col"><hr/></div></div>
+            <div th:replace="~{review/review_vote :: content}"></div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

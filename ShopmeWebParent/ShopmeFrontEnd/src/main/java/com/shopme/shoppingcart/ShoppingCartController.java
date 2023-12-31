@@ -35,6 +35,7 @@ public class ShoppingCartController {
             sum += item.getSubTotal();
         }
 
+
         Address address = addressService.getDefaultAddress(customer);
         ShippingRate shippingRate = null;
         boolean usePrimaryAddressAsDefault = false;
@@ -52,8 +53,10 @@ public class ShoppingCartController {
 
         int quantity = cartItems.size();
         float shippingCost = 0;
-        for (CartItem item :  cartItems) {
-            shippingCost += (shippingRate.getRate() * item.getQuantity());
+        if (shippingRate != null) {
+            for (CartItem item :  cartItems) {
+                shippingCost += (shippingRate.getRate() * item.getQuantity());
+            }
         }
         model.addAttribute("quantity", quantity);
         model.addAttribute("shippingCost",shippingCost);

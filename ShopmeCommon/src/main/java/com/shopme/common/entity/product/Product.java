@@ -1,5 +1,6 @@
 package com.shopme.common.entity.product;
 
+import com.shopme.common.Constants;
 import com.shopme.common.IdBasedEntity;
 import com.shopme.common.entity.Brand;
 import com.shopme.common.entity.Category;
@@ -74,8 +75,8 @@ public class Product extends IdBasedEntity {
 
     @Transient
     public String getMainImagePath() {
-        if (this.id == null || this.mainImage.isEmpty() ) return "/images/default-user.png";
-        return "/product-images/" + this.id +  "/" + this.mainImage;
+        if (this.id == null || this.mainImage.isEmpty() ) return Constants.S3_BASE_URI + "/images/default-user.png";
+        return Constants.S3_BASE_URI +"/product-images/" + this.id +  "/" + this.mainImage;
     }
 
     public void addDetail(String detailName,String detailValue) {

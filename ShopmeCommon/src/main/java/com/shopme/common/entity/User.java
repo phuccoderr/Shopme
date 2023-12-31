@@ -1,5 +1,6 @@
 package com.shopme.common.entity;
 
+import com.shopme.common.Constants;
 import com.shopme.common.IdBasedEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -41,8 +42,8 @@ public class User extends IdBasedEntity {
 
     @Transient
     public String getPhotosImagePath() {
-        if (id == null || photo == null) return "/images/default-user.png";
+        if (id == null || photo == null) return Constants.S3_BASE_URI + "/images/default-user.png";
 
-        return "/user-photos/" + this.id + "/" + this.photo;
+        return Constants.S3_BASE_URI + "/user-photos/" + this.id + "/" + this.photo;
     }
 }

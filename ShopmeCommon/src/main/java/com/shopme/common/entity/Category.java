@@ -2,6 +2,7 @@ package com.shopme.common.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.shopme.common.Constants;
 import com.shopme.common.IdBasedEntity;
 import com.shopme.common.entity.product.Product;
 import com.shopme.common.entity.product.ProductDetail;
@@ -87,10 +88,10 @@ public class Category extends IdBasedEntity implements Comparable<Category>{
 
     @Transient
     public String getImagePath() {
-        if (this.id == null ) return "/images/default-user.png";
-        if (this.img.isEmpty())   return "/images/default-user.png";
+        if (this.id == null ) return Constants.S3_BASE_URI + "/images/default-user.png";
+        if (this.img.isEmpty())   return Constants.S3_BASE_URI + "/images/default-user.png";
 
-        return "/category-images/" + this.id + "/" + this.img;
+        return Constants.S3_BASE_URI +"/category-images/" + this.id + "/" + this.img;
     }
 
     @Override

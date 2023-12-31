@@ -1,5 +1,6 @@
 package com.shopme.common.entity;
 
+import com.shopme.common.Constants;
 import com.shopme.common.IdBasedEntity;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -40,8 +41,8 @@ public class Brand extends IdBasedEntity implements Comparable<Brand> {
 
     @Transient
     public String getLogoPath() {
-        if (this.id == null || this.logo.isEmpty() ) return "/images/default-user.png";
-        return "/brand-logos/" + this.id +  "/" + this.logo;
+        if (this.id == null || this.logo.isEmpty() ) return Constants.S3_BASE_URI + "/images/default-user.png";
+        return Constants.S3_BASE_URI + "/brand-logos/" + this.id +  "/" + this.logo;
     }
 
     @Override

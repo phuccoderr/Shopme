@@ -2,13 +2,17 @@ package com.shopme.admin.order;
 
 import com.shopme.admin.country.CountryRepository;
 import com.shopme.admin.setting.SettingService;
+import com.shopme.admin.user.UserPdfExporter;
 import com.shopme.common.entity.Country;
+import com.shopme.common.entity.User;
 import com.shopme.common.entity.order.Order;
 import com.shopme.common.entity.order.OrderDetail;
 import com.shopme.common.entity.order.OrderTrack;
 import com.shopme.common.entity.product.Product;
 import com.shopme.common.entity.setting.Setting;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.repository.query.Param;
@@ -19,6 +23,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -161,5 +166,12 @@ public class OrderController {
         service.deleteTrack(orderId,trackId);
         ra.addFlashAttribute("message","Order has been update succesfully with ID:" + orderId);
         return "redirect:/orders";
+    }
+
+    @GetMapping("/orders/export/pdf")
+    public void exportToPDF(HttpServletResponse response) throws IOException {
+        List<Order> listOrders = service.ListAll();
+        OrderPdfExporter exporter = new OrderPdfExporter();
+        exporter.export(listOrders,response);
     }
 }

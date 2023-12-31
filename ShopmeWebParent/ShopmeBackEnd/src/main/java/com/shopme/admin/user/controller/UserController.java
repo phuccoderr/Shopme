@@ -2,9 +2,11 @@ package com.shopme.admin.user.controller;
 
 import com.shopme.admin.FileUploadUtil;
 import com.shopme.admin.user.UserNotFoundException;
+import com.shopme.admin.user.UserPdfExporter;
 import com.shopme.admin.user.UserService;
 import com.shopme.common.entity.Role;
 import com.shopme.common.entity.User;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.repository.query.Param;
@@ -72,6 +74,8 @@ public class UserController {
         }
     }
 
+
+
     @GetMapping("/users/new")
     public String newUser(Model model) {
         User user = new User();
@@ -127,5 +131,13 @@ public class UserController {
         }
 
         return "redirect:/users";
+    }
+
+    @GetMapping("/users/export/pdf")
+    public void exportToPDF(HttpServletResponse response) throws IOException {
+        List<User> listUsers = service.ListAll();
+
+        UserPdfExporter exporter = new UserPdfExporter();
+        exporter.export(listUsers,response);
     }
 }

@@ -32,26 +32,4 @@
     display: block;
 }
 
-#brand_select{
-    height: 44px;
-    border: none;
-    overflow: hidden;
-}
-#brand_select::-moz-focus-inner {
-    border: 0;
-}
-#brand_select:focus {
-    outline: none;
-}
-#brand_select option{
-    width: 60px;
-    font-size: 1.2em;
-    padding: 10px 0;
-    text-align: center;
-    margin-right: 20px;
-    display: inline-block;
-    cursor: pointer;
-    border:rgb(204, 204, 0) solid 1px;
-    border-radius: 5px;
-    color: rgb(204, 204, 0);
-}
+

@@ -57,7 +57,7 @@
             </div>
 
             <div class="form-group row p-2">
-                <label class="col-sm-4 col-form-label">City: ( Địa chỉ giao hàng của bạn )</label>
+                <label class="col-sm-4 col-form-label">City:</label>
                 <div class="col-sm-8">
                     <input type="text" th:field="*{city}" class="form-control"
                            maxlength="45" minlength="2" />
@@ -76,7 +76,7 @@
             </div>
 
             <div class="form-group row p-2">
-                <label class="col-sm-4 col-form-label">State/Province:</label>
+                <label class="col-sm-4 col-form-label">State/Province: ( Giao hàng chỉ nhận Can Tho )</label>
                 <div class="col-sm-8">
                     <input list="listStates" type="text" class="form-control" th:field="*{state}" minlength="2" maxlength="45"/>
                     <datalist id="listStates">

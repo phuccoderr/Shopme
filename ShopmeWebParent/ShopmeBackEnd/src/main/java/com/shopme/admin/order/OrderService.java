@@ -2,6 +2,7 @@ package com.shopme.admin.order;
 
 import com.shopme.admin.country.CountryRepository;
 import com.shopme.common.entity.Country;
+import com.shopme.common.entity.User;
 import com.shopme.common.entity.order.Order;
 import com.shopme.common.entity.order.OrderTrack;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,5 +86,9 @@ public class OrderService {
         }
 
         repo.save(order);
+    }
+
+    public List<Order> ListAll() {
+        return (List<Order>) repo.findAll();
     }
 }

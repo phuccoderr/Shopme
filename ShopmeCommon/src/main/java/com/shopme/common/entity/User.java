@@ -38,6 +38,7 @@ public class User extends IdBasedEntity {
         this.roles.add(role);
     }
 
+
     @Transient
     public String getPhotosImagePath() {
         if (id == null || photo == null) return "/images/default-user.png";

@@ -105,7 +105,7 @@
             </div>
 
             <div class="form-group row p-2">
-                <label class="col-sm-4 col-form-label">State/Province:</label>
+                <label class="col-sm-4 col-form-label">State/Province: ( Giao hàng chỉ nhận Can Tho )</label>
                 <div class="col-sm-8">
                     <input type="text" th:field="*{state}" class="form-control"
                            maxlength="45" minlength="2" list="listStates"/>
@@ -132,6 +132,32 @@
 <script th:src="@{/js/common.js}"></script>
 <script type="text/javascript">
     contextPath = "[[@{/}]]";
+    $(document).ready(function() {
+        dropDownCountries = $("#country");
+        dropDownStates = $("#listStates");
+
+        dropDownCountries.on("change",function() {
+            loadStates4Country();
+            $("#state").val("").focus();
+        })
+        loadStates4Country();
+        function loadStates4Country() {
+            selectedCountry = $("#country option:selected");
+            countryId = selectedCountry.val();
+            url = contextPath + "states/list_by_country/"+ countryId;
+            $.get(url,function(responseJSON) {
+                dropDownStates.empty();
+
+                $.each(responseJSON,function(index,state) {
+                    $("<option>").attr('data-hidden-value',state.id).text(state.name).appendTo(dropDownStates);
+                });
+            }).done(function() {
+
+            }).fail(function() {
+
+            });
+        }
+    })
 </script>
 </body>
 </html>

@@ -19,8 +19,9 @@
             </div>
 
             <div class="col-11">
-                <select name="selectedBrand" id="brand_select" class="BrandOnChange">
+                <select name="selectedBrand" id="BrandOnChange" class="btn border border-info text-info">
                     <th:block th:each="brand : ${#lists.sort(category.getBrands())}" >
+                        <option class="text-start" value="">Mac Dinh</option>
                         <option th:selected="${selectedBrand == brand.name}" th:value="${brand.name}" th:text="${brand.name}"></option>
                     </th:block>
                 </select>
@@ -98,7 +99,7 @@
     $("#dropdownCategoryField").on("change",function() {
         $("#searchForm").submit();
     });
-    $(".BrandOnChange").on("change",function () {
+    $("#BrandOnChange").on("change",function () {
         $("#searchForm").submit();
     })
     $("#clearFilter").on("click",function (e) {

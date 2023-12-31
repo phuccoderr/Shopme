@@ -110,4 +110,8 @@ public class UserService {
         }
         repo.deleteById(id);
     }
+
+    public List<User> ListAll() {
+        return (List<User>) repo.findAll();
+    }
 }

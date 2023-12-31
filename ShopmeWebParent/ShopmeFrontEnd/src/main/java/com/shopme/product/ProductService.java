@@ -43,8 +43,8 @@ public class ProductService {
                 sort = sort.descending();
                 return repo.findAll(spec, PageRequest.of(pageNum - 1,PRODUCTS_PER_PAGE,sort));
             } else if (sortField.equals("createdTime")) {
-                sort = Sort.by("createTime");
-                sort = sort.ascending();
+                sort = Sort.by("createdTime");
+                sort = sort.descending();
                 return repo.findAll(spec, PageRequest.of(pageNum - 1,PRODUCTS_PER_PAGE,sort));
             } else {
                 sort = Sort.by("name");
@@ -52,36 +52,6 @@ public class ProductService {
                 return repo.findAll(spec, PageRequest.of(pageNum - 1,PRODUCTS_PER_PAGE,sort));
             }
         }
-
-
-//        if (keyword != null && !keyword.isEmpty()) {
-//            return repo.search(keyword,pageable);
-//        }
-//
-//        if (sortField != null && !sortField.isEmpty()) {
-//            Sort sort;
-//            if (sortField.equals("lowPrice")) {
-//                sort = Sort.by("price");
-//                sort = sort.ascending();
-//            } else if (sortField.equals("highPrice")) {
-//                sort = Sort.by("price");
-//                sort = sort.descending();
-//            } else if (sortField.equals("createdTime")) {
-//                sort = Sort.by("createdTime");
-//                sort = sort.descending();
-//            } else {
-//                sort = Sort.by("name");
-//                sort = sort.ascending();
-//            }
-//            pageable = PageRequest.of(pageNum - 1,PRODUCTS_PER_PAGE,sort);
-//            return repo.findByPrice(pageable);
-//        }
-//
-//
-//
-//
-//
-//
         return repo.findAll(spec, pageable);
     }
 

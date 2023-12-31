@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{ fragments :: page_head('Review','none')}"></head>
+<body>
+<div th:replace="~{fragments :: header}"></div>
+<div class="text-center">
+    <div><h1>Lịch sử đơn hàng của bạn</h1></div>
+</div>
+<div class="container-sm">
+    <div class="row">
+        <form class="form-inline justify-content-end" th:action="@{/reviews/page/1}" >
+            <div>
+                <input type="hidden" name="sortField" th:value="${sortField}"/>
+                <input type="hidden" name="sortDir" th:value="${sortDir}"/>
+                <input name="keyword" class="" th:value="${keyword}" placeholder="search name product" />
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+
+                <button type="button" class="btn btn-secondary" onclick="clearFilter()">
+                    <i class="fa-solid fa-eraser"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <div class="card-body">
+        <table class="table table-bordered table-responsive-xl" id="dataTable" >
+            <thead>
+                <tr class="table-info">
+                    <th>ID</th>
+
+                    <th>Product</th>
+
+                    <th>Headline</th>
+
+                    <th>Rating</th>
+
+                    <th th:replace="~{fragments :: column_link('/reviews','reviewTime', 'Review Time','none')}"></th>
+
+                    <th>Chi tiết</th>
+                </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="review : ${listReviews}">
+                <tr class="table-light">
+                    <td th:text="${review.id}"></td>
+                    <td th:text="${review.product.name}"></td>
+                    <td th:text="${review.headline}"></td>
+                    <td>[[${review.rating}]]
+                        <i class="fa-solid fa-star"></i></td>
+                    <td><div th:replace="~{fragments :: format_time(${review.reviewTime})}"></div></td>
+                    <td>
+                        <a th:href="@{'/reviews/detail/' + ${review.id}}" class="link-detail">
+                            <i class="fa-solid fa-circle-info fa-1-5x"></i>
+                        </a>
+                    </td>
+                </tr>
+            </th:block>
+
+            </tbody>
+        </table>
+        <div class="row">
+            <div th:replace="~{fragments :: pagination('/reviews','review')}"></div>
+        </div>
+    </div>
+
+</div>
+<!-- Modal -->
+<div class="modal fade" id="detailModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+        </div>
+    </div>
+</div>
+<div th:replace="~{fragments :: footer}"></div>
+<script th:src="@{/js/common.js}"></script>
+<script type="text/javascript">
+    moduleURL = "[[@{/reviews}]]";
+    contextPath = "[[@{/}]]";
+    var csrfHeaderName = "[[${_csrf.headerName}]]";
+    var csrfValue = "[[${_csrf.token}]]";
+
+    $(".link-detail").on("click",function (e) {
+        e.preventDefault();
+        linkDetailURL = $(this).attr("href");
+        $("#detailModal").modal("show").find(".modal-content").load(linkDetailURL);
+    })
+</script>
+</body>
+</html>

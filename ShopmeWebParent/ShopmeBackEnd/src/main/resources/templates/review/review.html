@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <head th:replace="~{ fragments :: page_head('Shopme Product','tag')}" />
+    <link rel="stylesheet" th:href="@{/richtext/richtext.min.css}"/>
+    <script th:src="@{/richtext/jquery.richtext.min.js}"></script>
+</head>
+<body id="page-top">
+    <div id="wrapper">
+     <ul th:replace="~{fragments :: navbar}"></ul>
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <nav th:replace="~{fragments :: header}"></nav>
+
+                <div class="container-fluid">
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">DataTables Review</h6>
+                        </div>
+                        <div th:if="${message != null}" class="alert alert-success text-center">
+                            [[${message}]]
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <div class="row">
+                                    <div class="col-sm-6 col-md-6">
+
+                                    </div>
+                                    <div class="col-sm-6 col-md-6">
+                                        <div th:replace="~{fragments :: search('/reviews/page/1')}"></div>
+                                    </div>
+                                </div>
+                                <table class="table table-bordered" id="dataTable" >
+                                    <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Product</th>
+                                        <th>Customer</th>
+                                        <th>Rating</th>
+                                        <th>Review Time</th>
+                                        <th>Edit</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <th:block th:each="review : ${listReviews}">
+                                            <tr>
+                                                <td>[[${review.id}]]</td>
+                                                <td>[[${review.product.name}]]</td>
+                                                <td>
+                                                    [[${review.customer.fullName}]]
+                                                </td>
+                                                <td>
+                                                   <span>[[${review.rating}]]</span>
+                                                </td>
+                                                <td>
+                                                    <span>[[${review.reviewTime}]]</span>
+                                                </td>
+                                                <td>
+                                                    <a th:replace="~{fragments :: edit('/reviews/detail/',${review.id})}" ></a>
+                                                    <div th:replace="~{fragments :: delete('/reviews/delete/',${review.id},true)}"></div>
+                                                </td>
+                                            </tr>
+                                        </th:block>
+                                    </tbody>
+                                </table>
+                                <div class="row">
+                                    <div th:replace="~{fragments :: pagination('/reviews','reviews')}"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="detailModal">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade text-center" id="confirmModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete Confirmation</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal">
+                        &times;
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <span id="confirmText"></span>
+                </div>
+                <div class="modal-footer">
+                    <a href="" class="btn btn-primary" id="yesButton">Yes</a>
+                    <button type="button" class="btn btn-secondary clickClose" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer th:replace="~{fragments :: footer}"></footer>
+<script th:src="@{/js/common_list.js}"></script>
+<script th:src="@{/js/common_form.js}" ></script>
+<script th:src="@{/js/common.js}" ></script>
+<script type="text/javascript">
+    moduleURL = "[[@{/reviews}]]";
+    $(document).ready(function () {
+        $(".link-delete").on("click", function(e)  {
+            e.preventDefault();
+            showDeleteConfirmModal($(this),'review')
+        });
+    })
+</script>
+</body>
+</html>

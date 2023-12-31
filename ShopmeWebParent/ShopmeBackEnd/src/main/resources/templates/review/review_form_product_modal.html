@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<body>
+<div th:fragment="content" th:remove="tag">
+    <div class="mb-3 mt-3">
+        <div>
+            <h2>[[${review.product.name}]]</h2>
+        </div>
+        <div>
+            <img id="thumbnail" alt="Main image preview" class="w-25"
+                 th:src="@{${review.product.mainImagePath}}">
+        </div>
+    </div>
+
+    <div class="mb-3 mt-3">
+        <label class="form-label">Price:</label>
+        <input type="text" class="form-control" th:value="${#numbers.formatDecimal(review.product.price,3, 'POINT',3, 'COMMA')}" readonly>
+    </div>
+    <div class="mb-3 mt-3">
+        <label class="form-label">Price:</label>
+        <input type="text" class="form-control" th:value="${#numbers.formatDecimal(review.product.cost,3, 'POINT',3, 'COMMA')}" readonly>
+    </div>
+    <div class="mb-3 mt-3">
+        <label class="form-label">Sale:</label>
+        <input type="text" class="form-control" th:value="${review.product.sale}" readonly>
+    </div>
+</div>
+</body>
+</html>

@@ -20,7 +20,7 @@
             <div class="row m-2 ">
                 <div class="col-md-2">
                     <a th:href="@{/}" class="">
-                        <img class="img-fluid" th:src="@{${SITE_LOGO}}"
+                        <img class="img-fluid" th:src="@{${S3_BASE_URI + SITE_LOGO}}"
                              style="min-width: 150px" />
                     </a>
                 </div>
@@ -54,7 +54,7 @@
                                 <a href="#" class="dropdown btn border rounded-5" data-bs-toggle="dropdown">
                                     <span sec:authentication="principal.fullName" class="col icon-focus-blue"></span>
                                     <i class="col dropdown-toggle">
-                                        <img th:src="@{/images/logo.png}"
+                                        <img th:src="@{S3_BASE_URI + '/images/logo.png'}"
                                              class="border-0 rounded-5" style="width: 22px;"/>
                                     </i>
                                 </a>
@@ -149,7 +149,7 @@
         <div class=" my-auto">
             <div class="row">
                 <div class="col-sm-3">
-                    <img th:src="@{/images/logo-no-text.png}" class="img-fluid" style="max-width: 75%" />
+                    <img th:src="@{S3_BASE_URI + '/images/logo-no-text.png'}" class="img-fluid" style="max-width: 75%" />
                 </div>
                 <div class="col-sm-3 fa-1x">
                     <div class="p-md-4">

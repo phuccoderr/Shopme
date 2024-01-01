@@ -1,5 +1,6 @@
 package com.shopme.admin.brand;
 
+import com.shopme.admin.AmazonS3Util;
 import com.shopme.admin.FileUploadUtil;
 import com.shopme.admin.category.CategoryService;
 import com.shopme.common.entity.Brand;
@@ -80,8 +81,10 @@ public class BrandController {
             Brand saved = service.save(brand);
 
             String uploadDir = "brand-logos/" + saved.getId();
-            FileUploadUtil.cleanDir(uploadDir);
-            FileUploadUtil.saveFile(uploadDir,fileName,multipartFile);
+//            FileUploadUtil.cleanDir(uploadDir);
+//            FileUploadUtil.saveFile(uploadDir,fileName,multipartFile);
+            AmazonS3Util.removeFolder(uploadDir);
+            AmazonS3Util.uploadFile(uploadDir,fileName,multipartFile.getInputStream());
         } else {
             service.save(brand);
         }

@@ -26,7 +26,7 @@
 <ul th:fragment="navbar" class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
     <a class="sidebar-brand d-flex align-items-center justify-content-center" th:href="@{/}">
         <div class="sidebar-brand-icon ">
-            <img th:src="@{/images/artemis-logo-transparent.png}" class="img-fluid" />
+            <img th:src="@{${S3_BASE_URI} + '/images/artemis-logo-transparent.png'}" class="img-fluid" />
         </div>
         <div class="sidebar-brand-text mx-3">Shopme Admin</div>
     </a>

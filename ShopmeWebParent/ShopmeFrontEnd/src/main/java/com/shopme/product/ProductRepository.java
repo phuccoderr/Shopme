@@ -12,11 +12,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 public interface ProductRepository extends JpaRepository<Product,Integer> , JpaSpecificationExecutor<Product> {
 
-    @Query("SELECT p FROM Product p WHERE p.enabled = true AND (p.category.id = ?1 or p.category.allParentIds like %?2%)")
-    public Page<Product> listByCategory(Integer cateId, String categoryIdMatch,Pageable pageable);
-
-    @Query("SELECT p FROM Product p WHERE p.enabled = true AND p.brand.id = ?1")
-    public Page<Product> listByBrand(Integer brandId,Pageable pageable);
 
     public Product findByAlias(String alias);
     @Query(value = "SELECT * FROM Products "
@@ -24,8 +19,6 @@ public interface ProductRepository extends JpaRepository<Product,Integer> , JpaS
             ,nativeQuery = true)
     public Page<Product> search(String keyword, Pageable pageable);
 
-    @Query("SELECT p FROM Product p WHERE p.enabled = true")
-    public Page<Product> findByPrice(Pageable pageable);
 
     @Query("UPDATE Product p SET p.averageRating = COALESCE(CAST((SELECT AVG(r.rating) FROM Review r WHERE r.product.id = ?1) AS Float), 0)," +
             " p.reviewCount = (SELECT COUNT(r.id) FROM Review r WHERE r.product.id = ?1)" +

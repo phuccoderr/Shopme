@@ -1,5 +1,6 @@
 package com.shopme.admin.user.controller;
 
+import com.shopme.admin.AmazonS3Util;
 import com.shopme.admin.FileUploadUtil;
 import com.shopme.admin.user.UserNotFoundException;
 import com.shopme.admin.user.UserPdfExporter;
@@ -97,8 +98,10 @@ public class UserController {
 
             String uploadDir = "user-photos/" + savedUser.getId();
 
-            FileUploadUtil.cleanDir(uploadDir);
-            FileUploadUtil.saveFile(uploadDir,fileName,multipartFile);
+//            FileUploadUtil.cleanDir(uploadDir);
+//            FileUploadUtil.saveFile(uploadDir,fileName,multipartFile);
+            AmazonS3Util.removeFolder(uploadDir);
+            AmazonS3Util.uploadFile(uploadDir,fileName,multipartFile.getInputStream());
         } else {
             service.save(user);
         }

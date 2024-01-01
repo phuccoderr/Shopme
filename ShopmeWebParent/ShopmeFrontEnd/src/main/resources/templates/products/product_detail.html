@@ -16,9 +16,33 @@
             <div class="row gx-5">
                 <aside class="col-lg-6">
                     <div class="border rounded-4 mb-3 d-flex justify-content-center">
-                        <a class="rounded-4" target="_blank" data-type="image">
-                            <img style="max-width: 80%; max-height: 100vh; margin: auto;" class="rounded-4 fit" th:src="@{${product.mainImagePath}}" />
-                        </a>
+                        <div id="carouselExampleIndicators" class="carousel slide w-100">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active bg-black" aria-current="true" ></button>
+                                <th:block th:each="images,status: ${product.productImages}">
+                                <button type="button" data-bs-target="#carouselExampleIndicators" class="bg-black" th:data-bs-slide-to="${status.count}"></button>
+                                </th:block>
+                            </div>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img th:src="@{${product.mainImagePath}}" class="d-block w-100">
+                                </div>
+                                <th:block th:each="images,status : ${product.productImages}">
+                                    <div class="carousel-item active">
+                                        <img th:src="@{${images.imagePath}}" class="d-block w-100">
+                                    </div>
+                                </th:block>
+
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon bg-black" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                <span class="carousel-control-next-icon bg-black" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
                     </div>
                 </aside>
                 <main class="col-lg-6">

@@ -1,5 +1,6 @@
 package com.shopme.admin.product;
 
+import com.shopme.admin.AmazonS3Util;
 import com.shopme.admin.FileUploadUtil;
 import com.shopme.admin.brand.BrandService;
 import com.shopme.admin.category.CategoryService;
@@ -131,7 +132,7 @@ public class ProductController {
         deleteExtraImageWeredRemovedOnForm(product);
 
 
-        ra.addFlashAttribute("message","The product has been saved successfully.");
+        ra.addFlashAttribute("message","The product has been saved with " + product.getId() + " successfully.");
         return "redirect:/products";
     }
 
@@ -139,24 +140,34 @@ public class ProductController {
         String extraImage = "product-images/" + product.getId() + "/extras";
         Path dirpath = Paths.get(extraImage);
 
-        if (Files.exists(dirpath)) {
-            try {
-                Files.list(dirpath).forEach(file -> {
-                    String fileName = file.toFile().getName();
+        List<String> listObjectKeys = AmazonS3Util.listFolder(extraImage);
 
-                    if (!product.containsImageName(fileName)) {
-                        try {
-                            System.out.println("file delete: " + fileName);
-                            Files.delete(file);
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
-                    }
-                });
-            } catch (IOException e) {
-                throw new IOException("could not list directory: " + dirpath);
+        for (String objectKey : listObjectKeys) {
+            int lastIndexOfSlash = objectKey.lastIndexOf("/");
+            String fileName = objectKey.substring(lastIndexOfSlash + 1,objectKey.length());
+            if (!product.containsImageName(fileName)) {
+                AmazonS3Util.deleteFile(objectKey);
+                System.out.println("delete: " + objectKey);
             }
         }
+//        if (Files.exists(dirpath)) {
+//            try {
+//                Files.list(dirpath).forEach(file -> {
+//                    String fileName = file.toFile().getName();
+//
+//                    if (!product.containsImageName(fileName)) {
+//                        try {
+//                            System.out.println("file delete: " + fileName);
+//                            Files.delete(file);
+//                        } catch (IOException e) {
+//                            throw new RuntimeException(e);
+//                        }
+//                    }
+//                });
+//            } catch (IOException e) {
+//                throw new IOException("could not list directory: " + dirpath);
+//            }
+//        }
     }
 
     private void setExistingExtraImageNames(String[] imageIDs, String[] imageNames, Product product) {
@@ -215,11 +226,12 @@ public class ProductController {
                                   Product savedProduct) throws IOException {
         if (!mainMultipartFile.isEmpty()) {
             String fileName = StringUtils.cleanPath(mainMultipartFile.getOriginalFilename());
-            String uploadDir = "product-images/" + savedProduct.getId() + "/";
+            String uploadDir = "product-images/" + savedProduct.getId();
 
-            FileUploadUtil.cleanDir(uploadDir);
-            FileUploadUtil.saveFile(uploadDir,fileName,mainMultipartFile);
-
+//            FileUploadUtil.cleanDir(uploadDir);
+//            FileUploadUtil.saveFile(uploadDir,fileName,mainMultipartFile);
+            AmazonS3Util.removeFolder(uploadDir);
+            AmazonS3Util.uploadFile(uploadDir,fileName,mainMultipartFile.getInputStream());
         }
 
         if(extraMultipartFiles.length > 0) {
@@ -228,7 +240,8 @@ public class ProductController {
 
                 if(!multipartFile.isEmpty()) {
                     String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-                    FileUploadUtil.saveFile(uploadDir,fileName,multipartFile);
+//                    FileUploadUtil.saveFile(uploadDir,fileName,multipartFile);
+                    AmazonS3Util.uploadFile(uploadDir,fileName,multipartFile.getInputStream());
                 }
             }
         }

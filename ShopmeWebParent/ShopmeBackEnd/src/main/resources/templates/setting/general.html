@@ -18,7 +18,7 @@
                 <div class="">
                     <label class="form-label">Site Logo</label>
                     <input type="file" id="fileImage" name="fileImage"  accept="image/png, image/jpeg" class="form-control"  />
-                    <img id="thumbnail" alt="Photos preview" th:src="@{${SITE_LOGO}}"
+                    <img id="thumbnail" alt="Photos preview" th:src="@{${S3_BASE_URI + SITE_LOGO}}"
                          style="max-width: 25%" />
                 </div>
             </div>

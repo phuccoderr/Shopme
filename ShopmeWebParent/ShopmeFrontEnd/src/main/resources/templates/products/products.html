@@ -20,8 +20,8 @@
 
             <div class="col-11">
                 <select name="selectedBrand" id="BrandOnChange" class="btn border border-info text-info">
+                    <option class="text-start">Mac Dinh</option>
                     <th:block th:each="brand : ${#lists.sort(category.getBrands())}" >
-                        <option class="text-start" value="">Mac Dinh</option>
                         <option th:selected="${selectedBrand == brand.name}" th:value="${brand.name}" th:text="${brand.name}"></option>
                     </th:block>
                 </select>

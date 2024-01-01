@@ -63,10 +63,6 @@ public class ProductService {
         return product;
     }
 
-    public Page<Product> search(String keyword,Integer pageNum) {
-        Pageable pageable = PageRequest.of(pageNum,PRODUCTS_PER_PAGE);
-        return repo.search(keyword,pageable);
-    }
 
     public Product getProduct(Integer id) throws ProductNotFoundException {
         Product product = repo.findById(id).get();

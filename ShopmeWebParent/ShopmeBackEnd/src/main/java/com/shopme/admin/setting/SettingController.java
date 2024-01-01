@@ -1,6 +1,8 @@
 package com.shopme.admin.setting;
 
+import com.shopme.admin.AmazonS3Util;
 import com.shopme.admin.FileUploadUtil;
+import com.shopme.common.Constants;
 import com.shopme.common.entity.Currency;
 import com.shopme.common.entity.setting.Setting;
 import com.shopme.common.entity.setting.SettingBag;
@@ -40,11 +42,6 @@ public class SettingController {
     public String saveGeneralSettings(@RequestParam("fileImage") MultipartFile multipartFile,
                               HttpServletRequest request, RedirectAttributes ra) throws IOException {
         GeneralSettingBag settingBag = service.getGeneralSettings();
-
-        for (Setting setting : settingBag.list()) {
-            System.out.println(setting.getKey());
-        }
-
 
         saveSiteLogo(multipartFile,settingBag);
         saveCurrencySymbol(request,settingBag);
@@ -93,8 +90,11 @@ public class SettingController {
             settingBag.updateSiteLogo(value);
             String uploadDir = "site-logo";
 
-            FileUploadUtil.removeDir(uploadDir);
-            FileUploadUtil.saveFile(uploadDir,fileName,multipartFile);
+//            FileUploadUtil.removeDir(uploadDir);
+//            FileUploadUtil.saveFile(uploadDir,fileName,multipartFile);
+
+            AmazonS3Util.removeFolder(uploadDir);
+            AmazonS3Util.uploadFile(uploadDir,fileName,multipartFile.getInputStream());
         }
     }
     private void saveCurrencySymbol(HttpServletRequest request, GeneralSettingBag settingBag) {

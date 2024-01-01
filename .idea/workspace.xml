@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dc06181e-8018-4017-9ac1-b1a9b4dde484" name="Changes" comment="upload file images to AmazonS3">
+    <list default="true" id="dc06181e-8018-4017-9ac1-b1a9b4dde484" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopmeCommon/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeCommon/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopmeCommon/src/test/java/com/shopme/ShopmeCommonApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/resources/templates/fragments.html" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/resources/templates/fragments.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +28,7 @@
         <option value="Enum" />
         <option value="JavaScript File" />
         <option value="Class" />
+        <option value="Dockerfile" />
       </list>
     </option>
   </component>
@@ -149,7 +149,7 @@
       <command value="mvn test" />
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.ShopmeFrontEndApplication">
+  <component name="RunManager" selected="Spring Boot.ShopmeBackEndApplication (1)">
     <configuration name="AmazonS3UtilTests.testDeleteFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ShopmeBackEnd" />
       <extension name="coverage">
@@ -380,6 +380,9 @@
       <workItem from="1704007947957" duration="1137000" />
       <workItem from="1704093990716" duration="9368000" />
       <workItem from="1704108131416" duration="2076000" />
+      <workItem from="1704129110427" duration="1277000" />
+      <workItem from="1704138533180" duration="1029000" />
+      <workItem from="1704142211964" duration="297000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <option name="closed" value="true" />

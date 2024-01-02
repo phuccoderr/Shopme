@@ -1,8 +1,8 @@
-FROM adoptopenjdk:17-jdk-hotspot AS build
+FROM maven:3.8.5-openjdk-17 AS build
 COPY . .
 RUN mvn clean package -DskipTests
 
-FROM adoptopenjdk:17-jre-hotspot
-COPY --from=build /ShopmeWebParent/ShopmeBackEnd/target/ShopmeBackEnd-0.0.1-SNAPSHOT.jar /ShopmeWebParent/ShopmeBackEnd/target/ShopmeBackEnd-0.0.1-SNAPSHOT.jar
+FROM 3.8.5-openjdk-17-slim
+COPY --from=build /ShopmeWebParent/ShopmeBackEnd/target/ShopmeBackEnd-0.0.1-SNAPSHOT.jar demo.jar
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","ShopmeBackEnd-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar","demo.jar"]

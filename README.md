@@ -5,7 +5,7 @@ Web bán laptop được xây dựng trên framework spring boot 3.1.5 theo mô 
  - JDK: 17.0.9 https://download.oracle.com/java/17/archive/jdk-17.0.9_windows-x64_bin.zip
  - Maven 3.9.3 [apache-maven-3.9.6-bin.zip](https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.zip)
  - Enviroment setup: https://www.tutorialspoint.com/maven/maven_environment_setup.htm
- - Java and html,css,javascript
+ - Java, Thymleaf
 # Database Mysql
  - community version 8.0.33
 # Library và Framework

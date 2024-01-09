@@ -1,5 +1,5 @@
 # Shop Artermis
-Web bán laptop được xây dựng trên framework spring boot 3.1.5
+Web bán laptop được xây dựng trên framework spring boot 3.1.5 theo mô hình MVC
 # Thiết lập các cài đặt môi trường
  - IDE: Intellij Idea
  - JDK: 17.0.9 https://download.oracle.com/java/17/archive/jdk-17.0.9_windows-x64_bin.zip

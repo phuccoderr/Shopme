@@ -5,10 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dc06181e-8018-4017-9ac1-b1a9b4dde484" name="Changes" comment="update file project">
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopmeCommon/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeCommon/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/Shopme.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_12_31_2023_11_09_AM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_12_31_2023_11_09_AM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/ShopmeFrontEnd/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ShopmeWebParent/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ShopmeWebParent/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,6 +57,17 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/ShopmeWebParent/ShopmeBackEnd/src/main/resources/templates/product/product_form_image_modal.html" root0="SKIP_INSPECTION" />
   </component>
+  <component name="KubernetesApiProvider">{
+  &quot;contexts&quot;: [
+    {
+      &quot;name&quot;: &quot;gke_mythical-legend-413218_us-central1_autopilot-cluster-1&quot;
+    }
+  ],
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="KubernetesSettings">
+    <option name="contextName" value="gke_mythical-legend-413218_us-central1_autopilot-cluster-1" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -61,7 +75,6 @@
     <option name="generalSettings">
       <MavenGeneralSettings>
         <option name="mavenHome" value="$PROJECT_DIR$/../../Phuc/Java/apache-maven-3.9.3" />
-        <option name="usePluginRegistry" value="true" />
       </MavenGeneralSettings>
     </option>
     <option name="importingSettings">
@@ -94,11 +107,15 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.ShopmeBackEndApplication (1).executor": "Run",
+    "Spring Boot.ShopmeFrontEndApplication.executor": "Run",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "jdk.selected.JAVA_MODULE": "19",
-    "last_opened_file_path": "D:/workspace/ShopmeProject/ShopmeWebParent/ShopmeFrontEnd/src/main/java/com/shopme",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Project/shopme/Shopme/ShopmeWebParent/ShopmeFrontEnd",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -107,6 +124,7 @@
     "project.structure.last.edited": "Problems",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
+    "run.configurations.included.in.services": "true",
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
@@ -120,11 +138,11 @@
       <recent name="com.shopme.admin.shippingrate" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Project\shopme\Shopme\ShopmeWebParent\ShopmeFrontEnd" />
       <recent name="D:\workspace\ShopmeProject\ShopmeWebParent\ShopmeFrontEnd\src\main\java\com\shopme" />
       <recent name="D:\workspace\ShopmeProject\ShopmeWebParent\ShopmeFrontEnd\src\main\resources\templates\review" />
       <recent name="D:\workspace\ShopmeProject\ShopmeWebParent\ShopmeFrontEnd\src\main\resources\static\images" />
       <recent name="D:\workspace\ShopmeProject\ShopmeWebParent\ShopmeFrontEnd\src\main\resources\templates\products" />
-      <recent name="D:\workspace\ShopmeProject\ShopmeWebParent\ShopmeFrontEnd\src\main\resources\static\rating-stars\themes" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\workspace\ShopmeProject\ShopmeWebParent\ShopmeFrontEnd\src\main\resources\templates" />
@@ -146,6 +164,15 @@
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="mvn test" />
+    </option>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="MicronautRunConfigurationType" />
+        <option value="QuarkusRunConfigurationType" />
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.ShopmeBackEndApplication (1)">
@@ -279,6 +306,13 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.10-corretto-17.0.10-f644763e9732-24fca987" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -382,6 +416,12 @@
       <workItem from="1704129110427" duration="1277000" />
       <workItem from="1704138533180" duration="1029000" />
       <workItem from="1704142211964" duration="692000" />
+      <workItem from="1715515644999" duration="10712000" />
+      <workItem from="1715526657250" duration="2483000" />
+      <workItem from="1715558411372" duration="17000" />
+      <workItem from="1715585017568" duration="693000" />
+      <workItem from="1715602318883" duration="678000" />
+      <workItem from="1715639168494" duration="241000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <option name="closed" value="true" />
